@@ -337,7 +337,7 @@
 <h1 id="githubSSH配置"><a href="#githubSSH配置" class="headerlink" title="githubSSH配置"></a>githubSSH配置</h1><p>搭建完仓库后就开始配置githubSSH。</p>
 <p>进入git bash中，按顺序输入如下代码：</p>
 <blockquote>
-<p>git config –global user.email “<a href="mailto:&#120;&#x78;&#120;&#64;&#x71;&#113;&#46;&#99;&#x6f;&#109;">&#120;&#x78;&#120;&#64;&#x71;&#113;&#46;&#99;&#x6f;&#109;</a>“    //填写注册github的邮箱</p>
+<p>git config –global user.email “<a href="mailto:&#120;&#x78;&#x78;&#64;&#113;&#x71;&#46;&#x63;&#x6f;&#x6d;">&#120;&#x78;&#x78;&#64;&#113;&#x71;&#46;&#x63;&#x6f;&#x6d;</a>“    //填写注册github的邮箱</p>
 </blockquote>
 <blockquote>
 <p>git config –global user.name “xxxx”    //github 用户名</p>
@@ -558,13 +558,19 @@
   </span>
   </div>
 
-  <!-- 网站运行时间的设置 -->
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共3.6k字</span>
+</div>
+
+<div class="powered-by">
+<!-- 网站运行时间的设置 -->
   <span id="timeDate">载入天数...</span>
   <span id="times">载入时分秒...</span>  Sometimes your whole life boils down to one insame move.
   <script>
       var now = new Date();
       function createtime() {
-          var grt= new Date("12/01/2021 00:00:00");//此处修改你的建站时间或者网站上线时间
+          var grt= new Date("01/12/2021 00:00:00");//此处修改你的建站时间或者网站上线时间
           now.setTime(now.getTime()+250);
           days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
           hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
@@ -577,11 +583,6 @@
   }
   setInterval("createtime()",250);
   </script>
-
-<div class="theme-info">
-  <div class="powered-by"></div>
-  
-  <span class="post-count">博客全站共3.6k字</span>
 </div>
         
 
