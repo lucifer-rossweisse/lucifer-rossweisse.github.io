@@ -40,7 +40,7 @@
 <h1 id="githubSSH配置"><a href="#githubSSH配置" class="headerlink" title="githubSSH配置"></a>githubSSH配置</h1><p>搭建完仓库后就开始配置githubSSH。</p>
 <p>进入git bash中，按顺序输入如下代码：</p>
 <blockquote>
-<p>git config –global user.email “<a href="mailto:&#120;&#x78;&#120;&#64;&#113;&#113;&#46;&#x63;&#x6f;&#109;">&#120;&#x78;&#120;&#64;&#113;&#113;&#46;&#x63;&#x6f;&#109;</a>“    //填写注册github的邮箱</p>
+<p>git config –global user.email “<a href="mailto:&#x78;&#x78;&#120;&#64;&#113;&#113;&#46;&#99;&#111;&#109;">&#x78;&#x78;&#120;&#64;&#113;&#113;&#46;&#99;&#111;&#109;</a>“    //填写注册github的邮箱</p>
 </blockquote>
 <blockquote>
 <p>git config –global user.name “xxxx”    //github 用户名</p>
@@ -75,6 +75,105 @@
 ]]></content>
       <tags>
         <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python列表的运用</title>
+    <url>/2021/02/01/python%E5%88%97%E8%A1%A8%E7%9A%84%E8%BF%90%E7%94%A8/</url>
+    <content><![CDATA[<h2 id="python列表的运用"><a href="#python列表的运用" class="headerlink" title="python列表的运用"></a>python列表的运用</h2><p>列表是python中内置的序列类型，与C语言中的数组有些类似，但实际上python中的列表更像是一种类，其中封装了许多种方法。</p>
+<h3 id="1、如何定义一个列表list"><a href="#1、如何定义一个列表list" class="headerlink" title="1、如何定义一个列表list"></a>1、如何定义一个列表list</h3><p>这是最简单的列表</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210201113758182.png" alt="在这里插入图片描述"></p>
+<p>还可以数字与字符串混搭</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list2 = [<span class="number">1</span>, <span class="string">&#x27;red&#x27;</span>, <span class="number">2</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="number">3</span>, <span class="string">&#x27;yellow&#x27;</span>]</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210201113806526.png" alt="在这里插入图片描述"></p>
+<p>甚至可以在列表里加入列表</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list3 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]]</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/e6a1a8840f884dd719dc49cd2ac0aa2f.png" alt="3"></p>
+<h3 id="2、列表的使用方法"><a href="#2、列表的使用方法" class="headerlink" title="2、列表的使用方法"></a>2、列表的使用方法</h3><h4 id="1、删除列表元素"><a href="#1、删除列表元素" class="headerlink" title="1、删除列表元素"></a>1、删除列表元素</h4><p>我们可以通过del语句来删除列表中的元素</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">del</span> list1[<span class="number">4</span>]</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/cffcf388ca09f9c1152bed3187aca396.png" alt="4"></p>
+<p>tips:学过c语言的数组，我们都知道<strong>数组</strong>的下标是从0开始的，同样python中的<strong>列表</strong>也不例外，所以</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">del</span> list1[<span class="number">4</span>]</span><br></pre></td></tr></table></figure>
+<p>删除的是下标为4的元素</p>
+<h4 id="2、列表脚本操作符"><a href="#2、列表脚本操作符" class="headerlink" title="2、列表脚本操作符"></a>2、列表脚本操作符</h4><h5 id="1、长度操作"><a href="#1、长度操作" class="headerlink" title="1、长度操作"></a>1、长度操作</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">len</span>(list1)</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/b873434af888df2abe5f73ff6be3d7ca.png" alt="5"></p>
+<h5 id="2、组合操作符"><a href="#2、组合操作符" class="headerlink" title="2、组合操作符"></a>2、组合操作符</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1 + [<span class="number">5</span>] 或 [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>] + [<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/2021020111382871.png" alt="在这里插入图片描述"></p>
+<h5 id="3、重复操作符"><a href="#3、重复操作符" class="headerlink" title="3、重复操作符"></a>3、重复操作符</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1 * <span class="number">4</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/9129a2667adb0aa5630a45ee35d15996.png" alt="7"></p>
+<h5 id="4、内置迭代器"><a href="#4、内置迭代器" class="headerlink" title="4、内置迭代器"></a>4、内置迭代器</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> list1: print(x, end=<span class="string">&quot; &quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/0592770187d406e3d1a9a72037366032.png" alt="8"></p>
+<h5 id="5、判断元素是否存在于表中"><a href="#5、判断元素是否存在于表中" class="headerlink" title="5、判断元素是否存在于表中"></a>5、判断元素是否存在于表中</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">3</span> <span class="keyword">in</span> list1</span><br><span class="line"><span class="number">5</span> <span class="keyword">not</span> <span class="keyword">in</span> list1</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210201113843302.png" alt="在这里插入图片描述"></p>
+<p>tips：从这看，python这也太人性化了w(ﾟДﾟ)w</p>
+<h4 id="3、列表的截取取与拼接"><a href="#3、列表的截取取与拼接" class="headerlink" title="3、列表的截取取与拼接"></a>3、列表的截取取与拼接</h4><h5 id="1、列表的截取"><a href="#1、列表的截取" class="headerlink" title="1、列表的截取"></a>1、列表的截取</h5><p>tips: python中的列表可以正向索引也可以反向索引。</p>
+<p><strong>正向索引</strong><br><img src="https://img-blog.csdnimg.cn/20210201113855754.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><strong>反向索引</strong><br><img src="https://img-blog.csdnimg.cn/20210201113931263.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>所以，截取可以正向截取</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210201113951193.png" alt="在这里插入图片描述"></p>
+<p>可以反向截取</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1[-<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/4887372c3996635cf4fd627a88de57eb.png" alt="14"></p>
+<p>还可以有范围的截取</p>
+<p>tips：该范围为左闭右开区间</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1[<span class="number">1</span>:<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/7982975c1bcdcdc415a99e2248bec225.png" alt="15"></p>
+<p>甚至可以不加前后范围</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1[<span class="number">1</span>:]</span><br><span class="line">list1[:<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210201114021435.png" alt="在这里插入图片描述"></p>
+<h5 id="2、列表的拼接"><a href="#2、列表的拼接" class="headerlink" title="2、列表的拼接"></a>2、列表的拼接</h5><p>列表里还支持拼接操作</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1 += [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210201114052460.png" alt="在这里插入图片描述"></p>
+<h4 id="4、列表函数"><a href="#4、列表函数" class="headerlink" title="4、列表函数"></a>4、列表函数</h4><h5 id="1、max"><a href="#1、max" class="headerlink" title="1、max()"></a>1、max()</h5><p>返回列表元素最大值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">max</span>(list1)</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/4b557e1d41910ac90d7efc4d1a6ea605.png" alt="18"></p>
+<h5 id="2、min"><a href="#2、min" class="headerlink" title="2、min()"></a>2、min()</h5><p>返回列表元素最小值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">min</span>(list1)</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/2b6e28cd5ccfaae5831f03044016f828.png" alt="19"></p>
+<h4 id="5、列表方法"><a href="#5、列表方法" class="headerlink" title="5、列表方法"></a>5、列表方法</h4><h5 id="1、list-append-obj"><a href="#1、list-append-obj" class="headerlink" title="1、list.append(obj)"></a>1、list.append(obj)</h5><p>在列表末尾添加新的对象</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.append(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/197986f29839747d215d40de04b8e512.png" alt="20"></p>
+<h5 id="2、list-count-obj"><a href="#2、list-count-obj" class="headerlink" title="2、list.count(obj)"></a>2、list.count(obj)</h5><p>统计某个元素在列表中出现的次数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.count(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/2be88d94904197ecd299d9df20189625.png" alt="21"></p>
+<h5 id="3、list-extend-seq"><a href="#3、list-extend-seq" class="headerlink" title="3、list.extend(seq)"></a>3、list.extend(seq)</h5><p> 在列表末尾一次性追加另一个序列中的多个值（即用新列表扩展原来的列表）</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.extend([<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>])</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/eae8df9e0c929655831788391c0340f8.png" alt="22"></p>
+<h5 id="4、list-insert-index-obj"><a href="#4、list-insert-index-obj" class="headerlink" title="4、list.insert(index, obj)"></a>4、list.insert(index, obj)</h5><p>将对象插入列表</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.insert(<span class="number">1</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/b6b5ec0f8e1185a25d4cbacea2a1e049.png" alt="23"></p>
+<h5 id="5、list-index-obj"><a href="#5、list-index-obj" class="headerlink" title="5、list.index(obj)"></a>5、list.index(obj)</h5><p>从列表中找出某个值第一个匹配项的索引位置</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.index(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/a60c93533ddf9915804d32e89c1e0ffe.png" alt="24"></p>
+<p>也可以自定义范围</p>
+<p>tips：该范围为左闭右开区间</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.index(<span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/b137c26fac142e9456dc28abcf5d4539.png" alt="25"></p>
+<h5 id="6、list-pop-index-1"><a href="#6、list-pop-index-1" class="headerlink" title="6、list.pop([index=-1])"></a>6、list.pop([index=-1])</h5><p>移除列表中的一个元素（默认最后一个元素），并且返回该元素的值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">i = list1.pop()</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/b462e494f7b31f2c087f2f28cba64051.png" alt="26"></p>
+<h5 id="7、list-remove-obj"><a href="#7、list-remove-obj" class="headerlink" title="7、list.remove(obj)"></a>7、list.remove(obj)</h5><p>移除列表中某个值的<strong>第一个匹配项</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.remove(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/75a91400ec4d101794495e08b1689516.png" alt="27"></p>
+<h5 id="8、list-reverse"><a href="#8、list-reverse" class="headerlink" title="8、list.reverse()"></a>8、list.reverse()</h5><p>反向列表中的元素，但不会排序</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.reverse()</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210201112643577.png" alt="在这里插入图片描述"></p>
+<h5 id="9、list-sort-key-None-reverse-False"><a href="#9、list-sort-key-None-reverse-False" class="headerlink" title="9、list.sort(key=None, reverse=False)"></a>9、list.sort(key=None, reverse=False)</h5><p>对原列表进行排序</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.sort()</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/202102011129474.png" alt="在这里插入图片描述"><br>也可以反向排序</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.sort(reverse=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210201113107565.png" alt="在这里插入图片描述"></p>
+<h5 id="10、list-clear"><a href="#10、list-clear" class="headerlink" title="10、list.clear()"></a>10、list.clear()</h5><p>清空列表</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.clear()</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210201113429421.png" alt="在这里插入图片描述"></p>
+<h5 id="11、list-copy"><a href="#11、list-copy" class="headerlink" title="11、list.copy()"></a>11、list.copy()</h5><p>复制列表</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.copy()</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210201113614734.png" alt="在这里插入图片描述"></p>
+]]></content>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
