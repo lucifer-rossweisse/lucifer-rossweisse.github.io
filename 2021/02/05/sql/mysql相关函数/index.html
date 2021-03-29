@@ -1,0 +1,255 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>mysql相关函数 | Sec-Rossweisse</title><meta name="keywords" content="mysql,sql注入"><meta name="author" content="Sec-Rossweisse"><meta name="copyright" content="Sec-Rossweisse"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="mysql相关函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql相关函数">
+<meta property="og:url" content="https://lucifer-rossweisse.github.io/2021/02/05/sql/mysql%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:site_name" content="Sec-Rossweisse">
+<meta property="og:description" content="mysql相关函数">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lucifer-rossweisse.github.io/img/3.jpg">
+<meta property="article:published_time" content="2021-02-05T10:10:14.000Z">
+<meta property="article:modified_time" content="2021-03-29T04:57:24.434Z">
+<meta property="article:author" content="Sec-Rossweisse">
+<meta property="article:tag" content="mysql">
+<meta property="article:tag" content="sql注入">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lucifer-rossweisse.github.io/img/3.jpg"><link rel="shortcut icon" href="/img/website.jpg"><link rel="canonical" href="https://lucifer-rossweisse.github.io/2021/02/05/sql/mysql%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"top-center"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-03-29 12:57:24'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 5.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/id.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/3.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Sec-Rossweisse</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">mysql相关函数</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-02-05T10:10:14.000Z" title="发表于 2021-02-05 18:10:14">2021-02-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-03-29T04:57:24.434Z" title="更新于 2021-03-29 12:57:24">2021-03-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/sql%E6%B3%A8%E5%85%A5/">sql注入</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">358</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="mysql相关函数"><a href="#mysql相关函数" class="headerlink" title="mysql相关函数"></a>mysql相关函数</h1><a id="more"></a>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>version()</td>
+<td>返回数据库版本</td>
+</tr>
+<tr>
+<td>database()</td>
+<td>返回数据库名</td>
+</tr>
+<tr>
+<td>user() current_user() system_user()</td>
+<td>返回用户名</td>
+</tr>
+<tr>
+<td>@@datadir</td>
+<td>返回数据库路径</td>
+</tr>
+<tr>
+<td>@@version_compile_os</td>
+<td>返回操作系统版本</td>
+</tr>
+<tr>
+<td>length()</td>
+<td>返回字符串长度</td>
+</tr>
+<tr>
+<td>substring() substr() mid()</td>
+<td>截取字符串： 参数1：字符串 参数2：起始位置，索引从1开始 参数3：截取长度</td>
+</tr>
+<tr>
+<td>concat()</td>
+<td>不带分隔符链接字符串</td>
+</tr>
+<tr>
+<td>concat_ws()</td>
+<td>带分隔符链接字符串： concat_ws(’-’,‘a’,‘b’,‘c’)</td>
+</tr>
+<tr>
+<td>group_concat()</td>
+<td>链接一组查询结果字符串</td>
+</tr>
+<tr>
+<td>ord() ascii()</td>
+<td>返回字符串的ASCII值</td>
+</tr>
+<tr>
+<td>left()</td>
+<td>从左边开始截取字符串： 参数1：字符串 参数2：截取的长度</td>
+</tr>
+<tr>
+<td>rand()</td>
+<td>返回0-1之间的浮点数</td>
+</tr>
+<tr>
+<td>round()</td>
+<td>四舍五入： round(4.2323151,2)–&gt;4.23</td>
+</tr>
+<tr>
+<td>floor()</td>
+<td>向下取整</td>
+</tr>
+<tr>
+<td>load_file()</td>
+<td>返回读取文件的内容，返回字符串类型</td>
+</tr>
+<tr>
+<td>if()</td>
+<td>判断：if(exp1,exp2,exp3): 如果exp1为真，返回exp2，否则返回exp3</td>
+</tr>
+<tr>
+<td>updatexml()</td>
+<td>报错注入可以用到的函数，如果参数2格式不正确，会报错误信息，此时将需要的函数填在这里就会爆出需要的信息 参数1：string格式，为xml文档对象的名称 参数2：xpath格式的字符串 参数3：string格式，替换查找到的符合条件的数据</td>
+</tr>
+<tr>
+<td>addslashes()</td>
+<td>转义特殊字符（’ “ \）</td>
+</tr>
+<tr>
+<td>hex()</td>
+<td>将字符串转换为16进制</td>
+</tr>
+<tr>
+<td>unhex()</td>
+<td></td>
+</tr>
+<tr>
+<td>limit m,n</td>
+<td>从m开始 查找n条（索引从0开始）</td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Sec-Rossweisse</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://lucifer-rossweisse.github.io/2021/02/05/sql/mysql%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0/">https://lucifer-rossweisse.github.io/2021/02/05/sql/mysql%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://lucifer-rossweisse.github.io" target="_blank">Sec-Rossweisse</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/mysql/">mysql</a><a class="post-meta__tags" href="/tags/sql%E6%B3%A8%E5%85%A5/">sql注入</a></div><div class="post_share"><div class="social-share" data-image="/img/3.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/02/05/sql/sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E6%9C%AC%E8%AF%AD%E5%8F%A5/"><img class="prev-cover" src="/img/1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">sql注入基本语句</div></div></a></div><div class="next-post pull-right"><a href="/2021/02/01/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/python%E5%88%97%E8%A1%A8%E7%9A%84%E8%BF%90%E7%94%A8/"><img class="next-cover" src="/img/8.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">python列表的运用</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/02/05/sql/sql注入基本语句/" title="sql注入基本语句"><img class="cover" src="/img/1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-05</div><div class="title">sql注入基本语句</div></div></a></div><div><a href="/2021/02/09/sql/CTF show web入门 sql/" title="CTFshow web入门 sql"><img class="cover" src="/img/8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-09</div><div class="title">CTFshow web入门 sql</div></div></a></div><div><a href="/2021/02/07/sql/sql-labs/" title="Sql-Labs"><img class="cover" src="/img/7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-07</div><div class="title">Sql-Labs</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/id.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Sec-Rossweisse</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lucifer-rossweisse"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">欢迎来到南桐山庄</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">mysql相关函数</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/03/29/web%E5%AD%A6%E4%B9%A0/%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" title="命令注入知识点总结"><img src="/img/9.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="命令注入知识点总结"/></a><div class="content"><a class="title" href="/2021/03/29/web%E5%AD%A6%E4%B9%A0/%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" title="命令注入知识点总结">命令注入知识点总结</a><time datetime="2021-03-29T04:56:01.000Z" title="发表于 2021-03-29 12:56:01">2021-03-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/03/26/web%E5%AD%A6%E4%B9%A0/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E5%AD%A6%E4%B9%A0/" title="模板注入(SSTI)的简单总结"><img src="/img/6.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="模板注入(SSTI)的简单总结"/></a><div class="content"><a class="title" href="/2021/03/26/web%E5%AD%A6%E4%B9%A0/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E5%AD%A6%E4%B9%A0/" title="模板注入(SSTI)的简单总结">模板注入(SSTI)的简单总结</a><time datetime="2021-03-25T17:24:55.000Z" title="发表于 2021-03-26 01:24:55">2021-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/03/24/WriteUp/nep2021/" title="nep2021"><img src="/img/4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="nep2021"/></a><div class="content"><a class="title" href="/2021/03/24/WriteUp/nep2021/" title="nep2021">nep2021</a><time datetime="2021-03-24T09:47:04.000Z" title="发表于 2021-03-24 17:47:04">2021-03-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/03/11/WriteUp/BUUOJ%20web/" title="BUUOJ-Web"><img src="/img/8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BUUOJ-Web"/></a><div class="content"><a class="title" href="/2021/03/11/WriteUp/BUUOJ%20web/" title="BUUOJ-Web">BUUOJ-Web</a><time datetime="2021-03-11T14:05:23.000Z" title="发表于 2021-03-11 22:05:23">2021-03-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/09/sql/CTF%20show%20web%E5%85%A5%E9%97%A8%20sql/" title="CTFshow web入门 sql"><img src="/img/8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CTFshow web入门 sql"/></a><div class="content"><a class="title" href="/2021/02/09/sql/CTF%20show%20web%E5%85%A5%E9%97%A8%20sql/" title="CTFshow web入门 sql">CTFshow web入门 sql</a><time datetime="2021-02-08T16:58:12.000Z" title="发表于 2021-02-09 00:58:12">2021-02-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Sec-Rossweisse</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/js/mouse_snow.min.js"></script><script defer src="/live2d-widget/autoload.js"></script><div class="aplayer no-destroy" data-id="746979029" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
